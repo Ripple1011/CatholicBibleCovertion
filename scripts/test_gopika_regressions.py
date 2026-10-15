@@ -46,6 +46,11 @@ CASES = [
     ('fÞkuo',        'કર્યો',     'karyo (reph)'),
     ('þÂõík',        'શક્તિ',     'shakti'),
     ('ð]rØ',         'વૃદ્ધિ',    'vruddhi'),
+    ('hkrºk',        'રાત્રિ',    'raatri - short-i hops the ત્ર conjunct core'),
+    ('MksoLknkh',    'સર્જનહાર',  'sarjanhaar - reph via o marker'),
+    # NOTE: 'MkßÞkO' decodes to સજ્યાં (not સર્જ્યાં) because the SOURCE bytes
+    # lack the reph (ßÞ = જ્ય, no reph glyph); this is a source-data defect, not
+    # a converter bug. Left for an output-level lexical correction if desired.
     # --- double-virama must NOT appear ---
     ('{qõâkt',       'મૂક્યાં',   'no duplicate virama (was મૂક્્યાં)'),
 ]

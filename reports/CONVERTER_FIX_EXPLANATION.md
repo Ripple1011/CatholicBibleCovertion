@@ -87,3 +87,28 @@ A small tail of double-matra sequences (`ેે`, `ૃિ`, `ેિ` — low hun
 across 11 MB) from rare cluster edges, and the Daniel 5:25-28 `=` ("means",
 intentional source formatting). These are for a native-reader pass; they are no
 longer the dominant systematic error.
+
+---
+
+## Follow-up fix: conjunct-core pre-base short-i (રાત્રિ)
+
+The pre-base short-i (`r`) and reph reorder rules hop exactly one orthographic
+*cluster*. The `CLUSTER` regex originally recognized only table consonants and
+half-forms, but NOT the single-byte EXTRA conjunct cores (`º`=ત્ર, `û`=ક્ષ,
+`¥`=ત્ત, `Ì`=હ્ય, `Ù`=્ર, `†`=સ્ત્ર). So in `hkrºk` (રાત્રિ) the short-i could
+not hop `º`(ત્ર) and landed wrong → `રિત્ર`.
+
+Fix: add the EXTRA consonant-cluster cores to the cluster character class
+(excluding the pure matra/reph markers r,o,Š,®,Â,O,U). Result: `hkrºk` → રાત્રિ.
+Regression suite now 30/30 (added રાત્રિ and સર્જનહાર). Whole-Bible scan shows
+**0** `matra+short-i` sequences and **0** duplicate-virama.
+
+## Note: સર્જ્યાં (Genesis 1:1) — source defect, not a converter bug
+
+Genesis 1:1's last word decodes to **સજ્યાં**, not સર્જ્યાં. The raw bytes are
+`MkßÞkO` = સ + (inherent) + જ્ય + ાં — there is **no reph glyph** in the source.
+The `ßÞ`=જ્ય pattern occurs 539× and is correct elsewhere (જ્યોતિ, રાજ્યમાં,
+જ્યારે); reph, when present, is the `o` marker (e.g. `MksoLk`=સર્જન). So the
+missing reph on this one word is a **source-data defect in the app**, which the
+app itself would render as સજ્યાં. It is a candidate for an output-level
+lexical correction, not a decoder rule (the decoder must not invent bytes).

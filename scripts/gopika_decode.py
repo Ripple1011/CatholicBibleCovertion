@@ -56,6 +56,10 @@ for uni, gop in PAIRS:
             and gop not in GOP_CONS and len(uni) > 1:
         CONJ_CONS.add(gop)
 GOP_CONS |= CONJ_CONS  # treat full conjuncts as base-consonant-equivalent cores
+# EXTRA (defined below) also holds single-byte glyphs that decode to consonant
+# clusters (º=ત્ર્, û=ક્ષ્, ¥=ત્ત્, Ì=હ્ય, Ù=્ર, †=સ્ત્ર). These are cluster
+# cores too and must be hoppable by a pre-base matra (fixes રાત્રિ). We add them
+# to the base set after EXTRA is defined (see _finalize_cluster below).
 CONS_CLASS = ''.join(re.escape(c) for c in GOP_CONS)  # rebuild to include conjuncts
 # A consonant cluster in the gopika stream = zero or more half-forms followed by
 # exactly ONE base consonant (e.g. 'õí' = ક્+ત). A pre-base matra belongs to the
@@ -102,6 +106,19 @@ EXTRA = {
     '†': 'સ્ત્ર',  # વસ્ત્ર, શાસ્ત્ર, સ્ત્રી — verified across all contexts
     '&': 'શ્',    # પ્રશ્ન, અશ્લીલ, આશ્લેષ, પુણ્યશ્લોક — verified across contexts
 }
+
+# EXTRA glyphs that are consonant-cluster CORES (their Unicode contains a
+# consonant) must be hoppable by a pre-base matra. Add them to the cluster
+# character classes and rebuild CLUSTER / CONS_CLASS. (Pure matra/anusvara
+# EXTRA entries like r,o,O,U,®,Š,Â are NOT cores.)
+_NOT_CORES = set('roŠ®ÂOU')  # pure matra / reph / short-i markers, never cluster cores
+_EXTRA_CORES = ''.join(
+    g for g, u in EXTRA.items()
+    if g not in _NOT_CORES and any('ક' <= ch <= 'હ' for ch in u)
+)  # -> g(ખ્ત), â(્ય), û(ક્ષ્), ¥(ત્ત્), º(ત્ર્), Ì(હ્ય), Ù(્ર), †(સ્ત્ર), &(શ્)
+_BASE = _BASE + ''.join(re.escape(c) for c in _EXTRA_CORES)
+CONS_CLASS = CONS_CLASS + ''.join(re.escape(c) for c in _EXTRA_CORES)
+CLUSTER = r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])'
 
 
 def decode_table(s):
