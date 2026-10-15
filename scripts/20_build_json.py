@@ -21,22 +21,26 @@ from lexical_fixes import apply_lexical_fixes
 
 import re as _re
 
-# A dangling combining mark (anusvara, candrabindu, or any dependent vowel sign)
-# separated from its word by a stray source space ('હુ ં' -> 'હું',
-# 'પ ોતાનાં' -> 'પોતાનાં', 'કોઈ ે' -> 'કોઈે'): rejoin it to the preceding
-# letter. Only fires when the char before the space is a Gujarati letter so it
-# can legitimately carry the mark.
-_ORPHAN_MARK = _re.compile(r'([઀-૿])\s+([ંઁાિીુૂૃૄેૈોૌ્])')
+# A dangling combining mark split from its word by a stray source space
+# ('હુ ં' -> 'હું', 'પ ોતાનાં' -> 'પોતાનાં') rejoins to the PRECEDING letter.
+# EXCEPTION: a lone pre-base short-i 'િ' as its own token belongs to the
+# FOLLOWING word (it is stored before its consonant), so it is handled
+# separately below and excluded here.
+_ORPHAN_MARK = _re.compile(r'([઀-૿])\s+([ંઁાીુૂૃૄેૈોૌ્])')  # note: no 'િ'
+# A lone short-i token ' િ ' (space both sides) -> prefix the next word, where
+# it becomes that word's pre-base short-i (વચાળે િ નજનું -> વચાળે નિજનું).
+_LONE_SHORT_I = _re.compile(r'\sિ\s+(\S)')
 
 
 def convert(text):
     """Structural decode + orphan combining-mark rejoin + lexical corrections."""
     out = _convert(text)
-    # loop: a word may have been split before several marks
     prev = None
     while prev != out:
         prev = out
         out = _ORPHAN_MARK.sub(r'\1\2', out)
+    # lone short-i joins the following word's first consonant
+    out = _LONE_SHORT_I.sub(r' \1િ', out)
     return apply_lexical_fixes(out)
 
 APK = r"C:\Users\Admin\Downloads\gurjarvani_x\in.maxwellchristian.gurjarvani.apk"

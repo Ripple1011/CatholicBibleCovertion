@@ -62,6 +62,8 @@ CASES = [
     ('{qõâkt',       'મૂક્યાં',   'no duplicate virama (was મૂક્્યાં)'),
     # --- anomaly-scan-derived (matra order / repeats / reph-at-end) ---
     ('Au]',          'છે',        'chhe - spurious trailing ૃ dropped'),
+    ('yk¿kk',        'આજ્ઞા',     'aajnaa - જ્ઞ conjunct keeps its aa'),
+    ('yk¿kkyku',     'આજ્ઞાઓ',    'aajnaao'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the

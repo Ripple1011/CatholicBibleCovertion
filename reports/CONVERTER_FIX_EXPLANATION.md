@@ -183,3 +183,27 @@ Note: વષર્/માગેર્ (→ વર્ષ/માર્ગે) and 
 earlier reph-on-half-form and lexical-pronoun changes; counts are now વર્ષ 655,
 માર્ગે 256, રહ્યો 645, મોકલ્યું 19, and 0 of each wrong form.
 Regression suite 37/37.
+
+---
+
+## Fix: જ્ઞ/ત્ર/ક્ષ-family conjunct cores losing their aa (આજ્ઞઓ → આજ્ઞાઓ)
+
+Conjunct cores whose ONLY table key is the 2-char 'core'+'t' form — ¿=જ્ઞ,
+º=ત્ર, û=ક્ષ, ²=સ્ર, Ì=હ્ય, Ò=ન્ન, ¥=ત્ત — absorb the aa into the glyph ('t').
+So 'core kk' = conjunct + a real aa, but the generic k-collapse ate the second
+k and dropped the aa:  yk¿kk 'આજ્ઞા' decoded as આજ્ઞ. Fix: for each such core,
+'core'+'kk' -> <conjunct Unicode> + 'ા' (built automatically from the table).
+Impact: આજ્ઞઓ 249 -> 1, આજ્ઞા 1 -> 872. Regression 52/52.
+
+## Fix: 3 stranded-lone-matra source defects (verified in context)
+
+The source occasionally emits a lone matra as its own space-delimited token.
+A lone pre-base short-i 'િ' joins the FOLLOWING word (build step). Three
+specific verses were confirmed against raw bytes + context and corrected via
+scripts/lexical_fixes.py PHRASE_FIXES:
+  - Matthew 5:19: 'જે કોઈે આજ્ઞાઓનું' -> 'જે કોઈ આજ્ઞાઓનું' (stray ે dropped)
+  - Kirtansagar #102: 'વચાળે િ નજનું' -> 'વચાળે નિજનું'
+  - Kirtansagar #103: 'જ્યાં િ છનવાયે' -> 'જ્યાં નિજ છવાયે'
+
+After these, the anomaly scan reports 0 real-bug occurrences (only the
+whitelisted word-final virama = correct Sanskrit, and Daniel 5 '=' = intentional).

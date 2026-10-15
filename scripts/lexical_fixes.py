@@ -18,6 +18,18 @@ Current entries:
 """
 import re
 
+# Verified phrase-level corrections for specific source defects (stranded lone
+# matras etc.). Applied as plain substring replacements (order before WORD_FIXES).
+# Each verified against the raw bytes + full-verse context.
+PHRASE_FIXES = {
+    # Matthew 5:19: stray lone ે after કોઈ -> drop (verb is just કોઈ)
+    'જે કોઈે આજ્ઞાઓનું': 'જે કોઈ આજ્ઞાઓનું',
+    # Kirtansagar #103: જ્યાં િ છનવાયે -> જ્યાં નિજ છવાયે (confirmed)
+    'જ્યાંિ છનવાયે': 'જ્યાં નિજ છવાયે',
+    'જ્યાં િ છનવાયે': 'જ્યાં નિજ છવાયે',
+    'જ્યાં છિનવાયે': 'જ્યાં નિજ છવાયે',
+}
+
 # whole-word replacements: {wrong: right}
 # NOTE: these fire only as STANDALONE words (Gujarati-letter boundaries), so a
 # short token like 'તં' will never match inside a larger correct word.
@@ -45,7 +57,9 @@ _patterns = [
 
 
 def apply_lexical_fixes(text):
-    """Apply confirmed whole-word source-defect corrections to converted text."""
+    """Apply confirmed phrase + whole-word source-defect corrections."""
+    for wrong, right in PHRASE_FIXES.items():
+        text = text.replace(wrong, right)
     for pat, repl in _patterns:
         text = pat.sub(repl, text)
     return text

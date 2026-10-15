@@ -121,6 +121,18 @@ _EXTRA_CORES = ''.join(
 )  # -> g(ખ્ત), â(્ય), û(ક્ષ્), ¥(ત્ત્), º(ત્ર્), Ì(હ્ય), Ù(્ર), †(સ્ત્ર), &(શ્)
 _BASE = _BASE + ''.join(re.escape(c) for c in _EXTRA_CORES)
 CONS_CLASS = CONS_CLASS + ''.join(re.escape(c) for c in _EXTRA_CORES)
+
+# Conjunct cores whose ONLY table key is the 2-char 'core'+'t' form (the 't' is
+# the absorbed aa): the bare glyph has no mapping, so 'core'+'kk' loses its real
+# aa in the k-collapse. Map each bare core -> its conjunct Unicode (no aa) so we
+# can re-add exactly one aa. Built from the table: single-byte X where 'Xt' maps
+# to a multi-consonant cluster and X itself is not a table key.
+_CONJ_CORE_T = {}
+_tbl_gop = set(g for _, g in PAIRS)
+for _u, _g in PAIRS:
+    if len(_g) == 2 and _g[1] == 't' and _g[0] not in _tbl_gop \
+            and any('ક' <= ch <= 'હ' for ch in _u):
+        _CONJ_CORE_T[_g[0]] = _u   # e.g. '¿' -> 'જ્ઞ', 'º' -> 'ત્ર', 'û' -> 'ક્ષ'
 CLUSTER = r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])'
 
 
@@ -268,6 +280,15 @@ def convert(gopika_text):
     for core in _EXTRA_CORES:
         uni = EXTRA[core]
         s = s.replace(core + 'kku', uni + '\x1fo').replace(core + 'kki', uni + '\x1fa')
+
+    # TABLE-KEY conjunct cores (¿=જ્ઞ, º=ત્ર, û=ક્ષ, ²=સ્ર, Ì=હ્ય, Ò=ન્ન, ¥=ત્ત):
+    # their table key is 'core'+'t' (the 't' = the aa that the glyph absorbs).
+    # So 'core k k' means conjunct + a genuine aa, but the generic k-collapse
+    # below would eat the second k and drop the aa (yk¿kk 'આજ્ઞા' -> આજ્ઞ).
+    # Decode the core to its Unicode here and keep ONE aa (-> uni + 'ા').
+    for core in _CONJ_CORE_T:
+        uni = _CONJ_CORE_T[core]
+        s = re.sub(re.escape(core) + r'kk(?![u])', uni + 'ા', s)  # not kku (o-matra)
 
     # FULL-consonant o/au matras: protect 'kku'/'kki' from the collapse below.
     # Use \x1f temps (distinct from INH \x1d / AA \x1e to avoid any collision).
