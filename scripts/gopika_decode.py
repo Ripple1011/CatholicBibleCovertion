@@ -179,6 +179,17 @@ def fix_unicode(u):
     # collapse an impossible duplicate virama (e.g. ક્્ય -> ક્ય); never touch a
     # single valid virama.
     u = re.sub(VIRAMA + VIRAMA + r'+', VIRAMA, u)
+
+    # Visarga vs punctuation colon. The table maps ':' <-> ઃ, so every ASCII
+    # colon became ઃ. A GENUINE visarga attaches to a letter on both sides
+    # (દુઃખ). A PUNCTUATION colon has a space before/after or a digit neighbour
+    # (list intros 'કરી : અનાજ', references '1:12'): restore those to ':'.
+    VIS = 'ઃ'
+    u = re.sub(r'(?<=\s)' + VIS, ':', u)          # space before  ->  :
+    u = re.sub(VIS + r'(?=\s)', ':', u)           # space after   ->  :
+    u = re.sub(VIS + r'(?=$)', ':', u)            # end of string ->  :
+    u = re.sub(r'(?<=\d)' + VIS, ':', u)          # digit before  ->  :
+    u = re.sub(VIS + r'(?=\d)', ':', u)           # digit after   ->  :
     return u
 
 

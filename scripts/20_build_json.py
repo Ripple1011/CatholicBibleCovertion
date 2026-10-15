@@ -14,8 +14,14 @@ come from the source <title>, with known corrections applied.
 """
 import sys, io, zipfile, re, json, os, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-from gopika_decode import convert
+from gopika_decode import convert as _convert
 from html_extract import extract_verses
+from lexical_fixes import apply_lexical_fixes
+
+
+def convert(text):
+    """Structural decode + confirmed output-level lexical corrections."""
+    return apply_lexical_fixes(_convert(text))
 
 APK = r"C:\Users\Admin\Downloads\gurjarvani_x\in.maxwellchristian.gurjarvani.apk"
 OUTDIR = r"D:\My_Projects\ChurchConnect\BhajanSangrah\Docs\Gurjarvani_Data\output"

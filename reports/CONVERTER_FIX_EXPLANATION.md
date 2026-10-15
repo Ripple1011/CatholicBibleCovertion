@@ -112,3 +112,27 @@ The `ßÞ`=જ્ય pattern occurs 539× and is correct elsewhere (જ્યો
 missing reph on this one word is a **source-data defect in the app**, which the
 app itself would render as સજ્યાં. It is a candidate for an output-level
 lexical correction, not a decoder rule (the decoder must not invent bytes).
+
+---
+
+## Fix: punctuation colon vs visarga (ઃ)
+
+The mapping table pairs `:` <-> ઃ, so EVERY ascii colon was becoming visarga ઃ
+(e.g. a list intro "કરી : અનાજ" or a reference "1:12" rendered "ઃ"). But ઃ is a
+real character in Gujarati (દુઃખ). Classified the raw corpus:
+- 590 colons have a SPACE before, 104 have a DIGIT neighbour  -> PUNCTUATION
+- 66 are letter-attached both sides (દુઃખ etc.)               -> GENUINE visarga
+
+`fix_unicode()` now restores ઃ -> ':' only when space- or digit-adjacent (or at
+end of string); letter-attached visarga is kept. Result: 419 genuine visarga
+retained, 2410 punctuation colons restored; Gen 1:12 reads "...કરી : અનાજ...".
+
+## Fix: output-level lexical corrections (scripts/lexical_fixes.py)
+
+A SEPARATE, auditable module applies whole-word corrections for CONFIRMED
+source-data defects, after the structural decode. Currently:
+  સજ્યાં -> સર્જ્યાં,  સજ્યું -> સર્જ્યું   (missing-reph source typo; see the
+  સર્જ્યાં note above — the reph is absent from the source bytes). Occurrences:
+  6 + 2. Word-boundary guarded (does not fire inside larger tokens).
+Wired into 20_build_json.py: convert() = apply_lexical_fixes(decode()).
+Gen 1:1 now reads "...આકાશ અને પૃથ્વી સર્જ્યાં."
