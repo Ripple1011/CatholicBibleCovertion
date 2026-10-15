@@ -183,9 +183,27 @@ def fix_unicode(u):
     # single valid virama.
     u = re.sub(VIRAMA + VIRAMA + r'+', VIRAMA, u)
 
-    # Matra order: anusvara/candrabindu must come AFTER a below/left vowel sign,
-    # not before. Fix 'ં' + (ુ/ૂ) -> (ુ/ૂ) + 'ં'  (મોકલ્યંુ -> મોકલ્યું).
-    u = re.sub(r'([ંઁ])([ુૂ])', r'\2\1', u)
+    # Matra order: anusvara/candrabindu must come AFTER the dependent vowel sign,
+    # never before. Fix 'ં' + matra -> matra + 'ં' for ANY dependent vowel.
+    #   મોકલ્યંુ -> મોકલ્યું ;  તંે -> તેં ;  ખંેચી -> ખેંચી ;  વહંેચતો -> વહેંચતો
+    u = re.sub(r'([ંઁ])([' + OTHER_MATRAS + r'ા])', r'\2\1', u)
+    # Collapse a duplicated anusvara/candrabindu (font/order artifact):
+    #   ક્યાંં -> ક્યાં ,  તારુંં -> તારું
+    u = re.sub(r'([ંઁ])\1+', r'\1', u)
+    # Collapse any repeated dependent vowel sign that survived to Unicode
+    #   લીધુું -> લીધું ,  વૃૃૃ -> વૃ
+    u = re.sub(r'([' + OTHER_MATRAS + r'ા])\1+', r'\1', u)
+    # Two DIFFERENT dependent vowel signs on one consonant is invalid; the second
+    # is a spurious trailing matra -> drop it.  છેૃ -> છે ,  નથીૃ -> નથી
+    u = re.sub(r'([' + OTHER_MATRAS + r'ા])[' + OTHER_MATRAS + r']', r'\1', u)
+    # A dependent aa-matra after an INDEPENDENT vowel is spurious (independent
+    # vowels don't take matras):  એા -> એ  (લંગડાએા -> લંગડાએ)
+    u = re.sub(r'([અ-ઔ])[ાીુૂૃેૈોૌ]', r'\1', u)
+    # Reph at a word/token end or before a matra means the ર્ failed to attach to
+    # its consonant: 'Cર્' word-final -> 'ર્C' (reph belongs ON the preceding
+    # consonant). કીતિર્ -> કીર્તિ ,  પરિપૂતિર્ -> પરિપૂર્તિ
+    u = re.sub(r'([' + CONS_RANGE + r'])([' + OTHER_MATRAS + r']?)ર' + VIRAMA
+               + r'(?=\s|$|[.,;:?!)’”])', r'ર' + VIRAMA + r'\1\2', u)
 
     # Visarga vs punctuation colon. The table maps ':' <-> ઃ, so every ASCII
     # colon became ઃ. A GENUINE visarga attaches to a letter on both sides

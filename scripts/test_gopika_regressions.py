@@ -60,10 +60,23 @@ CASES = [
     # a converter bug. Left for an output-level lexical correction if desired.
     # --- double-virama must NOT appear ---
     ('{qõâkt',       'મૂક્યાં',   'no duplicate virama (was મૂક્્યાં)'),
+    # --- anomaly-scan-derived (matra order / repeats / reph-at-end) ---
+    ('Au]',          'છે',        'chhe - spurious trailing ૃ dropped'),
+]
+
+# Unicode-level fix_unicode() cases (post-decode normalization), from the
+# systematic anomaly scan. Each left side is an INVALID sequence that must
+# normalize to the right side.
+FIX_CASES = [
+    ('તંે', 'તેં'), ('મંે', 'મેં'), ('ખંેચી', 'ખેંચી'), ('વહંેચતો', 'વહેંચતો'),
+    ('ક્યાંં', 'ક્યાં'), ('તારુંં', 'તારું'), ('લીધુું', 'લીધું'), ('વૃૃૃ', 'વૃ'),
+    ('કીતિર્', 'કીર્તિ'), ('પરિપૂતિર્', 'પરિપૂર્તિ'), ('છેૃ', 'છે'),
+    ('મોકલ્યંુ', 'મોકલ્યું'),
 ]
 
 
 def main():
+    from gopika_decode import fix_unicode
     rows = []
     fails = 0
     for raw, exp, note in CASES:
@@ -75,7 +88,16 @@ def main():
     for ok, raw, got, exp, note in rows:
         mark = 'OK' if ok else '!!'
         print(f"{mark} {raw!r:16} got={got!r:14} exp={exp!r:14} {note}")
-    print(f"\n{len(CASES) - fails}/{len(CASES)} pass")
+    # fix_unicode normalization cases
+    print("  -- fix_unicode normalization --")
+    for bad, good in FIX_CASES:
+        got = fix_unicode(bad)
+        ok = (got == good)
+        if not ok:
+            fails += 1
+        print(f"{'OK' if ok else '!!'} {bad!r:14} -> {got!r:14} exp={good!r}")
+    total = len(CASES) + len(FIX_CASES)
+    print(f"\n{total - fails}/{total} pass")
     return 1 if fails else 0
 
 

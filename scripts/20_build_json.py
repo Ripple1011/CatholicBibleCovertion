@@ -19,9 +19,25 @@ from html_extract import extract_verses
 from lexical_fixes import apply_lexical_fixes
 
 
+import re as _re
+
+# A dangling combining mark (anusvara, candrabindu, or any dependent vowel sign)
+# separated from its word by a stray source space ('હુ ં' -> 'હું',
+# 'પ ોતાનાં' -> 'પોતાનાં', 'કોઈ ે' -> 'કોઈે'): rejoin it to the preceding
+# letter. Only fires when the char before the space is a Gujarati letter so it
+# can legitimately carry the mark.
+_ORPHAN_MARK = _re.compile(r'([઀-૿])\s+([ંઁાિીુૂૃૄેૈોૌ્])')
+
+
 def convert(text):
-    """Structural decode + confirmed output-level lexical corrections."""
-    return apply_lexical_fixes(_convert(text))
+    """Structural decode + orphan combining-mark rejoin + lexical corrections."""
+    out = _convert(text)
+    # loop: a word may have been split before several marks
+    prev = None
+    while prev != out:
+        prev = out
+        out = _ORPHAN_MARK.sub(r'\1\2', out)
+    return apply_lexical_fixes(out)
 
 APK = r"C:\Users\Admin\Downloads\gurjarvani_x\in.maxwellchristian.gurjarvani.apk"
 OUTDIR = r"D:\My_Projects\ChurchConnect\BhajanSangrah\Docs\Gurjarvani_Data\output"
