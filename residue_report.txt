@@ -1,0 +1,23 @@
+RESIDUE REPORT — leftover Latin characters after Gopika->Unicode conversion
+==============================================================================
+Total occurrences: 8
+Distinct stray chars: {'v': 3, 'l': 3, 'p': 1, 'F': 1}
+Verses affected: 4
+==============================================================================
+
+[OT book20 ch16 : v17]  stray=v
+  GOPIKA : 7" id="v177">177 {kt yrøkÞkh{k yux÷u þçkkík {rnLkk{kt ÃkkuíkkLkk Ãkwºkku {¥kkrÚkÞk yLku ÞnqËk MkkÚku Þhe¾ku økÞku.
+  UNICODE: ૭" ૈઙ્ઘ=">>>v<<<૧૭૭"।૧૭૭ માં અિગાયારમા એટલે શબાાતા મહિનાામાં પાોતાાનાા પાુત્રો મત્તાિથયા અનો યહૂદા સાાથે યરીખો ગાયો.
+
+[OT book24 ch11 : v9]  stray=Flp
+  GOPIKA : yku swðkLk, swðkLke{kt Mkw¾ {kýe ÷u. íkkÁt rË÷ [knu yLku íkkhe ykt¾kuLku øk{u íku heíku [k÷. Ãký yux÷wt ÞkË hk¾su fu, yu çkÄkt {kxu Eïh íkkhku rnMkkçk {køkþu. Ecclesiastes - Chapter 11-->nk href="file:///android_asset/customFontsAndStyles.css
+  UNICODE: ઓ જુવાના, જુવાનાીમાં સાુખ માણી લે. તાારું દિલ ચાહે અનો તાારી આંખોનો ગામે તો રીતો ચાલ. પાણ એટલું યાદ રાખજે કે, એ બાધાં માટે ઈશ્વર તાારો હિસાાબા માગાશે. ઈષ્ઠષ્ઠ>>>l<<<ીજૈટ્ઠજંીજ - ઝ્રરટ્ઠ>>>p<<<ંીિ ૧૧--।હા રિીક="કૈ>>>l<<<ીઃ///ટ્ઠહઙ્ઘિરૈઙ્ઘ_ટ્ઠજજીં/ષ્ઠેર્જંદ્બ>>>F<<<ર્હંજછહઙ્ઘજીંઅ>>>l<<<ીજ.ષ્ઠજજ
+
+[OT book46 ch106 : v4]  stray=v
+  GOPIKA : " id="v4">4 íkkhe «ò Ãkh «MkÒk ÚkELku ykðeþ yuLkku fhðkLku WØkh, íÞkhu {Lku Mkt¼khe, «¼wS, ÷usu {kheÞu Mkt¼k¤;
+  UNICODE: " ૈઙ્ઘ=">>>v<<<૪"।૪ તાારી પ્રજા પાર પ્રસાન્ન થઈનો આવીશ એનાો કરવાનો ઉદ્ધાર, ત્યારે મનો સાંભારી, પ્રભુજી, લેજે મારીયે સાંભાળ;
+
+[NT book1 ch22 : v40]  stray=v
+  GOPIKA : vMk{økú rLkÞ{MktrníkkLkku yLku ÃkÞøktçkhkuLke ðkýeLkku ykÄkh yk çku yk¿kkyku Au.” ‘yu fkuLkku Ãkwºk Au?’ ({kfo 12:35; ÷qf 20:41-44)
+  UNICODE: >>>v<<<સામગા્ર નિાયમસાંહિતાાનાો અનો પાયગાંબારોનાી વાણીનાો આધાર આ બો આજ્ઞાઓ છે.” ‘એ કોનાો પાુત્ર છે?’ (માર્ક ૧૨ઃ૩૫; લૂક ૨૦ઃ૪૧-૪૪)
+
