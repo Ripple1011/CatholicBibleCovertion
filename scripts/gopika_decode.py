@@ -136,13 +136,32 @@ OTHER_MATRAS = 'િીુૂૃૄેૈોૌ'  # vowel signs other than aa; tw
                               # marker and is dropped.
 
 
+# Sentinels used by convert() to carry raw-stream decisions through the decode:
+INH = '\x1d'   # inherent-vowel completion of a half-form (-> bare consonant, no matra)
+AA = '\x1e'    # genuine aa-matra that a half-form explicitly took (-> ા)
+CONS_RANGE = r'ક-હ'
+
+
 def fix_unicode(u):
+    # 1) Resolve the inherent-completion sentinel INH that follows a decoded
+    #    half-form (consonant + virama). 'C ્ INH' means the half-form was
+    #    completed to a FULL consonant carrying the inherent 'a' (implicit in
+    #    Unicode): drop the virama, emit no matra.
+    u = re.sub(r'([' + CONS_RANGE + r'])' + VIRAMA + INH, r'\1', u)
+    # 2) Resolve the explicit aa sentinel AA the same way but WITH an aa-matra:
+    #    'C ્ AA' (half-form + genuine aa) -> C + ા.
+    u = re.sub(r'([' + CONS_RANGE + r'])' + VIRAMA + AA, r'\1ા', u)
+    # any stray sentinels (defensive): INH -> nothing, AA -> aa
+    u = u.replace(INH, '').replace(AA, 'ા')
+
+    # existing cleanups
     u = re.sub(VIRAMA + r'([' + MATRAS + r'])', r'\1', u)
     # spurious aa before another vowel sign: ાX -> X  (X = non-aa matra)
     u = re.sub(r'ા([' + OTHER_MATRAS + r'])', r'\1', u)
-    # spurious aa after a vowel sign then another: Xા? handled above; also
-    # drop a aa that precedes a short-i that got reordered: િ cases
     u = re.sub(r'([' + OTHER_MATRAS + r'])ા', r'\1', u)
+    # collapse an impossible duplicate virama (e.g. ક્્ય -> ક્ય); never touch a
+    # single valid virama.
+    u = re.sub(VIRAMA + VIRAMA + r'+', VIRAMA, u)
     return u
 
 
@@ -153,21 +172,45 @@ RAW_MATRA = re.escape('uewq]i')   # ે ી ુ ૂ ૃ ૈ ; escape so ']' is l
 
 
 def convert(gopika_text):
+    """
+    Raw-stream interpretation of the Arpita 'k'(0x6b) inherent-vowel marker.
+
+    The 'k' byte is NOT a literal 'ા'. After a HALF-FORM glyph (e.g. 'L'=ન્):
+        HALF + k        -> full consonant with inherent 'a'   (ન)       [INH]
+        HALF + kk       -> full consonant + aa                (ના)      [AA]
+        HALF + k + V    -> full consonant + that vowel matra  (ને)
+        HALF + kku/kki  -> full consonant + ો / ૌ
+    After a FULL consonant glyph the 'k' is a genuine aa-matra and is left to
+    decode as 'ા' via the table (so મારા/રાજા are preserved).
+
+    We tag the half-form decisions with sentinels INH / AA on the RAW stream so
+    they survive unswap + reorder + table decode, then fix_unicode() resolves
+    them structurally (drop the half-form virama; add 'ા' only for AA).
+    """
     s = gopika_text
-    # 1) Protect the o/au matras BEFORE any 'k' collapsing. In this app a full
-    #    consonant's o-matra is 'kku' (ત+ો = íkku) and au is 'kki'; the first k
-    #    is the consonant's inherent slot, 'ku'/'ki' the matra. Replace with
-    #    sentinels so the kk-collapse below doesn't destroy them.
-    s = s.replace('kku', '\x1Eo').replace('kki', '\x1Ea')  # \x1E = kept consonant slot
-    # 2) Collapse remaining runs of the inherent marker 'k': doubled 'kk' makes a
-    #    spurious extra aa (પાાણી -> પાણી). Single k is genuine aa and untouched.
+    H = '[' + HALF_CONS_CLASS + ']'
+
+    # Order matters: longest 'k' runs / matra combos first.
+    # HALF + kku / kki  -> half-form keeps virama, real o/au matra follows.
+    #   (handled naturally: leave 'kku'/'kki' intact; the single leading k is the
+    #    half-form's completion -> turn into INH so virama drops, then 'ku'/'ki'
+    #    decodes to the o/au matra.)
+    s = re.sub(r'(' + H + r')kku', r'\1' + INH + 'ku', s)
+    s = re.sub(r'(' + H + r')kki', r'\1' + INH + 'ki', s)
+    # HALF + kk -> genuine aa
+    s = re.sub(r'(' + H + r')kk', r'\1' + AA, s)
+    # HALF + k + (real matra byte) -> keep the matra, k is inherent completion
+    s = re.sub(r'(' + H + r')k([' + RAW_MATRA + r'])', r'\1' + INH + r'\2', s)
+    # HALF + k (nothing matra-ish after) -> inherent 'a' completion
+    s = re.sub(r'(' + H + r')k', r'\1' + INH, s)
+
+    # FULL-consonant o/au matras: protect 'kku'/'kki' from the collapse below.
+    s = s.replace('kku', '\x1Eo').replace('kki', '\x1Ea')
+    # collapse any remaining spurious doubled inherent markers after full cons
+    # (પાાણી -> પાણી). Single k after a full consonant stays = genuine aa.
     s = re.sub(r'k{2,}', 'k', s)
-    # 3) Drop the inherent 'k' between a HALF-FORM consonant and a real matra:
-    #    fixes અનો->અને ('L'=ન્ half + k + u). Full consonants keep their 'ku'.
-    s = re.sub(r'([' + HALF_CONS_CLASS + r'])k([' + RAW_MATRA + r'])', r'\1\2', s)
-    # restore sentinels to the RAW o/au matra form 'ku'/'ki' (unswap turns the
-    # k into base 't', yielding table 'tu'=ો / 'ti'=ૌ).
     s = s.replace('\x1Eo', 'ku').replace('\x1Ea', 'ki')
+
     base = unswap_arpita(s)
     base = reorder_gopika(base)
     u = decode_table(base)
