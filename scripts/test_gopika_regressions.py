@@ -48,6 +48,13 @@ CASES = [
     ('ð]rØ',         'વૃદ્ધિ',    'vruddhi'),
     ('hkrºk',        'રાત્રિ',    'raatri - short-i hops the ત્ર conjunct core'),
     ('MksoLknkh',    'સર્જનહાર',  'sarjanhaar - reph via o marker'),
+    ('ðíkuo',        'વર્તે',     'varte - reph on a half-form consonant'),
+    ('ð»kuo',        'વર્ષે',     'varshe - reph'),
+    ('{køkuo',       'માર્ગે',    'maarge - reph'),
+    ('hÌkku',        'રહ્યો',     'rahyo - EXTRA core હ્ય + o-matra (not રહ્યે)'),
+    ('{kufÕÞtw',     'મોકલ્યું',  'moklyu - anusvara+u order -> u+anusvara'),
+    ('¾uuuz',        'ખેડ',       'khed - repeated e-matra collapse'),
+    ('¼uuxku',       'ભેટો',      'bheto - repeated e-matra collapse'),
     # NOTE: 'MkßÞkO' decodes to સજ્યાં (not સર્જ્યાં) because the SOURCE bytes
     # lack the reph (ßÞ = જ્ય, no reph glyph); this is a source-data defect, not
     # a converter bug. Left for an output-level lexical correction if desired.

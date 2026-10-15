@@ -183,6 +183,10 @@ def fix_unicode(u):
     # single valid virama.
     u = re.sub(VIRAMA + VIRAMA + r'+', VIRAMA, u)
 
+    # Matra order: anusvara/candrabindu must come AFTER a below/left vowel sign,
+    # not before. Fix 'ં' + (ુ/ૂ) -> (ુ/ૂ) + 'ં'  (મોકલ્યંુ -> મોકલ્યું).
+    u = re.sub(r'([ંઁ])([ુૂ])', r'\2\1', u)
+
     # Visarga vs punctuation colon. The table maps ':' <-> ઃ, so every ASCII
     # colon became ઃ. A GENUINE visarga attaches to a letter on both sides
     # (દુઃખ). A PUNCTUATION colon has a space before/after or a digit neighbour
@@ -234,6 +238,18 @@ def convert(gopika_text):
     s = re.sub(r'(' + H + r')k([' + RAW_MATRA + r'])', r'\1' + INH + r'\2', s)
     # HALF + k (nothing matra-ish after) -> inherent 'a' completion
     s = re.sub(r'(' + H + r')k', r'\1' + INH, s)
+
+    # EXTRA conjunct-core glyphs (Ì=હ્ય, º=ત્ર, û=ક્ષ, ...) whose TABLE key is the
+    # 2-char form 'core'+'t' (e.g. 'Ìt'=હ્ય). When such a core takes an o/au matra
+    # ('Ìkku' = હ્ય + ો), the generic kku-protection below leaves 'Ìtu', and the
+    # greedy table match grabs 'Ìt'=હ્ય first, stranding 'u'(ે) -> wrong રહ્યે.
+    # Decode the core explicitly to its Unicode here and keep the o/au matra.
+    # Only the o/au-matra case is broken by greedy 'Ìt' matching; handle ONLY
+    # that, decoding the core to its Unicode and keeping the o/au matra. Do NOT
+    # touch other core+k cases (they must flow through reorder for short-i etc.).
+    for core in _EXTRA_CORES:
+        uni = EXTRA[core]
+        s = s.replace(core + 'kku', uni + '\x1fo').replace(core + 'kki', uni + '\x1fa')
 
     # FULL-consonant o/au matras: protect 'kku'/'kki' from the collapse below.
     # Use \x1f temps (distinct from INH \x1d / AA \x1e to avoid any collision).

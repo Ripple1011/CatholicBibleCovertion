@@ -163,3 +163,23 @@ need ેં; and હવા is a full-consonant spurious-ā case (not rule-separa
 Gen 4:10 now "...કહ્યું, "તેં આ શું કયું?..."; Gen 4:14 "...ખેડખેતરમાંથી ...
 ભેટો થશે...". Regression suite 30/30; 0 repeat-matra, 0 duplicate-virama,
 0 leftover Latin across all JSON.
+
+---
+
+## Fixes: EXTRA-core o-matra (રહ્યો), anusvara+u order (મોકલ્યું)
+
+**EXTRA conjunct core + o/au matra (રહ્યે → રહ્યો).** Cores like Ì=હ્ય have a
+TABLE key of the 2-char form 'Ìt'=હ્ય. When the core takes an o-matra
+('hÌkku' = ર હ્ય ો), the greedy table match grabbed 'Ìt'=હ્ય and stranded the
+'u'(ે), giving રહ્યે. Fix: for each EXTRA core, pre-decode 'core+kku'/'core+kki'
+to '<unicode> + ો/ૌ' before table decode (narrowly — only the o/au case, so
+short-i handling like રાત્રિ is untouched).
+
+**Anusvara + u order (મોકલ્યંુ → મોકલ્યું).** A 'ં' immediately followed by a
+below vowel sign (ુ/ૂ) is mis-ordered; swap to put the vowel first:
+'ં'+(ુ/ૂ) -> (ુ/ૂ)+'ં'. 53 occurrences corrected; 0 remain.
+
+Note: વષર્/માગેર્ (→ વર્ષ/માર્ગે) and મં (→ મેં) were already fixed by the
+earlier reph-on-half-form and lexical-pronoun changes; counts are now વર્ષ 655,
+માર્ગે 256, રહ્યો 645, મોકલ્યું 19, and 0 of each wrong form.
+Regression suite 37/37.
