@@ -255,6 +255,15 @@ def convert(gopika_text):
     s = gopika_text
     H = '[' + HALF_CONS_CLASS + ']'
 
+    # 'ò'(0xf2) is the જ ligature base rendered as જા alone, but 'òu' before a
+    # following letter is the જો ligature (જોવું verb family): જોઈ, જોયો, જોયું,
+    # જોઈને, જોઉં ... Verified: EVERY 'òuE' / 'òuÞ' / 'òuô'/'òuW'(=જોઉં) token in
+    # the whole corpus is a જો form (never genuine જે like બીજે). Map those to
+    # 'જો' + the following. Bare 'òu' at a word end stays જે (બીજે, કરજે).
+    s = re.sub(r'òu([EÞ])', 'જો' + r'\1', s)     # જોઈ-/જોય- families
+    s = re.sub(r'òuô', 'જોઉં', s)                 # જોઉં (ô = ઉં)
+    s = re.sub(r'òuW', 'જોઉ', s)                  # જોઉ
+
     # Order matters: longest 'k' runs / matra combos first.
     # HALF + kku / kki  -> half-form keeps virama, real o/au matra follows.
     #   (handled naturally: leave 'kku'/'kki' intact; the single leading k is the

@@ -207,3 +207,15 @@ scripts/lexical_fixes.py PHRASE_FIXES:
 
 After these, the anomaly scan reports 0 real-bug occurrences (only the
 whitelisted word-final virama = correct Sanskrit, and Daniel 5 '=' = intentional).
+
+---
+
+## Fix: જો ligature (જોઈ/જોયો) — from Kirtansagar audit Pass-1
+
+'ò'(0xf2) is the જ ligature base: alone it renders જા, but 'òu'+letter is the
+જો ligature. The decoder was giving જે (ò=જા + ે collapsing). Verified every
+'òuE'/'òuÞ'/'òuô'/'òuW' token corpus-wide (~2,600, 35 forms) is a જો verb form,
+never genuine જે; bare 'òu' word-final stays જે (બીજે, કરજે). Fix in convert():
+'òu[EÞ]'->જો+…, 'òuô'->જોઉં, 'òuW'->જોઉ. Bible જોઈ-prefix 0->1262.
+Plus source-defect lexical fixes: સજ્ર્યો->સર્જ્યો, અપ્ર્યો->અર્પ્યો,
+મબલક->મબલખ, અજેડ->અજોડ, ૫ણ->પણ. See reports/AUDIT_PASS1_RESOLUTION.md.

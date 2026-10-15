@@ -64,6 +64,14 @@ CASES = [
     ('Au]',          'છે',        'chhe - spurious trailing ૃ dropped'),
     ('yk¿kk',        'આજ્ઞા',     'aajnaa - જ્ઞ conjunct keeps its aa'),
     ('yk¿kkyku',     'આજ્ઞાઓ',    'aajnaao'),
+    # જોવું family: 'ò'+'u'+letter = જો ligature (not જે)
+    ('òuE',          'જોઈ',       'joi - ò ligature jo, not je'),
+    ('òuÞku',        'જોયો',      'joyo'),
+    ('òuÞwt',        'જોયું',     'joyu'),
+    ('òuELku',       'જોઈને',     'joine'),
+    # but bare òu at word end stays જે
+    ('çkeòu',        'બીજે',      'bije - bare òu word-final stays je'),
+    ('fhòu',         'કરજે',      'karje'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the

@@ -45,6 +45,17 @@ WORD_FIXES = {
     'હાવા': 'હવા',      # air/wind (nkðk)
     'હાવાને': 'હવાને',
     'હાવામાં': 'હવામાં',
+    # --- Kirtansagar Pass-1 audit (verified against raw bytes) ---
+    # Source defects: reph genuinely absent/misplaced in the source bytes
+    # (same class as સજ્યાં). Decoder must not invent the reph.
+    'સજ્ર્યો': 'સર્જ્યો',   # MkßÞkuo (×2) - 'created'
+    'અપ્ર્યો': 'અર્પ્યો',   # yÃÞkuo (×1) - 'offered'
+    # Source spelling: standard Gujarati is મબલખ (source literally has ક = f).
+    'મબલક': 'મબલખ',        # {çk÷f (×4) - 'abundant'
+    # 'ò'+z ligature for જોડ not caught by the òu[EÞ] rule; single rare word.
+    'અજેડ': 'અજોડ',        # yòuz (×1) - 'matchless'
+    # Digit-for-consonant source typo: ૫(5) used for પ.
+    '૫ણ': 'પણ',            # '૫ણ' -> 'પણ' (but)
 }
 
 # precompile a word-boundary-ish pattern. Gujarati has no \b word boundary that
