@@ -28,6 +28,9 @@ PHRASE_FIXES = {
     'જ્યાંિ છનવાયે': 'જ્યાં નિજ છવાયે',
     'જ્યાં િ છનવાયે': 'જ્યાં નિજ છવાયે',
     'જ્યાં છિનવાયે': 'જ્યાં નિજ છવાયે',
+    # Kirtansagar #267: 'પુત્ર વની મને' -> 'પુત્ર વિના મને' (વની=without; the
+    # token વની is valid elsewhere e.g. દેવની, so fix only this phrase).
+    'પુત્ર વની મને': 'પુત્ર વિના મને',
 }
 
 # whole-word replacements: {wrong: right}
@@ -56,6 +59,25 @@ WORD_FIXES = {
     'અજેડ': 'અજોડ',        # yòuz (×1) - 'matchless'
     # Digit-for-consonant source typo: ૫(5) used for પ.
     '૫ણ': 'પણ',            # '૫ણ' -> 'પણ' (but)
+    # --- Kirtansagar Pass-2 (verified against raw bytes) ---
+    # Source defects: reph genuinely MISSING in the source bytes (no reph glyph)
+    'ઉતાયું': 'ઉતાર્યું',   # WíkkÞwO (×5) - 'lifted/saved'
+    'તાયું': 'તાર્યું',     # standalone (×1) - 'saved'
+    'નિમ્ર્યો': 'નિર્મ્યો', # rLkBÞkuo (×2) - reph-order on મ્ cluster
+    'અપ્રિત': 'અર્પિત',     # (×1) stray - 'offered' (reph order)
+    # Digit-for-consonant: ૫ used for પ
+    '૫ાપનો': 'પાપનો',       # (×1)
+    # Phrase: Song 267 only (દેવની elsewhere is correct, untouched)
+}
+
+# Word-INITIAL prefix normalizations. Fire only at the start of a word
+# (Gujarati-letter boundary before). Each verified that EVERY corpus word with
+# this prefix should take the replacement.
+PREFIX_FIXES = {
+    # Source alternates સરજ-/સર્જ- for the 'create' root; normalize to સર્જ-
+    # (the standard form, already present in the same book). All ~28 inflections
+    # (સરજનહાર, સરજ્યો, સરજાશે, સરજેલી, …) are the create-root -> સર્જ-.
+    'સરજ': 'સર્જ',
 }
 
 # precompile a word-boundary-ish pattern. Gujarati has no \b word boundary that
@@ -65,12 +87,19 @@ _patterns = [
     (re.compile(r'(?<![' + _GUJ + r'])' + re.escape(w) + r'(?![' + _GUJ + r'])'), r)
     for w, r in WORD_FIXES.items()
 ]
+# word-initial prefix: Gujarati letter boundary before, letter-continuation after
+_prefix_patterns = [
+    (re.compile(r'(?<![' + _GUJ + r'])' + re.escape(p) + r'(?=[' + _GUJ + r'])'), r)
+    for p, r in PREFIX_FIXES.items()
+]
 
 
 def apply_lexical_fixes(text):
-    """Apply confirmed phrase + whole-word source-defect corrections."""
+    """Apply confirmed phrase + whole-word + prefix source-defect corrections."""
     for wrong, right in PHRASE_FIXES.items():
         text = text.replace(wrong, right)
+    for pat, repl in _prefix_patterns:
+        text = pat.sub(repl, text)
     for pat, repl in _patterns:
         text = pat.sub(repl, text)
     return text

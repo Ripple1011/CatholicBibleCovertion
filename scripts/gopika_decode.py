@@ -42,9 +42,11 @@ def unswap_arpita(s):
 
 # Half-form gopika glyphs (their Unicode value ends in virama, i.e. C + ્).
 HALF_CONS = set()
+HALF2FULL = {}   # half-form gopika glyph -> its FULL consonant Unicode (no virama)
 for uni, gop in PAIRS:
     if len(gop) == 1 and uni.endswith('્'):
         HALF_CONS.add(gop)
+        HALF2FULL[gop] = uni[:-1]
 
 # Full-conjunct gopika glyphs: a single gopika char mapping to a multi-consonant
 # cluster that does NOT end in a bare virama (e.g. 'Ø'=દ્ધ, 'ù'=શ્ચ). These are
@@ -175,6 +177,8 @@ CONS_RANGE = r'ક-હ'
 
 
 def fix_unicode(u):
+    # 0) Resolve the 'Š' reph+short-i sentinels: \x10 C \x11 -> ર્ + C + િ.
+    u = u.replace('\x10', 'ર્').replace('\x11', 'િ')
     # 1) Resolve the inherent-completion sentinel INH that follows a decoded
     #    half-form (consonant + virama). 'C ્ INH' means the half-form was
     #    completed to a FULL consonant carrying the inherent 'a' (implicit in
@@ -254,6 +258,18 @@ def convert(gopika_text):
     """
     s = gopika_text
     H = '[' + HALF_CONS_CLASS + ']'
+
+    # 'Š'(0x160) = reph ર્ + short-i િ as a PRE-BASE unit (JS: ર્િ -> Š). It sits
+    # before the consonant it applies to: 'Š' + C(+k) means the reph rides ON C
+    # and the short-i follows C -> ર્ + C + િ  (મૂત્રિ was wrong; મૂર્તિ is right).
+    # The following glyph is a half-form (ત્=í etc.); decode it to its FULL
+    # consonant and drop a trailing inherent 'k'. Emit \x10/\x11 sentinels that
+    # fix_unicode() turns into 'ર્' / 'િ' so later passes don't disturb them.
+    def _repl_reph_i(m):
+        return '\x10' + HALF2FULL[m.group(1)] + '\x11'
+    s = re.sub(r'Š([' + HALF_CONS_CLASS + r'])k?', _repl_reph_i, s)
+    # Fallback: 'Š' before a FULL consonant glyph (no half-form) -> ר् on it + િ.
+    # (rare; keep the old EXTRA 'Š'->'ર્િ' behaviour for anything left.)
 
     # 'ò'(0xf2) is the જ ligature base rendered as જા alone, but 'òu' before a
     # following letter is the જો ligature (જોવું verb family): જોઈ, જોયો, જોયું,

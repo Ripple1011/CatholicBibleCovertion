@@ -72,6 +72,12 @@ CASES = [
     # but bare òu at word end stays જે
     ('çkeòu',        'બીજે',      'bije - bare òu word-final stays je'),
     ('fhòu',         'કરજે',      'karje'),
+    # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
+    ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
+    ('feŠík',        'કીર્તિ',    'kirti'),
+    ('Mk{ŠÃkík',     'સમર્પિત',   'samarpit'),
+    ('ÃkkŠÚkð',      'પાર્થિવ',   'parthiv'),
+    ('ynŠLkþ',       'અહર્નિશ',   'aharnish'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the

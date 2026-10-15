@@ -219,3 +219,12 @@ never genuine જે; bare 'òu' word-final stays જે (બીજે, કર�
 'òu[EÞ]'->જો+…, 'òuô'->જોઉં, 'òuW'->જોઉ. Bible જોઈ-prefix 0->1262.
 Plus source-defect lexical fixes: સજ્ર્યો->સર્જ્યો, અપ્ર્યો->અર્પ્યો,
 મબલક->મબલખ, અજેડ->અજોડ, ૫ણ->પણ. See reports/AUDIT_PASS1_RESOLUTION.md.
+
+---
+
+## Fix: 'Š' reph+short-i glyph (મૂર્તિ/કીર્તિ family) — Pass-2 audit
+
+`Š`(0x160) = reph ર્ + short-i િ pre-base unit riding the next consonant:
+`Š`+C(+k) -> ર્+C+િ. Was misplaced (મૂત્રિ). Now મૂર્તિ, કીર્તિ, સમર્પિત,
+પાર્થિવ, અહર્નિશ, મૂર્તિમંત. Plus Pass-2 lexical: સરજ-→સર્જ- (prefix, guarded),
+ઉતાર્યું, નિર્મ્યો, અર્પિત, ૫ાપનો→પાપનો, 'પુત્ર વિના'. See AUDIT_PASS2_RESOLUTION.md.
