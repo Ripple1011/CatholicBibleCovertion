@@ -70,11 +70,14 @@ CONS_CLASS = ''.join(re.escape(c) for c in GOP_CONS)  # rebuild to include conju
 _HALF = ''.join(re.escape(c) for c in HALF_CONS)
 _BASE = ''.join(re.escape(c) for c in GOP_CONS)
 HALF_CONS_CLASS = _HALF  # for use in character classes elsewhere
+# Post-base ra: 'ú'(0xfa)=્ર attaches AFTER a consonant to form C+્ર (ખ્ર, પ્ર).
+# It is part of the same orthographic cluster, so a pre-base matra must hop it
+# too (fixes ખિ્ર -> ખ્ર in ખ્રિસ્ત/પ્રિય/ગાબ્રિયેલ).
+_POSTRA = ''.join(re.escape(c) for c in 'úÙ')
 # One orthographic cluster = either a conjunct (one or more half-forms, then an
-# optional base consonant, e.g. 'õí'=ક્ત or 'õf'=ક્ક) OR a single base consonant.
-# A pre-base matra hops exactly one such cluster — so a run of SEPARATE full
-# consonants (દવસ) is three clusters and the matra stays on the first.
-CLUSTER = r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])'
+# optional base consonant, e.g. 'õí'=ક્ત or 'õf'=ક્ક) OR a single base consonant,
+# each optionally followed by a post-base ra ('¾ú'=ખ્ર).
+CLUSTER = r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])[' + _POSTRA + r']?'
 
 
 def reorder_gopika(s):
@@ -135,7 +138,12 @@ for _u, _g in PAIRS:
     if len(_g) == 2 and _g[1] == 't' and _g[0] not in _tbl_gop \
             and any('ક' <= ch <= 'હ' for ch in _u):
         _CONJ_CORE_T[_g[0]] = _u   # e.g. '¿' -> 'જ્ઞ', 'º' -> 'ત્ર', 'û' -> 'ક્ષ'
-CLUSTER = r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])'
+# Rebuild CLUSTER (EXTRA cores were added to _BASE above). A cluster may carry an
+# INH/AA half-form sentinel (\x1d/\x1e, inserted by the half-form k-handling that
+# runs before reorder) and a post-base ra 'ú/Ù', e.g. 'Ã\x1dú' = પ્ર. A pre-base
+# matra must hop all of it (fixes પિ્ર -> પ્ર, ખિ્ર -> ખ્ર).
+_CLTAIL = r'[\x1d\x1e]?[' + _POSTRA + r']?'
+CLUSTER = (r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])' + _CLTAIL)
 
 
 def decode_table(s):

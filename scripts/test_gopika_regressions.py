@@ -78,6 +78,11 @@ CASES = [
     ('Mk{ŠÃkík',     'સમર્પિત',   'samarpit'),
     ('ÃkkŠÚkð',      'પાર્થિવ',   'parthiv'),
     ('ynŠLkþ',       'અહર્નિશ',   'aharnish'),
+    # short-i hopping a C+્ર post-base-ra cluster (ખ્રિસ્ત = Christ!)
+    ('r¾úMík',       'ખ્રિસ્ત',   'khrist - short-i hops ખ્ર (C+્ર)'),
+    ('rÃkúÞ',        'પ્રિય',     'priya - half-form પ્ + ્ર'),
+    ('økkrçkúÞu÷',   'ગાબ્રિયેલ', 'gabriel'),
+    ('yrøkúÃÃkk',    'અગ્રિપ્પા', 'agrippa'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the

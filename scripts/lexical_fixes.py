@@ -68,6 +68,19 @@ WORD_FIXES = {
     # Digit-for-consonant: ૫ used for પ
     '૫ાપનો': 'પાપનો',       # (×1)
     # Phrase: Song 267 only (દેવની elsewhere is correct, untouched)
+    # --- Kirtansagar Pass-3 source defects (verified vs raw bytes) ---
+    'શ્રધ્ધા': 'શ્રદ્ધા',   # ©æÄk - source has ધ્ધ; standard દ્ધ
+    'આતમા': 'આત્મા',        # ykík{k - source wrote આતમ (no conjunct)
+    'તારૂં': 'તારું',       # íkkYt - source used રૂ(long); standard ું
+    'મારૂં': 'મારું',       # {kYt
+    'કરૂણા': 'કરુણા',       # fYýk - long ૂ -> short ુ
+    'હૈયુ': 'હૈયું',         # niÞw - missing anusvara
+    'જયારે': 'જ્યારે',      # sÞkhu - source જય, standard જ્ય
+    'ત્યા': 'ત્યાં',        # missing anusvara (Song 57; whole-word only)
+    'પરણામ': 'પ્રણામ',      # Ãkhýk{ - source પરણ, standard પ્રણ
+    'મત્યુને': 'મૃત્યુને',  # {íÞwLku - missing ૃ
+    'ઠયાં': 'થયાં',         # XÞkO - source ઠ for થ
+    'યિજ્ઞક': 'યજ્ઞક',      # Þkr¿kf - stray short-i
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
@@ -78,6 +91,10 @@ PREFIX_FIXES = {
     # (the standard form, already present in the same book). All ~28 inflections
     # (સરજનહાર, સરજ્યો, સરજાશે, સરજેલી, …) are the create-root -> સર્જ-.
     'સરજ': 'સર્જ',
+    # Same pattern for the 'offer' root: source alternates અરપ-/અર્પ-; the book
+    # overwhelmingly uses અર્પ- (અર્પણ ×41 etc.). All અરપ- forms (અરપું/અરપે/
+    # અરપી/અરપો) are the offer-root. Guarded word-initial.
+    'અરપ': 'અર્પ',
 }
 
 # precompile a word-boundary-ish pattern. Gujarati has no \b word boundary that

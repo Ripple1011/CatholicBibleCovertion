@@ -228,3 +228,13 @@ Plus source-defect lexical fixes: સજ્ર્યો->સર્જ્યો, 
 `Š`+C(+k) -> ર્+C+િ. Was misplaced (મૂત્રિ). Now મૂર્તિ, કીર્તિ, સમર્પિત,
 પાર્થિવ, અહર્નિશ, મૂર્તિમંત. Plus Pass-2 lexical: સરજ-→સર્જ- (prefix, guarded),
 ઉતાર્યું, નિર્મ્યો, અર્પિત, ૫ાપનો→પાપનો, 'પુત્ર વિના'. See AUDIT_PASS2_RESOLUTION.md.
+
+---
+
+## Fix: short-i before C+્ર (ખ્રિસ્ત) — Pass-3 audit
+
+Pre-base short-i was landing before the ્ર conjunct (ખિ્રસ્ત). The cluster a
+pre-base matra hops now includes an optional INH/AA sentinel + post-base ra
+(ú/Ù), so C+્ર is hopped as one unit: ખ્રિસ્ત, પ્રિય, ગાબ્રિયેલ, અગ્રિપ્પા.
+Corpus િ્ર 678→0; ખ્રિસ્ત 602. Plus lexical: અરપ→અર્પ prefix + 12 source typos.
+See AUDIT_PASS3_RESOLUTION.md.
