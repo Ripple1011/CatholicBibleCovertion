@@ -78,7 +78,8 @@ typos (સજ્યાં→સર્જ્યાં, હવા, મેં/ત�
 
 ## How to REPORT findings
 
-Produce a single file `reports/PROOFREADING_FINDINGS.md` (or JSON) with, per item:
+Fill in the ready-made template `reports/PROOFREADING_FINDINGS.md`
+(already in the repo). It has the exact tables/columns to use, per item:
 
 | field | meaning |
 |-------|---------|
