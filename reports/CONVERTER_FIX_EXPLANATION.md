@@ -136,3 +136,30 @@ source-data defects, after the structural decode. Currently:
   6 + 2. Word-boundary guarded (does not fire inside larger tokens).
 Wired into 20_build_json.py: convert() = apply_lexical_fixes(decode()).
 Gen 1:1 now reads "...આકાશ અને પૃથ્વી સર્જ્યાં."
+
+---
+
+## Fixes: reph-on-half-form, repeated matras, pronouns, હવા
+
+**Reph on a half-form consonant (વતેર્ → વર્તે).** The reph `o` reorder rule
+required a consonant immediately before the matra run, but after the half-form
+`k`-marker fix a half-form carries an INH sentinel (`í`=ત્ + \x1d + ે). The rule
+now (a) accepts a half-form as the consonant and (b) includes the INH/AA
+sentinels in the matra run, so `ðíkuo` → વર્તે (was વતેર્). Fixed પ્રવર્તે too.
+
+**Repeated dependent-vowel matras (ખેેેડ → ખેડ, ભેેટો → ભેટો).** The font
+sometimes emits a matra byte 2–3× in a row (`¾uuuz`). A run of the same matra
+byte `[uewqi]+` is collapsed to one. 0 repeat-matra sequences remain corpus-wide.
+
+**Sentinel byte collision.** The FULL-consonant o/au temp used `\x1e`, which
+equals the AA sentinel — changed the temp to `\x1f` to remove any overlap.
+
+**Lexical layer additions (scripts/lexical_fixes.py).** Byte `U`(0x55) is
+anusvara ં in most words (નોંધ, પહોંચી, સોંપી), but the 1st/2nd-person pronouns
+need ેં; and હવા is a full-consonant spurious-ā case (not rule-separable from
+મારા). All whole-word, boundary-guarded:
+  તં→તેં (×305), મં→મેં (×291), હાવા→હવા (+ હવાને/હવામાં).
+
+Gen 4:10 now "...કહ્યું, "તેં આ શું કયું?..."; Gen 4:14 "...ખેડખેતરમાંથી ...
+ભેટો થશે...". Regression suite 30/30; 0 repeat-matra, 0 duplicate-virama,
+0 leftover Latin across all JSON.

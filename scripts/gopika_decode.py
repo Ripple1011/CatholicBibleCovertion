@@ -84,8 +84,11 @@ def reorder_gopika(s):
     s = re.sub(r'Â(' + CLUSTER + r')', r'\1Â', s)
     # short-i 'r' before consonant cluster -> after
     s = re.sub(r'r(' + CLUSTER + r')', r'\1r', s)
-    # reph 'o' after cons(+matras) -> before
-    s = re.sub(r'([' + CONS_CLASS + r'])([ktuwqe]*)o', r'o\1\2', s)
+    # reph 'o' after cons(+matras) -> before. The consonant may be a half-form
+    # (e.g. 'í'=ત્) and the matra run may include the INH/AA half-form sentinels
+    # (\x1d/\x1e) — include both so reph on a half-form still reorders
+    # (ðíkuo = વ ત્ INH ે reph -> વર્તે, not વતેર્).
+    s = re.sub(r'([' + CONS_CLASS + _HALF + r'])([ktuwqe\x1d\x1e]*)o', r'o\1\2', s)
     return s
 
 
@@ -233,11 +236,17 @@ def convert(gopika_text):
     s = re.sub(r'(' + H + r')k', r'\1' + INH, s)
 
     # FULL-consonant o/au matras: protect 'kku'/'kki' from the collapse below.
-    s = s.replace('kku', '\x1Eo').replace('kki', '\x1Ea')
+    # Use \x1f temps (distinct from INH \x1d / AA \x1e to avoid any collision).
+    s = s.replace('kku', '\x1fo').replace('kki', '\x1fa')
     # collapse any remaining spurious doubled inherent markers after full cons
     # (પાાણી -> પાણી). Single k after a full consonant stays = genuine aa.
     s = re.sub(r'k{2,}', 'k', s)
-    s = s.replace('\x1Eo', 'ku').replace('\x1Ea', 'ki')
+    s = s.replace('\x1fo', 'ku').replace('\x1fa', 'ki')
+
+    # Collapse a run of the SAME repeated dependent-vowel matra byte, a font
+    # artifact (ખેેેડ = ¾uuu -> ખેડ, ભેેટો = ¼uu -> ભેટો). Each vowel sign may
+    # legitimately appear at most once per consonant.
+    s = re.sub(r'([uewqi])\1+', r'\1', s)
 
     base = unswap_arpita(s)
     base = reorder_gopika(base)

@@ -19,9 +19,20 @@ Current entries:
 import re
 
 # whole-word replacements: {wrong: right}
+# NOTE: these fire only as STANDALONE words (Gujarati-letter boundaries), so a
+# short token like 'તં' will never match inside a larger correct word.
 WORD_FIXES = {
     'સજ્યાં': 'સર્જ્યાં',
     'સજ્યું': 'સર્જ્યું',
+    # 1st/2nd person pronouns: source byte U(0x55) is anusvara ં in most words
+    # (નોંધ, પહોંચી...) but these two pronouns need ેં. Fixing the decoder would
+    # corrupt the anusvara words, so correct the two pronouns here.
+    'તં': 'તેં',    # 'you did' (íkU ×305)
+    'મં': 'મેં',    # 'I/me'    ({U ×291)
+    # FULL-consonant + k spurious-aa that is lexical (same ambiguity as સવાર):
+    'હાવા': 'હવા',      # air/wind (nkðk)
+    'હાવાને': 'હવાને',
+    'હાવામાં': 'હવામાં',
 }
 
 # precompile a word-boundary-ish pattern. Gujarati has no \b word boundary that
