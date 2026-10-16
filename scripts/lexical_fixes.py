@@ -31,6 +31,34 @@ PHRASE_FIXES = {
     # Kirtansagar #267: 'પુત્ર વની મને' -> 'પુત્ર વિના મને' (વની=without; the
     # token વની is valid elsewhere e.g. દેવની, so fix only this phrase).
     'પુત્ર વની મને': 'પુત્ર વિના મને',
+    # --- Pass-4 remaining-review (verified vs raw + native reading) ---
+    # Song 2: જેજે = જે જે (two separate words) — runs BEFORE the જેજે->જોજે
+    # whole-word rule below so this context wins.
+    'જેજે કરશે': 'જે જે કરશે',
+    # Song 239: મશાંતિ -> ને શાંતિ (liturgical 'glory ... and peace')
+    'મહિમા ! મશાંતિ': 'મહિમા ! ને શાંતિ',
+    'મહિમા! મશાંતિ': 'મહિમા! ને શાંતિ',
+    # Song 518: આર્જતના -> અરજ તણા ('hearer of our petitions')
+    'અમ આર્જતના સુણનારા': 'અમ અરજ તણા સુણનારા',
+    # --- Stations-of-the-Cross ordinal headings (Songs 283/284) ---
+    # Source renders digits as consonants + stray spaces before the ordinal
+    # suffix. Normalize each 'N<space>suffix સ્થાન' heading. Scoped to the exact
+    # 'સ્થાન' heading context so standalone ર/પ/જું/મું elsewhere are untouched.
+    '૧ લું સ્થાન': '૧લું સ્થાન',
+    'ર જું સ્થાન': '૨જું સ્થાન',
+    '૩ જું સ્થાન': '૩જું સ્થાન',
+    '૪ થું સ્થાન': '૪થું સ્થાન',
+    'પ મું સ્થાન': '૫મું સ્થાન',
+    '૬ ઠ્ઠું સ્થાન': '૬ઠ્ઠું સ્થાન',
+    '૬ ઠું સ્થાન': '૬ઠ્ઠું સ્થાન',
+    '૭ મું સ્થાન': '૭મું સ્થાન',
+    '૮ મું સ્થાન': '૮મું સ્થાન',
+    '૯ મું સ્થાન': '૯મું સ્થાન',
+    '૧૦ મું સ્થાન': '૧૦મું સ્થાન',
+    '૧૧ મું સ્થાન': '૧૧મું સ્થાન',
+    '૧ર મું સ્થાન': '૧૨મું સ્થાન',
+    '૧૩ મું સ્થાન': '૧૩મું સ્થાન',
+    '૧૪ મું સ્થાન': '૧૪મું સ્થાન',
 }
 
 # whole-word replacements: {wrong: right}
@@ -81,6 +109,17 @@ WORD_FIXES = {
     'મત્યુને': 'મૃત્યુને',  # {íÞwLku - missing ૃ
     'ઠયાં': 'થયાં',         # XÞkO - source ઠ for થ
     'યિજ્ઞક': 'યજ્ઞક',      # Þkr¿kf - stray short-i
+    # --- Pass-4 remaining-review whole words (verified vs raw + native) ---
+    'જેજે': 'જોજે',         # òusu/òuòu - ò ligature જો ('look/see'); Song 2 'જે જે'
+                            #   handled by the phrase fix above (runs first).
+    'જેજન': 'જોજન',         # òusLk - 'yojan' (distance measure)
+    'જેજનો': 'જોજનો',       # òusLkku
+    'સંથે': 'કંઠે',         # MkUÚku - 'around the neck' (dew-pearl necklace)
+    'ચકરઈ': 'ચકરાઈ',        # [fhE - missing ા
+    'તાજપ': 'તાજગી',        # íkksÃk - 'freshness'
+    'મહાત': 'માત',          # {nkík - 'defeated' (Song 236)
+    'મિરિયમ': 'મરિયમ',      # r{rhÞ{ - Mary; book standard is મરિયમ
+    'મિરિયમની': 'મરિયમની',
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
