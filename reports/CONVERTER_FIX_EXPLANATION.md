@@ -238,3 +238,13 @@ pre-base matra hops now includes an optional INH/AA sentinel + post-base ra
 (ú/Ù), so C+્ર is hopped as one unit: ખ્રિસ્ત, પ્રિય, ગાબ્રિયેલ, અગ્રિપ્પા.
 Corpus િ્ર 678→0; ખ્રિસ્ત 602. Plus lexical: અરપ→અર્પ prefix + 12 source typos.
 See AUDIT_PASS3_RESOLUTION.md.
+
+---
+
+## Fix: expanded જો ligature (Bible Pass-1)
+
+Enumerated every raw 'òu'+X; mapped 'òu' + JO-triggering glyphs (E Þ ô W z í h f
+þ ¾ ø M x Ï ç ¤ ÷ R ý Ä) -> જો, while keeping 'òu' + <end>/L/ð/y/{/Ú/punct as
+genuine જે (જેવું/જેમ/બીજે preserved). Bible: જેતાં/જેકે/જેડ/જેખમ/જેશે -> 0;
+જોકે 123, જોખમ 50, જોડ 147, જોર 114. Lexical: વહંચ->વહેંચ (155), વિચાયું->
+વિચાર્યું (40), + તેજોમય/જોરકડી/જોડિયો stragglers. See BIBLE_AUDIT_PASS1_RESOLUTION.md.

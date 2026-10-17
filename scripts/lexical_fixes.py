@@ -120,6 +120,15 @@ WORD_FIXES = {
     'મહાત': 'માત',          # {nkík - 'defeated' (Song 236)
     'મિરિયમ': 'મરિયમ',      # r{rhÞ{ - Mary; book standard is મરિયમ
     'મિરિયમની': 'મરિયમની',
+    # --- Bible Pass-1 stragglers (òu{=મ kept as જે; su=જે ligature cases) ---
+    'તેજેમય': 'તેજોમય',     # íkuòu{Þ - 'radiant' (òu{ ambiguous, lexical)
+    'જેરકડી': 'જોરકડી',     # suhfze - 'forcibly'
+    'જેરોજ': 'જોરોજ',
+    # òu+r(short-i) stragglers -> જો (twins etc.)
+    'જેડિયો': 'જોડિયો', 'જેડિયા': 'જોડિયા', 'જેડિયાં': 'જોડિયાં',
+    'ઝંજેડી': 'ઝંઝોડી',
+    # Source defect: missing reph (no ર byte), like સજ્યાં
+    'વિચાયું': 'વિચાર્યું',  # rð[kÞwO (×40) - 'thought'
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
@@ -134,6 +143,9 @@ PREFIX_FIXES = {
     # overwhelmingly uses અર્પ- (અર્પણ ×41 etc.). All અરપ- forms (અરપું/અરપે/
     # અરપી/અરપો) are the offer-root. Guarded word-initial.
     'અરપ': 'અર્પ',
+    # Source byte U(0x55)=anusvara in most words, but the 'distribute' root needs
+    # ેં: વહંચ- -> વહેંચ- (all ~155 inflections are the distribute root).
+    'વહંચ': 'વહેંચ',
 }
 
 # precompile a word-boundary-ish pattern. Gujarati has no \b word boundary that

@@ -72,6 +72,17 @@ CASES = [
     # but bare òu at word end stays જે
     ('çkeòu',        'બીજે',      'bije - bare òu word-final stays je'),
     ('fhòu',         'કરજે',      'karje'),
+    # expanded જો ligature family (Bible Pass-1): òu + various consonants -> જો
+    ('òuíkkt',       'જોતાં',     'jotaan'),
+    ('òufu',         'જોકે',      'joke'),
+    ('òuze',         'જોડી',      'jodi'),
+    ('òu¾{',         'જોખમ',      'jokham'),
+    ('òuþu',         'જોશે',      'joshe'),
+    ('f{òuh',        'કમજોર',     'kamjor'),
+    # but these must STAY જે (critical guardrail)
+    ('òuðwt',        'જેવું',     'jevu - òu+ð stays je'),
+    ('òu{',          'જેમ',       'jem - òu+{ stays je'),
+    ('òuðk',         'જેવા',      'jeva'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

@@ -279,14 +279,19 @@ def convert(gopika_text):
     # Fallback: 'Š' before a FULL consonant glyph (no half-form) -> ר् on it + િ.
     # (rare; keep the old EXTRA 'Š'->'ર્િ' behaviour for anything left.)
 
-    # 'ò'(0xf2) is the જ ligature base rendered as જા alone, but 'òu' before a
-    # following letter is the જો ligature (જોવું verb family): જોઈ, જોયો, જોયું,
-    # જોઈને, જોઉં ... Verified: EVERY 'òuE' / 'òuÞ' / 'òuô'/'òuW'(=જોઉં) token in
-    # the whole corpus is a જો form (never genuine જે like બીજે). Map those to
-    # 'જો' + the following. Bare 'òu' at a word end stays જે (બીજે, કરજે).
-    s = re.sub(r'òu([EÞ])', 'જો' + r'\1', s)     # જોઈ-/જોય- families
-    s = re.sub(r'òuô', 'જોઉં', s)                 # જોઉં (ô = ઉં)
-    s = re.sub(r'òuW', 'જોઉ', s)                  # જોઉ
+    # 'ò'(0xf2) is the જ ligature base rendered as જા alone. 'òu' + a following
+    # glyph is the જો ligature; bare 'òu' (word end) or 'òu' before a SUFFIX
+    # glyph is genuine જે (જે, બીજે, વંશજેને, જેવું). Classified by enumerating
+    # every 'òu'+X across the corpus (scripts/46_ou_enumerate.py):
+    #   JO-triggering next glyphs (the word is clearly જો...):
+    #     E Þ ô W (ઈ/ય/ઉં/ઉ), z í h f þ ¾ ø M x Ï ç ¤ ÷ R ý Ä
+    #     = જોડ જોત જોર જોક જોશ જોખ જોગ જોસ જોટ જોખ જોબ જોળ જોલ જોઇ જોણ જોધ
+    #   JE-keeping next glyphs: <end>, L ð y { Ú and punctuation (જે/વંશજે/જેવું/
+    #     જેમ/પૂર્વજેથી). 's'/'ò' (જોજે/જોજન) are context-dependent -> lexical.
+    _JO_NEXT = 'EÞôWzíhfþ¾øMxÏç¤÷RýÄ'
+    s = re.sub(r'òu([' + re.escape(_JO_NEXT) + r'])', 'જો' + r'\1', s)
+    # 'ô'(ઉં) and 'W'(ઉ) decode to the vowel on their own; ensure the anusvara:
+    s = s.replace('જોô', 'જોઉં').replace('જોW', 'જોઉ')
 
     # Order matters: longest 'k' runs / matra combos first.
     # HALF + kku / kki  -> half-form keeps virama, real o/au matra follows.
