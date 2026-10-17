@@ -77,4 +77,82 @@ def extract_verses(raw_bytes):
         txt = _clean(scope[start:end])
         if txt:
             out.append((f"v{vnum}", txt))
-    return out
+    return _split_inline_verse_numbers(out)
+
+
+# ASCII or Gujarati digits that may appear INLINE as a verse marker inside a
+# verse body when the source omitted the <a name> anchor (e.g. 1 Chr 27:4,24).
+_DIG = '0-9૦-૯'
+_ASCII2GUJ = {ord(c): d for c, d in zip('0123456789', '૦૧૨૩૪૫૬૭૮૯')}
+
+
+def _to_int(numstr):
+    try:
+        return int(numstr.translate({ord('૦'): '0', ord('૧'): '1', ord('૨'): '2',
+                                     ord('૩'): '3', ord('૪'): '4', ord('૫'): '5',
+                                     ord('૬'): '6', ord('૭'): '7', ord('૮'): '8',
+                                     ord('૯'): '9'}))
+    except ValueError:
+        return None
+
+
+def _split_inline_verse_numbers(verses):
+    """Recover verses whose anchor was missing in the source: if a verse body
+    contains an inline numeral equal to the NEXT sequential verse number,
+    immediately followed by a Gujarati letter, split it into a new verse. Only
+    splits on the exact next-expected number to stay safe (never touches a
+    numeral that is real data like '24 હજાર')."""
+    out = []
+    i = 0
+    while i < len(verses):
+        label, text = verses[i]
+        cur = _to_int(label[1:]) if label.startswith('v') else None
+        # the next anchored verse number (to know where to stop looking)
+        nxt_anchor = None
+        if i + 1 < len(verses) and verses[i + 1][0].startswith('v'):
+            nxt_anchor = _to_int(verses[i + 1][0][1:])
+        if cur is not None:
+            expect = cur + 1
+            # look for inline 'expect' (ascii or gujarati) + Gujarati letter, but
+            # only split while the inline number stays below the next anchor.
+            parts = [(label, text)]
+            while expect != nxt_anchor:
+                g = ''.join('૦૧૨૩૪૫૬૭૮૯'[int(d)] for d in str(expect))
+                # The text here is still RAW GOPIKA (latin-range glyph bytes), so
+                # the inline number is followed by a Gopika consonant byte, not a
+                # Gujarati letter. Require: the numeral is preceded by space/punct,
+                # and immediately followed by a NON-space, NON-digit glyph (the
+                # start of the next verse's first word). Only the exact next
+                # expected number is matched, so real numerals like '24 હજાર'
+                # (followed by a space) never match.
+                pat = re.compile(r'(?:^|(?<=[\s.,;:?!”’]))(' + re.escape(g) + r'|'
+                                 + re.escape(str(expect)) + r')(?=[^\s0-9૦-૯])')
+                lastlabel, lasttext = parts[-1]
+                m = pat.search(lasttext)
+                if not m:
+                    break
+                head = lasttext[:m.start()].strip()
+                tail = lasttext[m.end():].strip()
+                parts[-1] = (lastlabel, head)
+                parts.append((f"v{expect}", tail))
+                expect += 1
+            out.extend(p for p in parts if p[1])
+        else:
+            out.append((label, text))
+        i += 1
+    # Strip a verse's OWN numeral leaked at the very start of its text
+    # (e.g. James 3:8 body 'v8' text begins '8પણ...'). Only strip if the leading
+    # number equals the verse key.
+    cleaned = []
+    for label, text in out:
+        key = _to_int(label[1:]) if label.startswith('v') else None
+        if key is not None:
+            g = ''.join('૦૧૨૩૪૫૬૭૮૯'[int(d)] for d in str(key))
+            # strip the verse's own number leaked at the start, whether it is
+            # directly glued to the next word ('8પણ') or followed by a space
+            # ('13 પણ', a doubled anchor+inline number). Not followed by another
+            # digit, so multi-digit data numbers aren't clipped.
+            text = re.sub(r'^\s*(?:' + re.escape(g) + r'|' + re.escape(str(key))
+                          + r')\s*(?=[^\s0-9૦-૯])', '', text).strip()
+        cleaned.append((label, text))
+    return cleaned

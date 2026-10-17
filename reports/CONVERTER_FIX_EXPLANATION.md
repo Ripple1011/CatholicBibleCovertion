@@ -248,3 +248,14 @@ Enumerated every raw 'òu'+X; mapped 'òu' + JO-triggering glyphs (E Þ ô W z �
 genuine જે (જેવું/જેમ/બીજે preserved). Bible: જેતાં/જેકે/જેડ/જેખમ/જેશે -> 0;
 જોકે 123, જોખમ 50, જોડ 147, જોર 114. Lexical: વહંચ->વહેંચ (155), વિચાયું->
 વિચાર્યું (40), + તેજોમય/જોરકડી/જોડિયો stragglers. See BIBLE_AUDIT_PASS1_RESOLUTION.md.
+
+---
+
+## Fix: verse-boundary recovery + Pass-2 defects (Bible)
+
+html_extract.py now (a) recovers verses whose source anchor was missing by
+splitting on an inline next-sequential verse number (+6 verses; 1 Chr 27:4/24),
+and (b) strips a verse's own leaked leading numeral (James 3:8, Luke 1:13, 1 Cor
+10:18). Lexical: ક્હ્યું->કહ્યું, તેમણ->તેમણે, જઈશ્વરનું->ઈશ્વરનું, ંબધા->બધા,
+૫ારેવાનાં->પારેવાનાં, ઇસા્રયલ->ઇસ્રાયલ, stray-ચ (ચઅને/ચતેણે/…). See
+BIBLE_AUDIT_PASS2_RESOLUTION.md.

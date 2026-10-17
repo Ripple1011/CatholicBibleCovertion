@@ -129,6 +129,18 @@ WORD_FIXES = {
     'ઝંજેડી': 'ઝંઝોડી',
     # Source defect: missing reph (no ર byte), like સજ્યાં
     'વિચાયું': 'વિચાર્યું',  # rð[kÞwO (×40) - 'thought'
+    # --- Bible Pass-2 source defects (verified vs raw) ---
+    'ક્હ્યું': 'કહ્યું',     # õÌkwt (×2) - source ક્હ instead of કહ
+    'તેમણ': 'તેમણે',        # íku{ý (×1) - missing final ે (Mark 5:39)
+    'જઈશ્વરનું': 'ઈશ્વરનું', # sEïhLkwt (×1) - stray leading જ (Luke 20:19)
+    'ંબધા': 'બધા',          # tçkÄk (×1) - stray leading anusvara (Joshua 20:9)
+    '૫ારેવાનાં': 'પારેવાનાં',# digit ૫ for પ (Leviticus 14:30)
+    'ઇસા્રયલીઓનાં': 'ઇસ્રાયલીઓનાં',  # RMkkúÞ - aa before ્ર (×1)
+    # stray leading ચ ([ byte) before an otherwise complete word (Sirach cluster)
+    'ચઅને': 'અને', 'ચઅભિમાની': 'અભિમાની', 'ચતેણે': 'તેણે',
+    'ચપ્રભુ': 'પ્રભુ', 'ચપ્રભુથી': 'પ્રભુથી', 'ચપણ': 'પણ',
+    'ચમારા': 'મારા', 'ચજ્યારે': 'જ્યારે', 'ચપહેલા': 'પહેલા',
+    'ચપહેલાં': 'પહેલાં',
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
