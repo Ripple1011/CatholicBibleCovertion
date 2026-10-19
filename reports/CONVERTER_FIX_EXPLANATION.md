@@ -270,3 +270,14 @@ half-form conjunct, else a lone consonant, applied once (no double-apply; વર
 preserved). Fixed: વર્ત્યો/મર્ત્ય/અર્પ્યા/સમર્પ્યો/નિર્મ્યા. Lexical: વર્તું,
 માયે, તેણે, તેમને, કરીને, હું, એવું, સાંપ્યું, નિયમો, અન્નબલિ. Orphan '!ં'->'!'.
 See BIBLE_AUDIT_PASS3_RESOLUTION.md.
+
+---
+
+## Fix: verse-boundary integrity (Bible Pass-4)
+
+ANCHOR regex now tolerates whitespace around '=' (recovers Deut 7:14). Keyed
+verse-recovery for 3 confirmed leaked-inline-own-number cases (Isaiah 27:2 drop
+dup, Ezekiel 31:5 drop v4-spill, 1 Sam 29:2 recover v3) — NOT a general rule
+(cross-refs/numbers/Esther-5 guardrail). Numbers 31:33-45 left as source grouping
+(empty anchors, not lost text). Lexical: મર્યું/નર્યું/થયું, માણસો;પલિસ્તીઓએ.
+Verses 34889->34891. See BIBLE_AUDIT_PASS4_RESOLUTION.md.

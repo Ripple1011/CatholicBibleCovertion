@@ -17,8 +17,9 @@ import re
 import html as _html
 
 TAG = re.compile(r'<[^>]+>')
-# anchor: match the <a ...> ... </a> where attributes contain name="vN"
-ANCHOR = re.compile(r'<a\b[^>]*\bname="v(\d+)"[^>]*>\s*\d+\s*</a>', re.I)
+# anchor: match <a ... name="vN" ...>N</a>. Tolerate whitespace around '=' (some
+# source anchors are malformed as `name ="v14"`, e.g. Deut 7:14).
+ANCHOR = re.compile(r'<a\b[^>]*\bname\s*=\s*"v(\d+)"[^>]*>\s*\d+\s*</a>', re.I)
 GUJFONT = re.compile(r'<gujFont>(.*?)</gujFont>', re.S | re.I)
 
 # Specific, anchored markup-leak patterns to cut (cannot match Gujarati text).

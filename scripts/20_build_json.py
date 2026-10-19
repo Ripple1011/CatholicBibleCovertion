@@ -70,6 +70,22 @@ def title_of(coll, book):
     return None
 
 
+# CONFIRMED source verse-boundary defects (coll, book, chap, verse) where the
+# verse body has a leaked inline OWN-number marker and the text after it is the
+# real (missing) next verse. Verified individually against the source HTML; a
+# general rule is unsafe (cross-refs, numbers, the deuterocanonical Esther-5
+# embedded numbering). Only these exact locations are recovered.
+#   Isaiah 27:2 -> text before '૨' is a duplicate of v1 (discard); after = real v2
+#   Ezekiel 31:5 -> text before '૫' is v4 spillover (keep v5 only, after marker)
+#   1 Samuel 29:2 -> after '૨' is the missing verse 3
+_VERSE_RECOVERY = {
+    ('0', 27, 27, '2'): ('drop_before', 2),   # Isaiah 27:2 duplicate of v1
+    ('0', 31, 31, '5'): ('drop_before', 5),   # Ezekiel 31:5 v4 spillover
+    ('0', 9, 29, '2'): ('recover_after', 3),  # 1 Samuel 29:2 -> recover v3
+}
+_G2I = {ord(c): str(i) for i, c in enumerate('૦૧૨૩૪૫૬૭૮૯')}
+
+
 def build_bible():
     bible = {}
     for coll, testament in [('0', 'OT'), ('1', 'NT')]:
@@ -81,7 +97,22 @@ def build_bible():
             book, chap = int(m.group(1)), int(m.group(2))
             for vlabel, raw in extract_verses(z.read(n)):
                 vnum = vlabel[1:] if vlabel.startswith('v') else vlabel
-                books[book][chap][vnum] = convert(raw)
+                text = convert(raw)
+                key = (coll, book, chap, vnum)
+                if key in _VERSE_RECOVERY:
+                    mode, newv = _VERSE_RECOVERY[key]
+                    # split at the inline OWN-number (gujarati digits == vnum)
+                    mm = re.search(r'(?<=[.!?”’])\s*(' +
+                                   ''.join('૦૧૨૩૪૫૬૭૮૯'[int(d)] for d in vnum) +
+                                   r')(?=[઀-૿])', text)
+                    if mm:
+                        before, after = text[:mm.start()].strip(), text[mm.end():].strip()
+                        if mode == 'drop_before':
+                            text = after            # keep real verse, drop dup/spill
+                        elif mode == 'recover_after':
+                            text = before            # this verse keeps its own text
+                            books[book][chap][str(newv)] = after  # recovered verse
+                books[book][chap][vnum] = text
         bible[testament] = {}
         for book in sorted(books):
             name = NAME_FIX.get((coll, book)) or title_of(coll, book)

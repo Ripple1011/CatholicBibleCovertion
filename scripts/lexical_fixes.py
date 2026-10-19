@@ -153,6 +153,12 @@ WORD_FIXES = {
     # damaged section headings
     'નિયમા': 'નિયમો',       # rLkÞ{k (×3) - heading 'rules'
     'અન્નબલિઆ': 'અન્નબલિ',  # heading fragment, stray trailing આ (Lev 6:6)
+    # --- Bible Pass-4 source defects (missing reph / consonant typo) ---
+    'મયું': 'મર્યું',       # {ÞwO - 'died' (source missing reph)
+    'નયું': 'નર્યું',       # LkÞwO - 'sheer/pure'
+    'ઠયું': 'થયું',         # XÞwO - source ઠ for થ
+    # malformed join in 1 Sam 29:2 source
+    'માણસાપલિસ્તીઓએ': 'માણસો; પલિસ્તીઓએ',
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
