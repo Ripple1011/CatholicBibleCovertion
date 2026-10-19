@@ -141,6 +141,18 @@ WORD_FIXES = {
     'ચપ્રભુ': 'પ્રભુ', 'ચપ્રભુથી': 'પ્રભુથી', 'ચપણ': 'પણ',
     'ચમારા': 'મારા', 'ચજ્યારે': 'જ્યારે', 'ચપહેલા': 'પહેલા',
     'ચપહેલાં': 'પહેલાં',
+    # --- Bible Pass-3 source defects (verified vs raw) ---
+    'વતું': 'વર્તું',       # ðíkwO (×2) - source missing reph
+    'માશે': 'માયે',         # {kþu (×1) - source શ for ય (Luke 1:14)
+    'તેણો': 'તેણે',         # íkuýku (×1) - ણો for ણે (Genesis 24:67)
+    'તેમન': 'તેમને',        # íku{Lk (×1) - missing ે (Mark 10:13)
+    'કરીન': 'કરીને',        # fheLk (×1) - missing ે (Genesis 18:2)
+    'હુ': 'હું',            # nw (×2) - missing anusvara (whole-word only)
+    'એવુ': 'એવું',          # yuðw (×1) - missing anusvara
+    'સાંપ્યુ': 'સાંપ્યું',  # MkkUÃÞw (×1) - missing anusvara
+    # damaged section headings
+    'નિયમા': 'નિયમો',       # rLkÞ{k (×3) - heading 'rules'
+    'અન્નબલિઆ': 'અન્નબલિ',  # heading fragment, stray trailing આ (Lev 6:6)
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word

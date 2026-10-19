@@ -259,3 +259,14 @@ and (b) strips a verse's own leaked leading numeral (James 3:8, Luke 1:13, 1 Cor
 10:18). Lexical: ક્હ્યું->કહ્યું, તેમણ->તેમણે, જઈશ્વરનું->ઈશ્વરનું, ંબધા->બધા,
 ૫ારેવાનાં->પારેવાનાં, ઇસા્રયલ->ઇસ્રાયલ, stray-ચ (ચઅને/ચતેણે/…). See
 BIBLE_AUDIT_PASS2_RESOLUTION.md.
+
+---
+
+## Fix: reph on half-form conjunct (વર્ત્યો) — Bible Pass-3
+
+Reph 'o' on a HALF-form-led conjunct (ત્ય=íÞ) was riding the wrong consonant
+(વત્ર્યો). Single-alternation reph regex now targets the first consonant of a
+half-form conjunct, else a lone consonant, applied once (no double-apply; વર્ષ
+preserved). Fixed: વર્ત્યો/મર્ત્ય/અર્પ્યા/સમર્પ્યો/નિર્મ્યા. Lexical: વર્તું,
+માયે, તેણે, તેમને, કરીને, હું, એવું, સાંપ્યું, નિયમો, અન્નબલિ. Orphan '!ં'->'!'.
+See BIBLE_AUDIT_PASS3_RESOLUTION.md.

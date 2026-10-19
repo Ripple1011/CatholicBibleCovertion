@@ -83,6 +83,11 @@ CASES = [
     ('òuðwt',        'જેવું',     'jevu - òu+ð stays je'),
     ('òu{',          'જેમ',       'jem - òu+{ stays je'),
     ('òuðk',         'જેવા',      'jeva'),
+    # reph on a half-form-led conjunct (ત્ય): reph rides the FIRST consonant
+    ('ðíÞkuo',       'વર્ત્યો',   'vartyo - reph on ત of ત્ય (was વત્ર્યો)'),
+    ('{íÞo',         'મર્ત્ય',    'martya'),
+    ('yÃÞko',        'અર્પ્યા',   'arpya'),
+    ('ð»kko',        'વર્ષા',     'varshaa - reph on ષ (lone cons, વ untouched)'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

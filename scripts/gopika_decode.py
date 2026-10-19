@@ -89,11 +89,14 @@ def reorder_gopika(s):
     s = re.sub(r'Â(' + CLUSTER + r')', r'\1Â', s)
     # short-i 'r' before consonant cluster -> after
     s = re.sub(r'r(' + CLUSTER + r')', r'\1r', s)
-    # reph 'o' after cons(+matras) -> before. The consonant may be a half-form
-    # (e.g. 'í'=ત્) and the matra run may include the INH/AA half-form sentinels
-    # (\x1d/\x1e) — include both so reph on a half-form still reorders
-    # (ðíkuo = વ ત્ INH ે reph -> વર્તે, not વતેર્).
-    s = re.sub(r'([' + CONS_CLASS + _HALF + r'])([ktuwqe\x1d\x1e]*)o', r'o\1\2', s)
+    # reph 'o' after a consonant (+matras) -> before it. The target consonant is
+    # either a HALF-form-led conjunct (ત્ય = íÞ: half 'í' then consonant 'Þ') OR a
+    # single consonant (half or full). The reph rides the FIRST consonant. Use a
+    # SINGLE regex (alternation, conjunct first) applied once, so it never double-
+    # applies: ðíÞkuo -> વર્ત્યો ; ðíkuo -> વર્તે ; ð»kko -> વર્ષ (ષ is a lone
+    # consonant, 'ð' before it is a separate syllable and is left alone).
+    s = re.sub(r'((?:[' + _HALF + r'][' + CONS_CLASS + r'])|[' + CONS_CLASS
+               + _HALF + r'])([ktuwqe\x1d\x1e]*)o', r'o\1\2', s)
     return s
 
 
@@ -223,6 +226,10 @@ def fix_unicode(u):
     # A dependent aa-matra after an INDEPENDENT vowel is spurious (independent
     # vowels don't take matras):  એા -> એ  (લંગડાએા -> લંગડાએ)
     u = re.sub(r'([અ-ઔ])[ાીુૂૃેૈોૌ]', r'\1', u)
+    # An orphan combining mark (matra/anusvara/candrabindu/virama) immediately
+    # after PUNCTUATION or a space cannot attach to anything -> drop it.
+    #   '!ં' -> '!' (Revelation 14:8 stray anusvara after exclamation)
+    u = re.sub(r'([\s.,;:?!।–—“”‘’"\'()])[ાિીુૂૃૄેૈોૌંઁ્]+', r'\1', u)
     # Reph at a word/token end or before a matra means the ર્ failed to attach to
     # its consonant: 'Cર્' word-final -> 'ર્C' (reph belongs ON the preceding
     # consonant). કીતિર્ -> કીર્તિ ,  પરિપૂતિર્ -> પરિપૂર્તિ
