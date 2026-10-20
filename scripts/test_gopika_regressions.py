@@ -88,6 +88,11 @@ CASES = [
     ('{íÞo',         'મર્ત્ય',    'martya'),
     ('yÃÞko',        'અર્પ્યા',   'arpya'),
     ('ð»kko',        'વર્ષા',     'varshaa - reph on ષ (lone cons, વ untouched)'),
+    # short-i hops a 2-char conjunct core atomically (Òt = ન્ન)
+    ('MkkrÒkæÞ',     'સાન્નિધ્ય', 'saannidhya - short-i past ન્ન core'),
+    ('MkkrÒkæÞ{kt',  'સાન્નિધ્યમાં', 'saannidhyamaan'),
+    # reph crosses the vocalic-r matra ']'(ૃ)
+    ('Ëwð]or¥kykuLku', 'દુર્વૃત્તિઓને', 'durvruttione - reph over ૃ'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

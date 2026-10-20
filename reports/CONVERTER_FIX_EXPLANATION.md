@@ -281,3 +281,13 @@ dup, Ezekiel 31:5 drop v4-spill, 1 Sam 29:2 recover v3) — NOT a general rule
 (cross-refs/numbers/Esther-5 guardrail). Numbers 31:33-45 left as source grouping
 (empty anchors, not lost text). Lexical: મર્યું/નર્યું/થયું, માણસો;પલિસ્તીઓએ.
 Verses 34889->34891. See BIBLE_AUDIT_PASS4_RESOLUTION.md.
+
+---
+
+## Fix: 2-char conjunct-core short-i + reph over ૃ (Bible Pass-6)
+
+(A) Conjunct cores ¿/²/Ò (table key 'core'+'t', e.g. Òt=ન્ન) now hop as ONE
+atomic cluster for pre-base short-i, via an explicit 'core t' cluster
+alternative (not a greedy t?). Fixes સિન્નધ્ય -> સાન્નિધ્ય (29). (B) reph matra
+set now includes ']'(ૃ): ð]o -> ર્વૃ (દુર્વૃત્તિ). સાંનિધ્યમાં sibling preserved.
+See BIBLE_AUDIT_PASS6_RESOLUTION.md.

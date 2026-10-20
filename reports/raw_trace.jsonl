@@ -4025,7 +4025,7 @@
 {"u": "સજામાંથી", "raw": "Mkò{ktÚke", "hex": "4d 6b f2 7b 6b 74 da 6b 65", "unswap": "Mtò{tkÚte", "refs": ["Esther 8", "Maccabees 2 6", "Maccabees 2 7"], "n": 22}
 {"u": "તમામ", "raw": "ík{k{", "hex": "ed 6b 7b 6b 7b", "unswap": "ít{t{", "refs": ["Exodus 11", "Hosea 2", "Genesis 105"], "n": 22}
 {"u": "રેલમછેલ", "raw": "hu÷{Au÷", "hex": "68 75 f7 7b 41 75 f7", "unswap": "hu÷{Au÷", "refs": ["Exodus 13", "Exodus 3", "Exodus 33"], "n": 22}
-{"u": "સિન્નધ્યમાં", "raw": "MkkrÒkæÞ{kt", "hex": "4d 6b 6b 72 d2 6b e6 de 7b 6b 74", "unswap": "MttrÒtæÞ{tk", "refs": ["Exodus 28", "Proverbs 8", "Wisdom 2 8"], "n": 22}
+{"u": "સાન્નિધ્યમાં", "raw": "MkkrÒkæÞ{kt", "hex": "4d 6b 6b 72 d2 6b e6 de 7b 6b 74", "unswap": "MttrÒtæÞ{tk", "refs": ["Exodus 28", "Proverbs 8", "Wisdom 2 8"], "n": 22}
 {"u": "ગણે", "raw": "økýu", "hex": "f8 6b fd 75", "unswap": "øtýu", "refs": ["Exodus 8", "Job 18", "Job 31"], "n": 22}
 {"u": "મુક્તિના", "raw": "{wÂõíkLkk", "hex": "7b 77 c2 f5 ed 6b 4c 6b 6b", "unswap": "{wÂõítLtt", "refs": ["I Maccabees 10", "Isaiah 45", "Leviticus 25"], "n": 22}
 {"u": "ઉદય", "raw": "WËÞ", "hex": "57 cb de", "unswap": "WŒÞ", "refs": ["I Maccabees 14", "Wisdom 2 5", "Ecclesiasticus (Ben Sirah) 43"], "n": 22}
@@ -17054,7 +17054,7 @@
 {"u": "હમાથમાં", "raw": "n{kÚk{kt", "hex": "6e 7b 6b da 6b 7b 6b 74", "unswap": "n{tÚt{tk", "refs": ["2 Kings 23", "II Chronicles 8", "I Maccabees 12"], "n": 3}
 {"u": "યહોઆહાઝને", "raw": "ÞnkuyknkÍLku", "hex": "de 6e 6b 75 79 6b 6e 6b cd 4c 6b 75", "unswap": "ÞntuytntÍLtu", "refs": ["2 Kings 23", "II Chronicles 36"], "n": 3}
 {"u": "માગેલી", "raw": "{køku÷e", "hex": "7b 6b f8 6b 75 f7 65", "unswap": "{tøtu÷e", "refs": ["2 Kings 23", "Jeremiah 38", "Judges 8"], "n": 3}
-{"u": "સિન્નધ્યમાંથી", "raw": "MkkrÒkæÞ{ktÚke", "hex": "4d 6b 6b 72 d2 6b e6 de 7b 6b 74 da 6b 65", "unswap": "MttrÒtæÞ{tkÚte", "refs": ["2 Kings 24", "Jeremiah 52"], "n": 3}
+{"u": "સાન્નિધ્યમાંથી", "raw": "MkkrÒkæÞ{ktÚke", "hex": "4d 6b 6b 72 d2 6b e6 de 7b 6b 74 da 6b 65", "unswap": "MttrÒtæÞ{tkÚte", "refs": ["2 Kings 24", "Jeremiah 52"], "n": 3}
 {"u": "યહોયાકીને", "raw": "ÞnkuÞkfeLku", "hex": "de 6e 6b 75 de 6b 66 65 4c 6b 75", "unswap": "ÞntuÞtfeLtu", "refs": ["2 Kings 24", "2 Kings 25", "Jeremiah 52"], "n": 3}
 {"u": "સુધ્ધાંને", "raw": "MkwæÄktLku", "hex": "4d 6b 77 e6 c4 6b 74 4c 6b 75", "unswap": "MtwæÄtkLtu", "refs": ["2 Kings 24", "I Maccabees 1", "Job 6"], "n": 3}
 {"u": "યર્દનકાંઠા", "raw": "ÞËoLkfktXk", "hex": "de cb 6f 4c 6b 66 6b 74 58 6b", "unswap": "ÞŒoLtftkXt", "refs": ["2 Kings 25", "Jeremiah 52", "Ezekiel 47"], "n": 3}
@@ -19606,7 +19606,7 @@
 {"u": "ડુબાડે", "raw": "zwçkkzu", "hex": "7a 77 e7 6b 6b 7a 75", "unswap": "zwçttzu", "refs": ["Genesis 88", "Deuteronomy 27", "I Timothy 6"], "n": 3}
 {"u": "પ્રદેશે", "raw": "«Ëuþu", "hex": "ab cb 75 fe 75", "unswap": "«Œuþu", "refs": ["Genesis 88", "kirtansagar #295", "kirtansagar OLD 295"], "n": 3}
 {"u": "યુગયુગાંતર", "raw": "ÞwøkÞwøkktíkh", "hex": "de 77 f8 6b de 77 f8 6b 6b 74 ed 6b 68", "unswap": "ÞwøtÞwøttkíth", "refs": ["Genesis 89", "kirtansagar #31", "kirtansagar OLD 31"], "n": 3}
-{"u": "સિન્નધ્યે", "raw": "MkkrÒkæÞu", "hex": "4d 6b 6b 72 d2 6b e6 de 75", "unswap": "MttrÒtæÞu", "refs": ["Genesis 89", "kirtansagar #31", "kirtansagar OLD 31"], "n": 3}
+{"u": "સાન્નિધ્યે", "raw": "MkkrÒkæÞu", "hex": "4d 6b 6b 72 d2 6b e6 de 75", "unswap": "MttrÒtæÞu", "refs": ["Genesis 89", "kirtansagar #31", "kirtansagar OLD 31"], "n": 3}
 {"u": "બાહુબળ", "raw": "çkknwçk¤", "hex": "e7 6b 6b 6e 77 e7 6b a4", "unswap": "çttnwçt¤", "refs": ["Genesis 89", "Deuteronomy 11", "Luke 1"], "n": 3}
 {"u": "પ્હેલો", "raw": "Ãnu÷ku", "hex": "c3 6e 75 f7 6b 75", "unswap": "Ãnu÷tu", "refs": ["Genesis 89", "kirtansagar #500", "kirtansagar OLD 501"], "n": 3}
 {"u": "પછાડ્યો", "raw": "ÃkAkzâku", "hex": "c3 6b 41 6b 7a e2 6b 75", "unswap": "ÃtAtzâtu", "refs": ["Genesis 89", "MARK 9", "Luke 9"], "n": 3}
@@ -21423,7 +21423,7 @@
 {"u": "શાનું", "raw": "þkLkwt", "hex": "fe 6b 4c 6b 77 74", "unswap": "þtLtwk", "refs": ["2 Kings 23", "MATHEW 23"], "n": 2}
 {"u": "ઊજવો", "raw": "Qsðku", "hex": "51 73 f0 6b 75", "unswap": "Qsðtu", "refs": ["2 Kings 23", "Nahum 2"], "n": 2}
 {"u": "વાળીઝૂડીને", "raw": "ðk¤eÍqzeLku", "hex": "f0 6b a4 65 cd 71 7a 65 4c 6b 75", "unswap": "ðt¤eÍqzeLtu", "refs": ["2 Kings 23", "Job 9"], "n": 2}
-{"u": "સિન્નધ્યથી", "raw": "MkkrÒkæÞÚke", "hex": "4d 6b 6b 72 d2 6b e6 de da 6b 65", "unswap": "MttrÒtæÞÚte", "refs": ["2 Kings 23", "Thessalonians II 1"], "n": 2}
+{"u": "સાન્નિધ્યથી", "raw": "MkkrÒkæÞÚke", "hex": "4d 6b 6b 72 d2 6b e6 de da 6b 65", "unswap": "MttrÒtæÞÚte", "refs": ["2 Kings 23", "Thessalonians II 1"], "n": 2}
 {"u": "યહોઆહાઝનો", "raw": "ÞnkuyknkÍLkku", "hex": "de 6e 6b 75 79 6b 6e 6b cd 4c 6b 6b 75", "unswap": "ÞntuytntÍLttu", "refs": ["2 Kings 23"], "n": 2}
 {"u": "યહોયાકીમનો", "raw": "ÞnkuÞkfe{Lkku", "hex": "de 6e 6b 75 de 6b 66 65 7b 4c 6b 6b 75", "unswap": "ÞntuÞtfe{Lttu", "refs": ["2 Kings 23", "II Chronicles 36"], "n": 2}
 {"u": "કબજા", "raw": "fçkò", "hex": "66 e7 6b f2", "unswap": "fçtò", "refs": ["2 Kings 24", "II Chronicles 25"], "n": 2}
@@ -26213,7 +26213,7 @@
 {"u": "ધારક", "raw": "Äkhf", "hex": "c4 6b 68 66", "unswap": "Äthf", "refs": ["Colossians 1", "Hebrews 2"], "n": 2}
 {"u": "વિજયયાત્રામાં", "raw": "rðsÞÞkºkk{kt", "hex": "72 f0 73 de de 6b ba 6b 6b 7b 6b 74", "unswap": "rðsÞÞtºtt{tk", "refs": ["Colossians 2", "Corinthians II 2"], "n": 2}
 {"u": "અમુકને", "raw": "y{wfLku", "hex": "79 7b 77 66 4c 6b 75", "unswap": "y{wfLtu", "refs": ["Colossians 2"], "n": 2}
-{"u": "દુવૃર્ત્તિઓને", "raw": "Ëwð]or¥kykuLku", "hex": "cb 77 f0 5d 6f 72 a5 6b 79 6b 75 4c 6b 75", "unswap": "Œwð]or¥tytuLtu", "refs": ["Colossians 2", "Romans 6"], "n": 2}
+{"u": "દુર્વૃત્તિઓને", "raw": "Ëwð]or¥kykuLku", "hex": "cb 77 f0 5d 6f 72 a5 6b 79 6b 75 4c 6b 75", "unswap": "Œwð]or¥tytuLtu", "refs": ["Colossians 2", "Romans 6"], "n": 2}
 {"u": "જીવનરૂપ", "raw": "SðLkYÃk", "hex": "53 f0 4c 6b 59 c3 6b", "unswap": "SðLtYÃt", "refs": ["Colossians 3", "John 12"], "n": 2}
 {"u": "વિકાર", "raw": "rðfkh", "hex": "72 f0 66 6b 68", "unswap": "rðfth", "refs": ["Colossians 3", "James 1"], "n": 2}
 {"u": "કૃતજ્ઞ", "raw": "f]ík¿k", "hex": "66 5d ed 6b bf 6b", "unswap": "f]ít¿t", "refs": ["Colossians 3"], "n": 2}
@@ -27138,7 +27138,7 @@
 {"u": "તમારામય", "raw": "ík{khk{Þ", "hex": "ed 6b 7b 6b 68 6b 7b de", "unswap": "ít{tht{Þ", "refs": ["kirtansagar #143", "kirtansagar OLD 143"], "n": 2}
 {"u": "પ્રસારવાને", "raw": "«MkkhðkLku", "hex": "ab 4d 6b 6b 68 f0 6b 4c 6b 75", "unswap": "«MtthðtLtu", "refs": ["kirtansagar #143", "kirtansagar OLD 143"], "n": 2}
 {"u": "શ્રીસભા", "raw": "©eMk¼k", "hex": "a9 65 4d 6b bc 6b", "unswap": "©eMt¼t", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
-{"u": "યિજ્ઞક", "raw": "Þkr¿kf", "hex": "de 6b 72 bf 6b 66", "unswap": "Þtr¿tf", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
+{"u": "યાજ્ઞિક", "raw": "Þkr¿kf", "hex": "de 6b 72 bf 6b 66", "unswap": "Þtr¿tf", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
 {"u": "અરપે", "raw": "yhÃku", "hex": "79 68 c3 6b 75", "unswap": "yhÃtu", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
 {"u": "અરપી", "raw": "yhÃke", "hex": "79 68 c3 6b 65", "unswap": "yhÃte", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
 {"u": "અર્પાઈ", "raw": "yÃkkoE", "hex": "79 c3 6b 6b 6f 45", "unswap": "yÃttoE", "refs": ["kirtansagar #144", "kirtansagar OLD 144"], "n": 2}
@@ -27537,7 +27537,7 @@
 {"u": "ગૂંજતા’તાં", "raw": "økqtsíkk’íkkt", "hex": "f8 6b 71 74 73 ed 6b 6b 2019 ed 6b 6b 74", "unswap": "øtqksítt’íttk", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
 {"u": "એય", "raw": "yuÞ", "hex": "79 75 de", "unswap": "yuÞ", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
 {"u": "ખર્યા", "raw": "¾Þko", "hex": "be de 6b 6f", "unswap": "¾Þto", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
-{"u": "દુવૃર્ત્તિના", "raw": "Ëwð]or¥kLkk", "hex": "cb 77 f0 5d 6f 72 a5 6b 4c 6b 6b", "unswap": "Œwð]or¥tLtt", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
+{"u": "દુર્વૃત્તિના", "raw": "Ëwð]or¥kLkk", "hex": "cb 77 f0 5d 6f 72 a5 6b 4c 6b 6b", "unswap": "Œwð]or¥tLtt", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
 {"u": "બંધનોને", "raw": "çktÄLkkuLku", "hex": "e7 6b 74 c4 4c 6b 6b 75 4c 6b 75", "unswap": "çtkÄLttuLtu", "refs": ["kirtansagar #214", "kirtansagar OLD 214"], "n": 2}
 {"u": "ઉદ્ભવેલ", "raw": "WËT¼ðu÷", "hex": "57 cb 54 bc f0 75 f7", "unswap": "WŒT¼ðu÷", "refs": ["kirtansagar #215", "kirtansagar OLD 215"], "n": 2}
 {"u": "દેશદેશની", "raw": "ËuþËuþLke", "hex": "cb 75 fe cb 75 fe 4c 6b 65", "unswap": "ŒuþŒuþLte", "refs": ["kirtansagar #215", "kirtansagar OLD 215"], "n": 2}
@@ -42850,7 +42850,7 @@
 {"u": "ખલાસીઓએ", "raw": "¾÷kMkeykuyu", "hex": "be f7 6b 4d 6b 65 79 6b 75 79 75", "unswap": "¾÷tMteytuyu", "refs": ["Jonah 1"], "n": 1}
 {"u": "નિર્દોષની", "raw": "rLkËkuo»kLke", "hex": "72 4c 6b cb 6b 75 6f bb 6b 4c 6b 65", "unswap": "rLtŒtuo»tLte", "refs": ["Jonah 1"], "n": 1}
 {"u": "આપત્તિના", "raw": "ykÃkr¥kLkk", "hex": "79 6b c3 6b 72 a5 6b 4c 6b 6b", "unswap": "ytÃtr¥tLtt", "refs": ["Jonah 2"], "n": 1}
-{"u": "સિન્નધ્ય", "raw": "MkkrÒkæÞ", "hex": "4d 6b 6b 72 d2 6b e6 de", "unswap": "MttrÒtæÞ", "refs": ["Jonah 2"], "n": 1}
+{"u": "સાન્નિધ્ય", "raw": "MkkrÒkæÞ", "hex": "4d 6b 6b 72 d2 6b e6 de", "unswap": "MttrÒtæÞ", "refs": ["Jonah 2"], "n": 1}
 {"u": "કરીશ?'", "raw": "fheþ?'", "hex": "66 68 65 fe 3f 27", "unswap": "fheþ?'", "refs": ["Jonah 2"], "n": 1}
 {"u": "વીંટાઈ", "raw": "ðªxkE", "hex": "f0 aa 78 6b 45", "unswap": "ðªxtE", "refs": ["Jonah 2"], "n": 1}
 {"u": "ભિડાયેલી", "raw": "r¼zkÞu÷e", "hex": "72 bc 7a 6b de 75 f7 65", "unswap": "r¼ztÞu÷e", "refs": ["Jonah 2"], "n": 1}
@@ -47608,7 +47608,7 @@
 {"u": "તેની–આજ્ઞાનુસાર", "raw": "íkuLke–yk¿kkLkwMkkh", "hex": "ed 6b 75 4c 6b 65 2013 79 6b bf 6b 6b 4c 6b 77 4d 6b 6b 68", "unswap": "ítuLte–yt¿ttLtwMtth", "refs": ["Ephesians 2"], "n": 1}
 {"u": "હતા–સ્થૂળ", "raw": "níkk–MÚkq¤", "hex": "6e ed 6b 6b 2013 4d da 6b 71 a4", "unswap": "nítt–MÚtq¤", "refs": ["Ephesians 2"], "n": 1}
 {"u": "લાલસાઓને", "raw": "÷k÷MkkykuLku", "hex": "f7 6b f7 4d 6b 6b 79 6b 75 4c 6b 75", "unswap": "÷t÷MttytuLtu", "refs": ["Ephesians 2"], "n": 1}
-{"u": "કતૃર્ત્વ", "raw": "fík]oíð", "hex": "66 ed 6b 5d 6f ed f0", "unswap": "fít]oíð", "refs": ["Ephesians 2"], "n": 1}
+{"u": "કર્તૃત્વ", "raw": "fík]oíð", "hex": "66 ed 6b 5d 6f ed f0", "unswap": "fít]oíð", "refs": ["Ephesians 2"], "n": 1}
 {"u": "નિમ્યાં", "raw": "rLkBÞkO", "hex": "72 4c 6b 42 de 6b 4f", "unswap": "rLtBÞtO", "refs": ["Ephesians 2"], "n": 1}
 {"u": "નાગરિકતાથી", "raw": "LkkøkrhfíkkÚke", "hex": "4c 6b 6b f8 6b 72 68 66 ed 6b 6b da 6b 65", "unswap": "LttøtrhfíttÚte", "refs": ["Ephesians 2"], "n": 1}
 {"u": "કરારોમાં", "raw": "fhkhku{kt", "hex": "66 68 6b 68 6b 75 7b 6b 74", "unswap": "fhthtu{tk", "refs": ["Ephesians 2"], "n": 1}

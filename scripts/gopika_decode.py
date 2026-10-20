@@ -95,8 +95,11 @@ def reorder_gopika(s):
     # SINGLE regex (alternation, conjunct first) applied once, so it never double-
     # applies: ðíÞkuo -> વર્ત્યો ; ðíkuo -> વર્તે ; ð»kko -> વર્ષ (ષ is a lone
     # consonant, 'ð' before it is a separate syllable and is left alone).
+    # matra run may include the vocalic-r matra ']'(ૃ) too: ð]o = વ ૃ reph ->
+    # ર્વૃ (દુર્વૃત્તિ), not વૃર્.  (']' is re.escaped as it is a class metachar.)
     s = re.sub(r'((?:[' + _HALF + r'][' + CONS_CLASS + r'])|[' + CONS_CLASS
-               + _HALF + r'])([ktuwqe\x1d\x1e]*)o', r'o\1\2', s)
+               + _HALF + r'])([ktuwqe\x1d\x1e' + re.escape(']') + r']*)o',
+               r'o\1\2', s)
     return s
 
 
@@ -141,12 +144,25 @@ for _u, _g in PAIRS:
     if len(_g) == 2 and _g[1] == 't' and _g[0] not in _tbl_gop \
             and any('ક' <= ch <= 'હ' for ch in _u):
         _CONJ_CORE_T[_g[0]] = _u   # e.g. '¿' -> 'જ્ઞ', 'º' -> 'ત્ર', 'û' -> 'ક્ષ'
-# Rebuild CLUSTER (EXTRA cores were added to _BASE above). A cluster may carry an
-# INH/AA half-form sentinel (\x1d/\x1e, inserted by the half-form k-handling that
-# runs before reorder) and a post-base ra 'ú/Ù', e.g. 'Ã\x1dú' = પ્ર. A pre-base
-# matra must hop all of it (fixes પિ્ર -> પ્ર, ખિ્ર -> ખ્ર).
+# ALL two-char conjunct cores (Ò=ન્ન, ¿=જ્ઞ, ²=સ્ર, …) must also be hoppable by a
+# pre-base short-i as ONE atomic core. Some (û,¥,º,Ì) are already in _BASE via
+# _EXTRA_CORES; add the rest (¿,²,Ò). Their table key is 'core'+'t', so a pre-base
+# matra must land AFTER the whole 'core t' — the 't' is included in the cluster
+# tail below. Fixes rÒt (સિન્નધ્ય -> સાન્નિધ્ય).
+_CONJ_CORE_CHARS = ''.join(c for c in _CONJ_CORE_T if c not in _BASE)
+_ALL_CONJ_CORES = ''.join(re.escape(c) for c in _CONJ_CORE_T)  # û ¥ º Ì ¿ ² Ò
+_BASE = _BASE + ''.join(re.escape(c) for c in _CONJ_CORE_CHARS)
+CONS_CLASS = CONS_CLASS + ''.join(re.escape(c) for c in _CONJ_CORE_CHARS)
+# One orthographic cluster the short-i hops =
+#   (a 2-char conjunct core like 'Òt'/'¿t' with its completing 't'),  OR
+#   (half-forms + base),  OR (single base),  each optionally with an INH/AA
+#   sentinel and a post-base ra. The explicit conjunct-core+'t' alternative keeps
+#   the table key atomic (fixes rÒt -> ન્નિ in સાન્નિધ્ય) WITHOUT a bare 't?' that
+#   could over-reach a normal consonant's aa.
 _CLTAIL = r'[\x1d\x1e]?[' + _POSTRA + r']?'
-CLUSTER = (r'(?:[' + _HALF + r']+[' + _BASE + r']?|[' + _BASE + r'])' + _CLTAIL)
+CLUSTER = (r'(?:[' + _ALL_CONJ_CORES + r']t'
+           + r'|[' + _HALF + r']+[' + _BASE + r']?'
+           + r'|[' + _BASE + r'])' + _CLTAIL)
 
 
 def decode_table(s):
