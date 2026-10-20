@@ -1511,6 +1511,7 @@
 {"u": "યહૂદામાં", "raw": "ÞnqËk{kt", "hex": "de 6e 71 cb 6b 7b 6b 74", "unswap": "ÞnqŒt{tk", "refs": ["Samuel 2 19", "Samuel 2 24", "Samuel 2 6"], "n": 67}
 {"u": "યહોશુઆ", "raw": "Þnkuþwyk", "hex": "de 6e 6b 75 fe 77 79 6b", "unswap": "Þntuþwyt", "refs": ["I Kings 16", "I Chronicles 7", "Exodus 17"], "n": 67}
 {"u": "વર્ગ", "raw": "ðøko", "hex": "f0 f8 6b 6f", "unswap": "ðøto", "refs": ["2 Kings 24", "II Chronicles 31", "kirtansagar #10"], "n": 67}
+{"u": "સમર્પિત", "raw": "Mk{ŠÃkík", "hex": "4d 6b 7b 160 c3 6b ed 6b", "unswap": "Mt{ŠÃtít", "refs": ["I Chronicles 24", "II Chronicles 29", "II Chronicles 35"], "n": 67}
 {"u": "વરદાન", "raw": "ðhËkLk", "hex": "f0 68 cb 6b 4c 6b", "unswap": "ðhŒtLt", "refs": ["Wisdom 2 8", "Ecclesiasticus (Ben Sirah) 26", "Hosea 14"], "n": 67}
 {"u": "ચાલશે", "raw": "[k÷þu", "hex": "5b 6b f7 fe 75", "unswap": "[t÷þu", "refs": ["Genesis 1", "Genesis 27", "Genesis 47"], "n": 66}
 {"u": "એકસો", "raw": "yufMkku", "hex": "79 75 66 4d 6b 6b 75", "unswap": "yufMttu", "refs": ["Genesis 11", "Genesis 23", "Genesis 25"], "n": 66}
@@ -1536,7 +1537,6 @@
 {"u": "ઊંચો", "raw": "Ÿ[ku", "hex": "178 5b 6b 75", "unswap": "Ÿ[tu", "refs": ["I Kings 18", "I Kings 6", "I Kings 7"], "n": 66}
 {"u": "ભવ્ય", "raw": "¼ÔÞ", "hex": "bc d4 de", "unswap": "¼ÔÞ", "refs": ["I Kings 8", "I Kings 9", "I Chronicles 22"], "n": 66}
 {"u": "જયકાર", "raw": "sÞfkh", "hex": "73 de 66 6b 68", "unswap": "sÞfth", "refs": ["I Chronicles 16", "Genesis 103", "Genesis 117"], "n": 66}
-{"u": "સમર્પિત", "raw": "Mk{ŠÃkík", "hex": "4d 6b 7b 160 c3 6b ed 6b", "unswap": "Mt{ŠÃtít", "refs": ["I Chronicles 24", "II Chronicles 29", "II Chronicles 35"], "n": 66}
 {"u": "ઊઠશે", "raw": "QXþu", "hex": "51 58 fe 75", "unswap": "QXþu", "refs": ["Exodus 22", "Exodus 32", "Exodus 7"], "n": 66}
 {"u": "શહેરોમાં", "raw": "þnuhku{kt", "hex": "fe 6e 75 68 6b 75 7b 6b 74", "unswap": "þnuhtu{tk", "refs": ["Genesis 13", "Genesis 19", "Genesis 41"], "n": 65}
 {"u": "તંબૂ", "raw": "íktçkq", "hex": "ed 6b 74 e7 6b 71", "unswap": "ítkçtq", "refs": ["Genesis 13", "Genesis 33", "Samuel 2 16"], "n": 65}
@@ -5223,6 +5223,7 @@
 {"u": "વિધિપૂર્વક", "raw": "rðrÄÃkqðof", "hex": "72 f0 72 c4 c3 6b 71 f0 6f 66", "unswap": "rðrÄÃtqðof", "refs": ["I Chronicles 16", "II Chronicles 13", "II Chronicles 29"], "n": 16}
 {"u": "ગણીને", "raw": "økýeLku", "hex": "f8 6b fd 65 4c 6b 75", "unswap": "øtýeLtu", "refs": ["I Chronicles 17", "Ezra 2", "Nehemia 7"], "n": 16}
 {"u": "માટેના", "raw": "{kxuLkk", "hex": "7b 6b 78 75 4c 6b 6b", "unswap": "{txuLtt", "refs": ["I Chronicles 23", "I Chronicles 28", "Nehemia 9"], "n": 16}
+{"u": "ધાર્મિક", "raw": "ÄkŠ{f", "hex": "c4 6b 160 7b 66", "unswap": "ÄtŠ{f", "refs": ["I Chronicles 26", "II Chronicles 19", "Ezekiel 18"], "n": 16}
 {"u": "નીચાણના", "raw": "Lke[kýLkk", "hex": "4c 6b 65 5b 6b fd 4c 6b 6b", "unswap": "Lte[týLtt", "refs": ["I Chronicles 27", "II Chronicles 26", "II Chronicles 28"], "n": 16}
 {"u": "તત્પર", "raw": "íkíÃkh", "hex": "ed 6b ed c3 6b 68", "unswap": "ítíÃth", "refs": ["I Chronicles 28", "Proverbs 14", "Ecclesiasticus (Ben Sirah) 2"], "n": 16}
 {"u": "લોખંડ", "raw": "÷ku¾tz", "hex": "f7 6b 75 be 74 7a", "unswap": "÷tu¾kz", "refs": ["I Chronicles 29", "Job 28", "Jeremiah 11"], "n": 16}
@@ -5477,7 +5478,6 @@
 {"u": "બાંધશે", "raw": "çkktÄþu", "hex": "e7 6b 6b 74 c4 fe 75", "unswap": "çttkÄþu", "refs": ["I Chronicles 22", "Tobit 14", "Isaiah 34"], "n": 15}
 {"u": "બંદા", "raw": "çktËk", "hex": "e7 6b 74 cb 6b", "unswap": "çtkŒt", "refs": ["I Chronicles 23", "II Chronicles 30", "Ezra 3"], "n": 15}
 {"u": "નાંધણી", "raw": "LkkUÄýe", "hex": "4c 6b 6b 55 c4 fd 65", "unswap": "LttUÄýe", "refs": ["I Chronicles 23", "II Chronicles 31", "Exodus 38"], "n": 15}
-{"u": "ધાર્મિક", "raw": "ÄkŠ{f", "hex": "c4 6b 160 7b 66", "unswap": "ÄtŠ{f", "refs": ["I Chronicles 26", "Ezekiel 18", "Ezekiel 33"], "n": 15}
 {"u": "૨૪", "raw": "24", "hex": "32 34", "unswap": "24", "refs": ["I Chronicles 27", "Esther 8", "Maccabees 2 11"], "n": 15}
 {"u": "પુત્રોની", "raw": "ÃkwºkkuLke", "hex": "c3 6b 77 ba 6b 6b 75 4c 6b 65", "unswap": "ÃtwºttuLte", "refs": ["I Chronicles 28", "Ezra 9", "Exodus 28"], "n": 15}
 {"u": "સર્વોપરી", "raw": "MkðkuoÃkhe", "hex": "4d 6b f0 6b 75 6f c3 6b 68 65", "unswap": "MtðtuoÃthe", "refs": ["I Chronicles 29", "Ecclesiastes 8", "Wisdom 2 12"], "n": 15}
@@ -33086,7 +33086,6 @@
 {"u": "ઝઘડાઓનો", "raw": "Í½zkykuLkku", "hex": "cd bd 7a 6b 79 6b 75 4c 6b 6b 75", "unswap": "Í½ztytuLttu", "refs": ["II Chronicles 19"], "n": 1}
 {"u": "બંધુઓમાંથી", "raw": "çktÄwyku{ktÚke", "hex": "e7 6b 74 c4 77 79 6b 75 7b 6b 74 da 6b 65", "unswap": "çtkÄwytu{tkÚte", "refs": ["II Chronicles 19"], "n": 1}
 {"u": "ખૂનામરકીને", "raw": "¾qLkk{hfeLku", "hex": "be 71 4c 6b 6b 7b 68 66 65 4c 6b 75", "unswap": "¾qLtt{hfeLtu", "refs": ["II Chronicles 19"], "n": 1}
-{"u": "ધામિર્ક", "raw": "Äkr{of", "hex": "c4 6b 72 7b 6f 66", "unswap": "Ätr{of", "refs": ["II Chronicles 19"], "n": 1}
 {"u": "ચિટનીસ", "raw": "r[xLkeMk", "hex": "72 5b 78 4c 6b 65 4d 6b", "unswap": "r[xLteMt", "refs": ["II Chronicles 19"], "n": 1}
 {"u": "કૂલીઓ", "raw": "fq÷eyku", "hex": "66 71 f7 65 79 6b 75", "unswap": "fq÷eytu", "refs": ["II Chronicles 2"], "n": 1}
 {"u": "છત્રીસસો", "raw": "AºkeMkMkku", "hex": "41 ba 6b 65 4d 6b 4d 6b 6b 75", "unswap": "AºteMtMttu", "refs": ["II Chronicles 2"], "n": 1}
@@ -45644,7 +45643,6 @@
 {"u": "પાક્યા", "raw": "Ãkkõâk", "hex": "c3 6b 6b f5 e2 6b", "unswap": "Ãttõât", "refs": ["Deuteronomy 13"], "n": 1}
 {"u": "રહેવાસીઓની", "raw": "hnuðkMkeykuLke", "hex": "68 6e 75 f0 6b 4d 6b 65 79 6b 75 4c 6b 65", "unswap": "hnuðtMteytuLte", "refs": ["Deuteronomy 13"], "n": 1}
 {"u": "માલસામાનને", "raw": "{k÷Mkk{kLkLku", "hex": "7b 6b f7 4d 6b 6b 7b 6b 4c 6b 4c 6b 75", "unswap": "{t÷Mtt{tLtLtu", "refs": ["Deuteronomy 13"], "n": 1}
-{"u": "સમપિર્ત", "raw": "Mk{rÃkoík", "hex": "4d 6b 7b 72 c3 6b 6f ed 6b", "unswap": "Mt{rÃtoít", "refs": ["Deuteronomy 13"], "n": 1}
 {"u": "વસ્તુઓમાંની", "raw": "ðMíkwyku{ktLke", "hex": "f0 4d ed 6b 77 79 6b 75 7b 6b 74 4c 6b 65", "unswap": "ðMítwytu{tkLte", "refs": ["Deuteronomy 13"], "n": 1}
 {"u": "મૂંડાવવો", "raw": "{qtzkððku", "hex": "7b 71 74 7a 6b f0 f0 6b 75", "unswap": "{qkztððtu", "refs": ["Deuteronomy 14"], "n": 1}
 {"u": "ભક્ષ્યાભક્ષ્ય", "raw": "¼ûÞk¼ûÞ", "hex": "bc fb de 6b bc fb de", "unswap": "¼ûÞt¼ûÞ", "refs": ["Deuteronomy 14"], "n": 1}

@@ -106,6 +106,13 @@ CASES = [
     ('ÄŠ{c',          'ધર્મિષ્ઠ',  'dharmishth'),
     ('økŠðc',         'ગર્વિષ્ઠ',  'garvishth - Š before full વ'),
     ('rLkŠððkË',      'નિર્વિવાદ', 'nirvivad'),
+    # reph crossing an already-reordered ordinary short-i 'r'
+    ('Äkr{of',        'ધાર્મિક',   'dharmik - reph over reordered short-i (was ધામિર્ક)'),
+    ('Mk{rÃkoík',     'સમર્પિત',   'samarpit'),
+    # controls: valid િર્ sequences must NOT be disturbed by the r-in-reph change
+    ('rLkËkuo»k',     'નિર્દોષ',   'nirdosh - control'),
+    ('ßÞkurík{oÞ',    'જ્યોતિર્મય', 'jyotirmay - control'),
+    ('ríkMkko',       'તિર્સા',    'tirsa - control'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

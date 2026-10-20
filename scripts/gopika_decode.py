@@ -102,10 +102,12 @@ def reorder_gopika(s):
     # SINGLE regex (alternation, conjunct first) applied once, so it never double-
     # applies: ðíÞkuo -> વર્ત્યો ; ðíkuo -> વર્તે ; ð»kko -> વર્ષ (ષ is a lone
     # consonant, 'ð' before it is a separate syllable and is left alone).
-    # matra run may include the vocalic-r matra ']'(ૃ) too: ð]o = વ ૃ reph ->
-    # ર્વૃ (દુર્વૃત્તિ), not વૃર્.  (']' is re.escaped as it is a class metachar.)
+    # The matra run may include the vocalic-r matra ']'(ૃ) AND an ALREADY-
+    # REORDERED ordinary short-i 'r' (moved to after its consonant by the rule
+    # above). Without 'r' here the reph can't cross it: ધામિર્ક instead of
+    # ધાર્મિક, સમપિર્ત instead of સમર્પિત. ('r' = short-i; distinct from reph.)
     s = re.sub(r'((?:[' + _HALF + r'][' + CONS_CLASS + r'])|[' + CONS_CLASS
-               + _HALF + r'])([ktuwqe\x1d\x1e' + re.escape(']') + r']*)o',
+               + _HALF + r'])([ktuwqer\x1d\x1e' + re.escape(']') + r']*)o',
                r'o\1\2', s)
     return s
 

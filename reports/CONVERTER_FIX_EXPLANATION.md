@@ -313,3 +313,13 @@ full-consonant Š branch (new _FULL2UNI map) emitting ר्+C+િ without consum
 consonant's inherent k. Fixes ધાર્મિક/ધર્મિષ્ઠ/ગર્વિષ્ઠ/નિર્વિવાદ (55) + names
 ઈર્મિયા(Jeremiah)/પોર્કિયુસ (maintainer-approved, source-faithful) + songbook
 ઊર્મિ. Half-form Š path preserved. See BIBLE_AUDIT_PASS8_RESOLUTION.md.
+
+---
+
+## Fix: reph over a reordered ordinary short-i (ધાર્મિક) — Bible Pass-9
+
+Ordinary short-i 'r', after being reordered past its consonant, blocked the
+reph-'o' rule (which lacked 'r' in its matra run). Added 'r' to that run.
+Trace-wide delta = exactly 2 Bible words: ધામિર્ક->ધાર્મિક (2Chr 19:11),
+સમપિર્ત->સમર્પિત (Deut 13:18). Valid િર્ words (નિર્દોષ/જ્યોતિર્મય/તિર્સા)
+preserved. See BIBLE_AUDIT_PASS9_RESOLUTION.md.
