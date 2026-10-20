@@ -101,6 +101,11 @@ CASES = [
     # the e/aa contrasts for the same cores MUST be preserved
     ('Þ¿ku',          'યજ્ઞે',     'yajne - જ્ઞ + e stays ે'),
     ('Þ¿kk',          'યજ્ઞા',     'yajnaa - જ્ઞ + aa stays ા'),
+    # Š reph+short-i before a FULL consonant ({=મ, ð=વ): ר्+C+િ
+    ('ÄkŠ{f',         'ધાર્મિક',   'dharmik - Š before full મ (was ધામરિક)'),
+    ('ÄŠ{c',          'ધર્મિષ્ઠ',  'dharmishth'),
+    ('økŠðc',         'ગર્વિષ્ઠ',  'garvishth - Š before full વ'),
+    ('rLkŠððkË',      'નિર્વિવાદ', 'nirvivad'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

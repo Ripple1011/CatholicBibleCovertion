@@ -43,10 +43,17 @@ def unswap_arpita(s):
 # Half-form gopika glyphs (their Unicode value ends in virama, i.e. C + ્).
 HALF_CONS = set()
 HALF2FULL = {}   # half-form gopika glyph -> its FULL consonant Unicode (no virama)
+# FULL single consonant glyphs: one gopika char -> one Unicode consonant (U+0A95
+# ..U+0AB9 + ળ). Used by the full-consonant 'Š' reph path (Š{ -> ર્મિ).
+_FULL2UNI = {}
+_CONS_U = set(chr(c) for c in range(0x0A95, 0x0ABA)) | {'ળ'}
 for uni, gop in PAIRS:
     if len(gop) == 1 and uni.endswith('્'):
         HALF_CONS.add(gop)
         HALF2FULL[gop] = uni[:-1]
+    elif len(gop) == 1 and len(uni) == 1 and uni in _CONS_U:
+        _FULL2UNI[gop] = uni
+_FULL_CONS_CLASS = ''.join(re.escape(c) for c in _FULL2UNI)
 
 # Full-conjunct gopika glyphs: a single gopika char mapping to a multi-consonant
 # cluster that does NOT end in a bare virama (e.g. 'Ø'=દ્ધ, 'ù'=શ્ચ). These are
@@ -299,8 +306,16 @@ def convert(gopika_text):
     def _repl_reph_i(m):
         return '\x10' + HALF2FULL[m.group(1)] + '\x11'
     s = re.sub(r'Š([' + HALF_CONS_CLASS + r'])k?', _repl_reph_i, s)
-    # Fallback: 'Š' before a FULL consonant glyph (no half-form) -> ר् on it + િ.
-    # (rare; keep the old EXTRA 'Š'->'ર્િ' behaviour for anything left.)
+    # 'Š' before a FULL consonant glyph (e.g. '{'=મ, 'ð'=વ): same reph+short-i
+    # unit, but the consonant is already full (no virama to drop). Emit
+    #   ר्(\x10) + <full-consonant Unicode> + િ(\x11).
+    # The full consonant's own inherent 'k' (if any) is NOT consumed here (unlike
+    # the half-form case), because a full consonant + k = a genuine aa-matra.
+    # Fixes ÄkŠ{f -> ધાર્મિક (was ધામરિક), økŠðc -> ગર્વિષ્ઠ, etc.
+    def _repl_reph_i_full(m):
+        return '\x10' + _FULL2UNI[m.group(1)] + '\x11'
+    s = re.sub(r'Š([' + _FULL_CONS_CLASS + r'])', _repl_reph_i_full, s)
+    # Fallback: 'Š' before anything else -> keep the old EXTRA 'Š'->'ર્િ'.
 
     # 'ò'(0xf2) is the જ ligature base rendered as જા alone. 'òu' + a following
     # glyph is the જો ligature; bare 'òu' (word end) or 'òu' before a SUFFIX

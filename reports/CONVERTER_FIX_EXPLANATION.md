@@ -302,3 +302,14 @@ core+kku -> <uni>+ો and core+kki -> <uni>+ૌ, while preserving core+ku (ે) 
 core+kk (ા). Fixes યજ્ઞો/યજ્ઞોની/તત્ત્વજ્ઞો/ઉન્નો (14 locations); e/aa contrasts
 and આજ્ઞા preserved. Family B (જેનારો) left review-only. See
 BIBLE_AUDIT_PASS7_RESOLUTION.md.
+
+---
+
+## Fix: Š reph before a FULL consonant (ધાર્મિક) — Bible Pass-8
+
+The Š (reph+short-i) handler only covered half-forms; before a FULL consonant
+({=મ, ð=વ) it used the broken fallback -> મરિ instead of ર્મિ. Added a
+full-consonant Š branch (new _FULL2UNI map) emitting ר्+C+િ without consuming the
+consonant's inherent k. Fixes ધાર્મિક/ધર્મિષ્ઠ/ગર્વિષ્ઠ/નિર્વિવાદ (55) + names
+ઈર્મિયા(Jeremiah)/પોર્કિયુસ (maintainer-approved, source-faithful) + songbook
+ઊર્મિ. Half-form Š path preserved. See BIBLE_AUDIT_PASS8_RESOLUTION.md.
