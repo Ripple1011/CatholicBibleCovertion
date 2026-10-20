@@ -291,3 +291,14 @@ atomic cluster for pre-base short-i, via an explicit 'core t' cluster
 alternative (not a greedy t?). Fixes સિન્નધ્ય -> સાન્નિધ્ય (29). (B) reph matra
 set now includes ']'(ૃ): ð]o -> ર્વૃ (દુર્વૃત્તિ). સાંનિધ્યમાં sibling preserved.
 See BIBLE_AUDIT_PASS6_RESOLUTION.md.
+
+---
+
+## Fix: conjunct-core o-matra (યજ્ઞો/ઉન્નો) — Bible Pass-7
+
+The _CONJ_CORE_T cores ¿/²/Ò lost their o-matra: core+kku fell through to the
+generic shortening (-> core+ku -> જ્ઞ+ે). Extended the _CONJ_CORE_T loop to emit
+core+kku -> <uni>+ો and core+kki -> <uni>+ૌ, while preserving core+ku (ે) and
+core+kk (ા). Fixes યજ્ઞો/યજ્ઞોની/તત્ત્વજ્ઞો/ઉન્નો (14 locations); e/aa contrasts
+and આજ્ઞા preserved. Family B (જેનારો) left review-only. See
+BIBLE_AUDIT_PASS7_RESOLUTION.md.

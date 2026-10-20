@@ -344,12 +344,17 @@ def convert(gopika_text):
 
     # TABLE-KEY conjunct cores (¿=જ્ઞ, º=ત્ર, û=ક્ષ, ²=સ્ર, Ì=હ્ય, Ò=ન્ન, ¥=ત્ત):
     # their table key is 'core'+'t' (the 't' = the aa that the glyph absorbs).
-    # So 'core k k' means conjunct + a genuine aa, but the generic k-collapse
-    # below would eat the second k and drop the aa (yk¿kk 'આજ્ઞા' -> આજ્ઞ).
-    # Decode the core to its Unicode here and keep ONE aa (-> uni + 'ા').
+    # Decode the core to its Unicode and attach the correct vowel, distinguishing:
+    #   core + kku -> <uni> + ો (o-matra)   (Þ¿kku = યજ્ઞો, WÒkku = ઉન્નો)
+    #   core + kki -> <uni> + ૌ (au-matra)
+    #   core + kk  -> <uni> + ા (genuine aa)  (yk¿kk = આજ્ઞા)
+    #   core + ku  -> leave: decodes as <uni> + ે (e-matra); PRESERVE (Þ¿ku=યજ્ઞે)
+    # (EXTRA cores û/¥/º/Ì were already handled by the loop above; the remaining
+    #  cores here are ¿/²/Ò, whose kku/kki path was previously missed -> lost ો.)
     for core in _CONJ_CORE_T:
         uni = _CONJ_CORE_T[core]
-        s = re.sub(re.escape(core) + r'kk(?![u])', uni + 'ા', s)  # not kku (o-matra)
+        s = s.replace(core + 'kku', uni + '\x1fo').replace(core + 'kki', uni + '\x1fa')
+        s = re.sub(re.escape(core) + r'kk(?![u])', uni + 'ા', s)  # genuine aa
 
     # FULL-consonant o/au matras: protect 'kku'/'kki' from the collapse below.
     # Use \x1f temps (distinct from INH \x1d / AA \x1e to avoid any collision).

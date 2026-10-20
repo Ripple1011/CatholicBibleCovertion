@@ -93,6 +93,14 @@ CASES = [
     ('MkkrÒkæÞ{kt',  'સાન્નિધ્યમાં', 'saannidhyamaan'),
     # reph crosses the vocalic-r matra ']'(ૃ)
     ('Ëwð]or¥kykuLku', 'દુર્વૃત્તિઓને', 'durvruttione - reph over ૃ'),
+    # conjunct core (જ્ઞ/ન્ન) + o-matra: must keep ો, not lose it to ે
+    ('Þ¿kku',         'યજ્ઞો',     'yajno - જ્ઞ + o-matra'),
+    ('Þ¿kkuLke',      'યજ્ઞોની',   'yajnoni'),
+    ('ík¥ð¿kku',      'તત્ત્વજ્ઞો', 'tattvagno'),
+    ('WÒkku',         'ઉન્નો',     'unno - ન્ન + o-matra'),
+    # the e/aa contrasts for the same cores MUST be preserved
+    ('Þ¿ku',          'યજ્ઞે',     'yajne - જ્ઞ + e stays ે'),
+    ('Þ¿kk',          'યજ્ઞા',     'yajnaa - જ્ઞ + aa stays ા'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),
