@@ -40,6 +40,12 @@ PHRASE_FIXES = {
     'મહિમા! મશાંતિ': 'મહિમા! ને શાંતિ',
     # Song 518: આર્જતના -> અરજ તણા ('hearer of our petitions')
     'અમ આર્જતના સુણનારા': 'અમ અરજ તણા સુણનારા',
+    # Bible Pass-5 phrase-scoped (whole-word would hit valid forms elsewhere):
+    # Jeremiah 31:13 'આનંદ માણશો' -> 'આનંદ માણશે' (3rd-person; Isaiah 55:2
+    # 'મોજ માણશો' 2nd-person is valid and untouched).
+    'આનંદ માણશો.': 'આનંદ માણશે.',
+    # Sirach 19:5 stray standalone ચ between two sentences.
+    'લેવી. ચ જે ભોગવિલાસ': 'લેવી. જે ભોગવિલાસ',
     # --- Stations-of-the-Cross ordinal headings (Songs 283/284) ---
     # Source renders digits as consonants + stray spaces before the ordinal
     # suffix. Normalize each 'N<space>suffix સ્થાન' heading. Scoped to the exact
@@ -159,6 +165,14 @@ WORD_FIXES = {
     'ઠયું': 'થયું',         # XÞwO - source ઠ for થ
     # malformed join in 1 Sam 29:2 source
     'માણસાપલિસ્તીઓએ': 'માણસો; પલિસ્તીઓએ',
+    # --- Bible Pass-5 source defects (verified vs raw) ---
+    'ચગુસ્સે': 'ગુસ્સે',    # [økwMMku - stray leading ચ (Sirach 19:18)
+    'ચ"હું': '"હું',        # ["nwt - stray leading ચ (Sirach 19:21)
+    'મંન': 'મન',            # {tLk - extra anusvara (Psalms 119:32)
+    'થથરતો': 'થરથરતો',      # ÚkÚkhíkku - duplicated syllable (2 Macc 3:17)
+    'અંતને': 'અંતના',       # ytíkLku - wrong ending (Daniel 11:40)
+    'માણસેને': 'માણસોને',   # {kýMkukLku - wrong ending (1 Chr 19:3)
+    'કેવે': 'કેવા',         # fuðu - agreement (1 Cor 15:35)
 }
 
 # Word-INITIAL prefix normalizations. Fire only at the start of a word
