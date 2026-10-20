@@ -323,3 +323,15 @@ reph-'o' rule (which lacked 'r' in its matra run). Added 'r' to that run.
 Trace-wide delta = exactly 2 Bible words: ધામિર્ક->ધાર્મિક (2Chr 19:11),
 સમપિર્ત->સમર્પિત (Deut 13:18). Valid િર્ words (નિર્દોષ/જ્યોતિર્મય/તિર્સા)
 preserved. See BIBLE_AUDIT_PASS9_RESOLUTION.md.
+
+---
+
+## Fix: full-consonant Š reph over an Arpita-swapped carrier (સાર્દિસ) — Bible Pass-10
+
+The full-consonant Š callback (_repl_reph_i_full) ran on the raw stream but
+indexed the base-font table _FULL2UNI; for the swapped carrier raw Ë (=દ in this
+Arpita source, but =સ in the base table) it emitted ר્સિ instead of ר્દિ, so
+Sardis decoded as સાર્સિસ. Fix: normalize the single matched carrier via
+unswap_arpita() before lookup. No-op for non-swapped carriers. Trace-wide delta =
+exactly 4 raw records (3 Sardis verses Rev 1:11/3:1/3:4 + 1 Mark-preface
+નિર્દિષ્ટ); live Bible diff = exactly 3 verses. See BIBLE_AUDIT_PASS10_RESOLUTION.md.

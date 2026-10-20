@@ -314,8 +314,14 @@ def convert(gopika_text):
     # The full consonant's own inherent 'k' (if any) is NOT consumed here (unlike
     # the half-form case), because a full consonant + k = a genuine aa-matra.
     # Fixes ÄkŠ{f -> ધાર્મિક (was ધામરિક), økŠðc -> ગર્વિષ્ઠ, etc.
+    # This callback runs on the RAW (pre-unswap) stream, but _FULL2UNI is keyed
+    # by BASE-font glyphs. For the Arpita-swapped carriers (raw Ë=દ, raw Œ=ત) the
+    # raw glyph indexes the wrong base entry (Ë->સ), so we normalize the single
+    # matched carrier through unswap_arpita first. Fixes raw ŠË -> ર્દિ (સાર્દિસ),
+    # not ר્સિ. Non-swapped carriers are unchanged by unswap, so this is a no-op
+    # for them (ÄkŠ{f -> ધાર્મિક etc. stay identical).
     def _repl_reph_i_full(m):
-        return '\x10' + _FULL2UNI[m.group(1)] + '\x11'
+        return '\x10' + _FULL2UNI[unswap_arpita(m.group(1))] + '\x11'
     s = re.sub(r'Š([' + _FULL_CONS_CLASS + r'])', _repl_reph_i_full, s)
     # Fallback: 'Š' before anything else -> keep the old EXTRA 'Š'->'ર્િ'.
 

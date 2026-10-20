@@ -48464,7 +48464,7 @@
 {"u": "૬:૧-૧૧", "raw": "6:1-11", "hex": "36 3a 31 2d 31 31", "unswap": "6:1-11", "refs": ["MARK 2"], "n": 1}
 {"u": "માર્કકૃત", "raw": "{kfof]ík", "hex": "7b 6b 66 6f 66 5d ed 6b", "unswap": "{tfof]ít", "refs": ["MARK 2_prelim"], "n": 1}
 {"u": "'ઈશ્વરપુત્ર", "raw": "'EïhÃkwºk", "hex": "27 45 ef 68 c3 6b 77 ba 6b", "unswap": "'EïhÃtwºt", "refs": ["MARK 2_prelim"], "n": 1}
-{"u": "નિર્સિષ્ટ", "raw": "rLkŠËü", "hex": "72 4c 6b 160 cb fc", "unswap": "rLtŠŒü", "refs": ["MARK 2_prelim"], "n": 1}
+{"u": "નિર્દિષ્ટ", "raw": "rLkŠËü", "hex": "72 4c 6b 160 cb fc", "unswap": "rLtŠŒü", "refs": ["MARK 2_prelim"], "n": 1}
 {"u": "સૈકાઓથી", "raw": "MkifkykuÚke", "hex": "4d 6b 69 66 6b 79 6b 75 da 6b 65", "unswap": "MtiftytuÚte", "refs": ["MARK 2_prelim"], "n": 1}
 {"u": "મુક્તિદાતાના", "raw": "{wÂõíkËkíkkLkk", "hex": "7b 77 c2 f5 ed 6b cb 6b ed 6b 6b 4c 6b 6b", "unswap": "{wÂõítŒtíttLtt", "refs": ["MARK 2_prelim"], "n": 1}
 {"u": "નિર્દેશક", "raw": "rLkËuoþf", "hex": "72 4c 6b cb 75 6f fe 66", "unswap": "rLtŒuoþf", "refs": ["MARK 2_prelim"], "n": 1}
@@ -48877,7 +48877,7 @@
 {"u": "સ્મુર્ના", "raw": "M{wLkko", "hex": "4d 7b 77 4c 6b 6b 6f", "unswap": "M{wLtto", "refs": ["Revelation 1"], "n": 1}
 {"u": "પર્ગામન", "raw": "Ãkøkko{Lk", "hex": "c3 6b f8 6b 6b 6f 7b 4c 6b", "unswap": "Ãtøtto{Lt", "refs": ["Revelation 1"], "n": 1}
 {"u": "થુવાતિરા", "raw": "Úkwðkríkhk", "hex": "da 6b 77 f0 6b 72 ed 6b 68 6b", "unswap": "Útwðtrítht", "refs": ["Revelation 1"], "n": 1}
-{"u": "સાર્સિસ", "raw": "MkkŠËMk", "hex": "4d 6b 6b 160 cb 4d 6b", "unswap": "MttŠŒMt", "refs": ["Revelation 1"], "n": 1}
+{"u": "સાર્દિસ", "raw": "MkkŠËMk", "hex": "4d 6b 6b 160 cb 4d 6b", "unswap": "MttŠŒMt", "refs": ["Revelation 1"], "n": 1}
 {"u": "ફિલાદેલ્ફિયા", "raw": "rV÷kËuÂÕVÞk", "hex": "72 56 f7 6b cb 75 c2 d5 56 de 6b", "unswap": "rV÷tŒuÂÕVÞt", "refs": ["Revelation 1"], "n": 1}
 {"u": "સફેદ–બરફ", "raw": "MkVuË–çkhV", "hex": "4d 6b 56 75 cb 2013 e7 6b 68 56", "unswap": "MtVuŒ–çthV", "refs": ["Revelation 1"], "n": 1}
 {"u": "ચમકતા", "raw": "[{fíkk", "hex": "5b 7b 66 ed 6b 6b", "unswap": "[{fítt", "refs": ["Revelation 1"], "n": 1}
@@ -49112,9 +49112,9 @@
 {"u": "ગ્રંથમાંથી", "raw": "økútÚk{ktÚke", "hex": "f8 6b fa 74 da 6b 7b 6b 74 da 6b 65", "unswap": "øtúkÚt{tkÚte", "refs": ["Revelation 22"], "n": 1}
 {"u": "વર્ણવેલાં", "raw": "ðýoðu÷kt", "hex": "f0 fd 6f f0 75 f7 6b 74", "unswap": "ðýoðu÷tk", "refs": ["Revelation 22"], "n": 1}
 {"u": "જીવનવૃક્ષમાંથી", "raw": "SðLkð]ûk{ktÚke", "hex": "53 f0 4c 6b f0 5d fb 6b 7b 6b 74 da 6b 65", "unswap": "SðLtð]ût{tkÚte", "refs": ["Revelation 22"], "n": 1}
-{"u": "સાર્સિસના", "raw": "MkkŠËMkLkk", "hex": "4d 6b 6b 160 cb 4d 6b 4c 6b 6b", "unswap": "MttŠŒMtLtt", "refs": ["Revelation 3"], "n": 1}
+{"u": "સાર્દિસના", "raw": "MkkŠËMkLkk", "hex": "4d 6b 6b 160 cb 4d 6b 4c 6b 6b", "unswap": "MttŠŒMtLtt", "refs": ["Revelation 3"], "n": 1}
 {"u": "ઝીલ્યો", "raw": "ÍeÕÞku", "hex": "cd 65 d5 de 6b 75", "unswap": "ÍeÕÞtu", "refs": ["Revelation 3"], "n": 1}
-{"u": "સાર્સિસમાં", "raw": "MkkŠËMk{kt", "hex": "4d 6b 6b 160 cb 4d 6b 7b 6b 74", "unswap": "MttŠŒMt{tk", "refs": ["Revelation 3"], "n": 1}
+{"u": "સાર્દિસમાં", "raw": "MkkŠËMk{kt", "hex": "4d 6b 6b 160 cb 4d 6b 7b 6b 74", "unswap": "MttŠŒMt{tk", "refs": ["Revelation 3"], "n": 1}
 {"u": "ફિલાદેલ્ફિયાના", "raw": "rV÷kËurÕVÞkLkk", "hex": "72 56 f7 6b cb 75 72 d5 56 de 6b 4c 6b 6b", "unswap": "rV÷tŒurÕVÞtLtt", "refs": ["Revelation 3"], "n": 1}
 {"u": "પૃથ્વીવાસીઓની", "raw": "Ãk]ÚðeðkMkeykuLke", "hex": "c3 6b 5d da f0 65 f0 6b 4d 6b 65 79 6b 75 4c 6b 65", "unswap": "Ãt]ÚðeðtMteytuLte", "refs": ["Revelation 3"], "n": 1}
 {"u": "આત્મસંતુષ્ટ", "raw": "ykí{Mktíkwü", "hex": "79 6b ed 7b 4d 6b 74 ed 6b 77 fc", "unswap": "ytí{Mtkítwü", "refs": ["Revelation 3"], "n": 1}

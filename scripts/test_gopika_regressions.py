@@ -113,6 +113,14 @@ CASES = [
     ('rLkËkuo»k',     'નિર્દોષ',   'nirdosh - control'),
     ('ßÞkurík{oÞ',    'જ્યોતિર્મય', 'jyotirmay - control'),
     ('ríkMkko',       'તિર્સા',    'tirsa - control'),
+    # full-consonant Š reph+short-i over an Arpita-SWAPPED carrier: raw Ë=દ (not
+    # the base-font સ). Callback must unswap the matched carrier before lookup.
+    ('MkkŠËMk',       'સાર્દિસ',   'Sardis - raw ŠË -> ર્દિ (was સાર્સિસ)'),
+    ('MkkŠËMkLkk',    'સાર્દિસના', 'Sardis-na'),
+    ('MkkŠËMk{kt',    'સાર્દિસમાં', 'Sardis-maan'),
+    ('rLkŠËü',        'નિર્દિષ્ટ', 'nirdisht - preface/trace control for ŠË'),
+    # raw/base contrast guards for the swapped carriers
+    ('økŠŒc',         'ગર્તિષ્ઠ',  'raw ŠŒ -> ર્તિ (Œ=ત) contrast guard'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),
