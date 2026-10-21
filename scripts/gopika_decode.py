@@ -346,6 +346,12 @@ def convert(gopika_text):
     #    decodes to the o/au matra.)
     s = re.sub(r'(' + H + r')kku', r'\1' + INH + 'ku', s)
     s = re.sub(r'(' + H + r')kki', r'\1' + INH + 'ki', s)
+    # HALF + kkì -> candra-o. The first k completes the half-form (-> INH so the
+    # virama drops); the remaining 'kì' is the candra-o carrier (unswap kì -> tì,
+    # which is the longest table key -> ૉ). Must run BEFORE the generic 'kk'
+    # below, else that consumes the first two k's as aa and strands ì as candra-e
+    # (MkkìLku -> સાૅને instead of સૉને). Single-k candra-e 'Mkì'->સૅ is untouched.
+    s = re.sub(r'(' + H + r')kkì', r'\1' + INH + 'kì', s)
     # HALF + kk -> genuine aa
     s = re.sub(r'(' + H + r')kk', r'\1' + AA, s)
     # HALF + k + (real matra byte) -> keep the matra, k is inherent completion

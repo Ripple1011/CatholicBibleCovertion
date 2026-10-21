@@ -121,6 +121,12 @@ CASES = [
     ('rLkŠËü',        'નિર્દિષ્ટ', 'nirdisht - preface/trace control for ŠË'),
     # raw/base contrast guards for the swapped carriers
     ('økŠŒc',         'ગર્તિષ્ઠ',  'raw ŠŒ -> ર્તિ (Œ=ત) contrast guard'),
+    # HALF-form + kkì = candra-o ૉ (first k completes half-form, kì=candra-o).
+    # Must NOT be eaten by the generic HALF+kk->aa branch.
+    ('MkkìLku',       'સૉને',      'Sone (candra-o) - was સાૅને'),
+    ('Mkì',           'સૅ',        'single-k candra-e stays ૅ (NOT candra-o)'),
+    ('MxkìEf',        'સ્ટૉઈક',    'stoik - full-cons + kì candra-o (control)'),
+    ('{kìh',          'મૉર',       'mor - full-cons + kì candra-o (control)'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

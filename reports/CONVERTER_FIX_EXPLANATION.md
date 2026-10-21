@@ -335,3 +335,14 @@ Sardis decoded as સાર્સિસ. Fix: normalize the single matched carri
 unswap_arpita() before lookup. No-op for non-swapped carriers. Trace-wide delta =
 exactly 4 raw records (3 Sardis verses Rev 1:11/3:1/3:4 + 1 Mark-preface
 નિર્દિષ્ટ); live Bible diff = exactly 3 verses. See BIBLE_AUDIT_PASS10_RESOLUTION.md.
+
+---
+
+## Fix: half-form + candra-o (kkì) — Bible Pass-11
+
+After a half-form consonant, the generic HALF+kk->aa branch consumed the first
+two k's of kkì and stranded ì as a bare candra-e, so સૉને decoded as સાૅને (two
+dependent vowels ા+ૅ). Added a HALF+kkì branch before the generic kk: first k ->
+INH completion, remaining kì unswaps to tì (longest table key) -> candra-o ૉ.
+Trace-wide delta = exactly 1 record (સાૅને->સૉને, 2 Kings 17:4). Anomaly
+"two-matras-in-a-row" 1->0 corroborates. See BIBLE_AUDIT_PASS11_RESOLUTION.md.
