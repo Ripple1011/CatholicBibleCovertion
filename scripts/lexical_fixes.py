@@ -73,9 +73,13 @@ PHRASE_FIXES = {
 WORD_FIXES = {
     'સજ્યાં': 'સર્જ્યાં',
     'સજ્યું': 'સર્જ્યું',
-    # 1st/2nd person pronouns: source byte U(0x55) is anusvara ં in most words
-    # (નોંધ, પહોંચી...) but these two pronouns need ેં. Fixing the decoder would
-    # corrupt the anusvara words, so correct the two pronouns here.
+    # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
+    # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
+    # words, not an exception. They stay here only because the Pass-12 decoder
+    # fix is deliberately bounded to the ખ+U/ફ+U stems (a global U->ut would
+    # cross frozen boundaries like પહાંચ-). If/when the global U mapping is
+    # approved, these two standalone pronouns should move into the decoder and
+    # be removed here. See BIBLE_AUDIT_PASS12_RESOLUTION.md.
     'તં': 'તેં',    # 'you did' (íkU ×305)
     'મં': 'મેં',    # 'I/me'    ({U ×291)
     # FULL-consonant + k spurious-aa that is lexical (same ambiguity as સવાર):

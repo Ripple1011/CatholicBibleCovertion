@@ -127,6 +127,22 @@ CASES = [
     ('Mkì',           'સૅ',        'single-k candra-e stays ૅ (NOT candra-o)'),
     ('MxkìEf',        'સ્ટૉઈક',    'stoik - full-cons + kì candra-o (control)'),
     ('{kìh',          'મૉર',       'mor - full-cons + kì candra-o (control)'),
+    # Pass 12: raw U(0x55) glyph = e-matra + anusvara (ેં), NOT nasal-only.
+    # Bounded to the ખેંચ- (¾U[) and ફેંક- (VUf) stems.
+    ('¾U[eLku',       'ખેંચીને',   'khenchine - raw U carries e-matra (was ખંચીને)'),
+    ('¾U[u',          'ખેંચે',     'khenche'),
+    ('¾U[u÷k',        'ખેંચેલા',   'khenchela'),
+    ('¾U[íkku',       'ખેંચતો',    'khenchto'),
+    ('VUfeLku',       'ફેંકીને',   'phenkine - V U f stem'),
+    # conjunct inflections of the SAME two stems (¾U/VU anchor, ચ્ય/ક્ય follower)
+    ('¾UåÞwt',        'ખેંચ્યું',  'khenchyu - ¾U + ચ્ય conjunct'),
+    ('¾UåÞku',        'ખેંચ્યો',   'khenchyo'),
+    ('VUõâwt',        'ફેંક્યું',  'phenkyu - VU + ક્ય conjunct'),
+    ('VUõâku',        'ફેંક્યો',   'phenkyo'),
+    # negatives/controls for Pass 12: these must NOT change
+    ('¾t[kðwt',       'ખંચાવું',   'khanchavu - plain raw t (NO U); stays nasal-only'),
+    ('MkkUÃkðkLkwt',  'સાંપવાનું',  'aa+U family held outside bounded release (unchanged)'),
+    ('ÃknkU[e',       'પહાંચી',    'pahanchi - FROZEN form, bounded must not touch'),
     # Š = reph ર્ + short-i િ as a pre-base unit riding the next consonant
     ('{qŠík',        'મૂર્તિ',    'murti - Š reph+short-i -> ર્ on ત'),
     ('feŠík',        'કીર્તિ',    'kirti'),

@@ -8,7 +8,12 @@ Proven rules (verified against this app's corpus):
   * Arpita variant: swap k<->t and the Œ/Ë/‚ cycle to reach the base table.
   * base short-i matra = 'r' (0x72), stored BEFORE its consonant -> move AFTER.
   * reph = 'o' (0x6f), trailing marker AFTER a consonant cluster -> leading ર્.
-  * 'O' (0x4f), 'U' (0x55) = anusvara ં appearing after a matra / word-final.
+  * 'O' (0x4f) = anusvara ં appearing after a matra / word-final.
+  * 'U' (0x55): the original GopikaTWO_N glyph has TWO contours — the complete
+    e-matra ('u'/ે) outline PLUS a nasal dot — so U = ે + ં (= raw 'ut'), NOT a
+    bare anusvara. The EXTRA table's legacy U->ં entry drops the vowel; Pass 12
+    expands U->'ut' on the raw stream for the demonstrated ખ+U/ફ+U stems. (The
+    old "U = anusvara only" note was corrected by GopikaTWO_N.TTF glyph evidence.)
   * half-form (C+virama) directly before a vowel matra -> drop the virama.
 
 This reaches ~99.997% Latin-free. Remaining residue (~180 chars across the
@@ -297,6 +302,24 @@ def convert(gopika_text):
     them structurally (drop the half-form virama; add 'ા' only for AA).
     """
     s = gopika_text
+
+    # Pass 12: the original GopikaTWO_N 'U'(0x55) glyph has TWO contours — the
+    # complete e-matra ('u') outline PLUS a nasal dot — so raw U = e-matra +
+    # anusvara ('ેં'), equivalent to the raw pair 'ut' (u='ે', t=nasal). The
+    # EXTRA table still maps bare U->'ં' (nasal only), which silently drops the
+    # vowel. We expand U->'ut' on the raw stream so the vowel is decoded normally.
+    #
+    # DELIBERATELY BOUNDED to the two demonstrated stems ખ+U (¾U, ખેંચ-) and
+    # ફ+U (VU, ફેંક-). We anchor on the STEM CONSONANT (¾/V) rather than the
+    # follower, so every inflection is covered uniformly: plain ચ/ક (¾U[/VUf ->
+    # ખેંચ-/ફેંક-) AND the ચ્ય/ક્ય conjuncts (¾Uå/VUõ -> ખેંચ્ય-/ફેંક્ય-). This is
+    # still bounded: the frozen પહાંચ- family is raw h+U (ÃknkU[..), which contains
+    # neither '¾U' nor 'VU'; the aa+U family (સાંપ-=MkkU..) and the nasal-only
+    # raw-t word ખંચાવું (¾t[.., no U) are likewise untouched. A GLOBAL U->ut
+    # would rewrite 60+ frozen પહાંચ- forms and સાંપ- and is held out of release.
+    # Standalone pronoun U-words ({U=મેં, íkU=તેં) are the lexical layer's job.
+    s = re.sub(r'(?<=¾)U|(?<=V)U', 'ut', s)
+
     H = '[' + HALF_CONS_CLASS + ']'
 
     # 'Š'(0x160) = reph ર્ + short-i િ as a PRE-BASE unit (JS: ર્િ -> Š). It sits

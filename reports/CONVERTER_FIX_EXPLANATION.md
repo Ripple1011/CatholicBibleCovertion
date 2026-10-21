@@ -346,3 +346,17 @@ dependent vowels ા+ૅ). Added a HALF+kkì branch before the generic kk: first
 INH completion, remaining kì unswaps to tì (longest table key) -> candra-o ૉ.
 Trace-wide delta = exactly 1 record (સાૅને->સૉને, 2 Kings 17:4). Anomaly
 "two-matras-in-a-row" 1->0 corroborates. See BIBLE_AUDIT_PASS11_RESOLUTION.md.
+
+---
+
+## Fix: raw U glyph = e-matra + anusvara (ખેંચ-/ફેંક-) — Bible Pass-12
+
+Font-outline evidence (GopikaTWO_N.TTF) proved raw U(0x55) has two contours: the
+complete e-matra (u/ે) outline PLUS a nasal dot, so U = ે+ં = raw 'ut'. The
+legacy EXTRA U->ં mapping dropped the vowel (ખેંચીને decoded as ખંચીને). Fix:
+expand U->'ut' on the raw stream, BOUNDED to the demonstrated stem consonants
+¾(ખ)/V(ફ): re.sub(r'(?<=¾)U|(?<=V)U','ut',s). A global U->ut (381 forms) would
+rewrite 60+ frozen પહાંચ- and the સાંપ- family and is held out of release. Full
+rebuild delta: 189 Bible verses, ALL ં->ેં e-matra restorations; songbooks 16
+likewise; frozen પહાંચ-/સાંપ- and raw-t ખંચાવું untouched. Corrected the old
+"U = anusvara only" docs. See BIBLE_AUDIT_PASS12_RESOLUTION.md.
