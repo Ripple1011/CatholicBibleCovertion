@@ -73,6 +73,12 @@ PHRASE_FIXES = {
 WORD_FIXES = {
     'સજ્યાં': 'સર્જ્યાં',
     'સજ્યું': 'સર્જ્યું',
+    # Bible Pass 13 — Psalm 119:172 (OT/46/119/172). SOURCE DEFECT: the raw token
+    # yk¿kyku lacks the extra k that carries the long-ā after જ્ઞ. Correctly
+    # encoded yk¿kkyku -> આજ્ઞાઓ already decodes right (no entry needed); the
+    # decoder must NOT invent the missing byte, so this is lexical. Same-chapter
+    # 119:176 uses the correct plural as an internal control. (×1 in corpus.)
+    'આજ્ઞઓ': 'આજ્ઞાઓ',
     # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
     # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
     # words, not an exception. They stay here only because the Pass-12 decoder

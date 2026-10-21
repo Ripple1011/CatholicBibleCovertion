@@ -166,6 +166,20 @@ FIX_CASES = [
     ('મોકલ્યંુ', 'મોકલ્યું'),
 ]
 
+# Lexical-layer cases (apply_lexical_fixes), with Gujarati word-boundary guards.
+# (input, expected). These test the WORD_FIXES/PHRASE_FIXES overlay, NOT decode.
+LEX_CASES = [
+    # Bible Pass 13: source-defect plural of આજ્ઞા (Psalm 119:172). Whole word only.
+    ('આજ્ઞઓ', 'આજ્ઞાઓ'),
+    ('તારી આજ્ઞઓ મહીં', 'તારી આજ્ઞાઓ મહીં'),   # in situ (the verse context)
+    # NEGATIVE boundary controls: correctly-encoded forms must pass THROUGH.
+    ('આજ્ઞાઓ', 'આજ્ઞાઓ'),                        # already correct (×249 in corpus)
+    ('આજ્ઞાઓનું', 'આજ્ઞાઓનું'),                  # correct + suffix
+    ('આજ્ઞા', 'આજ્ઞા'),                           # singular
+    ('યજ્ઞો', 'યજ્ઞો'), ('જ્ઞાન', 'જ્ઞાન'),       # unrelated જ્ઞ words
+    ('કોઈઆજ્ઞઓ', 'કોઈઆજ્ઞઓ'),                    # Gujarati prefix -> NO whole-word match
+]
+
 
 def main():
     from gopika_decode import fix_unicode
@@ -188,7 +202,16 @@ def main():
         if not ok:
             fails += 1
         print(f"{'OK' if ok else '!!'} {bad!r:14} -> {got!r:14} exp={good!r}")
-    total = len(CASES) + len(FIX_CASES)
+    # lexical-layer cases
+    print("  -- apply_lexical_fixes --")
+    from lexical_fixes import apply_lexical_fixes
+    for src, good in LEX_CASES:
+        got = apply_lexical_fixes(src)
+        ok = (got == good)
+        if not ok:
+            fails += 1
+        print(f"{'OK' if ok else '!!'} {src!r:18} -> {got!r:18} exp={good!r}")
+    total = len(CASES) + len(FIX_CASES) + len(LEX_CASES)
     print(f"\n{total - fails}/{total} pass")
     return 1 if fails else 0
 

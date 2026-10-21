@@ -360,3 +360,14 @@ rewrite 60+ frozen પહાંચ- and the સાંપ- family and is held out
 rebuild delta: 189 Bible verses, ALL ં->ેં e-matra restorations; songbooks 16
 likewise; frozen પહાંચ-/સાંપ- and raw-t ખંચાવું untouched. Corrected the old
 "U = anusvara only" docs. See BIBLE_AUDIT_PASS12_RESOLUTION.md.
+
+---
+
+## Fix: source-defect plural આજ્ઞઓ->આજ્ઞાઓ (Psalm 119:172) — Bible Pass-13 (lexical)
+
+The raw token yk¿kyku omits the extra k that encodes the long-ā after જ્ઞ, so it
+genuinely reads આજ્ઞઓ; the correctly-encoded yk¿kkyku already decodes to આજ્ઞાઓ.
+The decoder is faithful to both and must not invent the missing byte, so this is
+a WORD_FIXES lexical entry, not a converter change. Full rebuild delta = exactly
+1 Bible verse (OT/46/119/172); songbooks byte-identical. Same-chapter 119:176 is
+the internal control. See BIBLE_AUDIT_PASS13_RESOLUTION.md.
