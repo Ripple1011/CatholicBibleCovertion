@@ -178,6 +178,17 @@ LEX_CASES = [
     ('આજ્ઞા', 'આજ્ઞા'),                           # singular
     ('યજ્ઞો', 'યજ્ઞો'), ('જ્ઞાન', 'જ્ઞાન'),       # unrelated જ્ઞ words
     ('કોઈઆજ્ઞઓ', 'કોઈઆજ્ઞઓ'),                    # Gujarati prefix -> NO whole-word match
+    # Bible Pass 14: source half-dha ધ્ -> half-gha ઘ્ (ingratitude family).
+    ('કૃતધ્નતા', 'કૃતઘ્નતા'),                     # Wisdom 14:26
+    ('કૃતધ્ની', 'કૃતઘ્ની'),                        # 2 Timothy 3:2
+    ('સારા માણસોની વ્યગ્રતા, કૃતધ્નતા, અંતરની',
+     'સારા માણસોની વ્યગ્રતા, કૃતઘ્નતા, અંતરની'),   # in situ (Wisdom 14:26)
+    # NEGATIVE / idempotence controls for Pass 14
+    ('કૃતઘ્નીઓ', 'કૃતઘ્નીઓ'),                      # Luke 6:35 control - unchanged
+    ('કૃતઘ્નતા', 'કૃતઘ્નતા'),                      # already correct - idempotent
+    ('કૃતઘ્ની', 'કૃતઘ્ની'),
+    ('મધ્ય', 'મધ્ય'), ('ધ્યાન', 'ધ્યાન'), ('અધ્યક્ષ', 'અધ્યક્ષ'),  # no generic ધ replace
+    ('કૃતધ્નીઓ', 'કૃતધ્નીઓ'),                      # Gujarati suffix -> NO whole-word match
 ]
 
 

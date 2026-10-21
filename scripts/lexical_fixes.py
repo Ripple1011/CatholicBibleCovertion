@@ -79,6 +79,13 @@ WORD_FIXES = {
     # decoder must NOT invent the missing byte, so this is lexical. Same-chapter
     # 119:176 uses the correct plural as an internal control. (×1 in corpus.)
     'આજ્ઞઓ': 'આજ્ઞાઓ',
+    # Bible Pass 14 — SOURCE DEFECT: source wrote half-dha æ(e6, ધ્) where this
+    # word family needs half-gha Î(ce, ઘ્). Decoder is faithful to both glyphs, so
+    # this is lexical, not a converter remap (remapping æ would corrupt every real
+    # ધ્ word). Same-edition control f]íkÎLkeyku -> કૃતઘ્નીઓ (Luke 6:35) already
+    # decodes correctly. Each deficient form occurs once in the live Bible.
+    'કૃતધ્નતા': 'કૃતઘ્નતા',  # Wisdom 14:26 (OT/25/14/26); f]íkæLkíkk
+    'કૃતધ્ની': 'કૃતઘ્ની',    # 2 Timothy 3:2 (NT/16/3/2);  f]íkæLke
     # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
     # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
     # words, not an exception. They stay here only because the Pass-12 decoder

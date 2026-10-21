@@ -371,3 +371,14 @@ The decoder is faithful to both and must not invent the missing byte, so this is
 a WORD_FIXES lexical entry, not a converter change. Full rebuild delta = exactly
 1 Bible verse (OT/46/119/172); songbooks byte-identical. Same-chapter 119:176 is
 the internal control. See BIBLE_AUDIT_PASS13_RESOLUTION.md.
+
+---
+
+## Fix: source half-dha->half-gha કૃતધ્ન->કૃતઘ્ન — Bible Pass-14 (lexical)
+
+Source wrote half-dha æ(e6, ધ્) where the ingratitude word family needs half-gha
+Î(ce, ઘ્). Decoder is faithful to both glyphs, so remapping æ would corrupt real
+ધ્ words -> lexical, not converter. Two WORD_FIXES entries: કૃતધ્નતા->કૃતઘ્નતા
+(Wisdom 14:26), કૃતધ્ની->કૃતઘ્ની (2 Timothy 3:2). Same-edition control કૃતઘ્નીઓ
+(Luke 6:35, source Î) decodes correctly, untouched. Full rebuild delta = exactly
+2 Bible verses; songbooks byte-identical. See BIBLE_AUDIT_PASS14_RESOLUTION.md.
