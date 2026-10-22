@@ -207,6 +207,13 @@ LEX_CASES = [
     # protected numbers that must never be touched
     ('૪૫,૬૫૦', '૪૫,૬૫૦'),                  # Gad, Numbers 2 southern camp
     ('૪૦,૫૦૦', '૪૦,૫૦૦'),                  # Gad, Numbers 26:18 (different census)
+    # Bible Pass 19 — Genesis 14:22 truncated oath: add missing ે (ક -> કે).
+    # Uses the decode-stage “મં (PHRASE_FIXES runs before the મં->મેં WORD_FIX);
+    # the WORD_FIX then also turns “મં into “મેં within the same call.
+    ('પણ અબ્રામે જવાબ આપ્યો, “મં પૃથ્વી અને આકાશના સર્જનહાર પ્રભુ પરમેશ્વર આગળ સોગંદ લીધા છે ક',
+     'પણ અબ્રામે જવાબ આપ્યો, “મેં પૃથ્વી અને આકાશના સર્જનહાર પ્રભુ પરમેશ્વર આગળ સોગંદ લીધા છે કે'),
+    # NEGATIVE: a bare ક in any other context must NOT be touched (full-value key).
+    ('એક', 'એક'), ('ક ', 'ક '), ('તેઓ ક ખરા', 'તેઓ ક ખરા'),
 ]
 
 

@@ -418,3 +418,16 @@ One full-value PHRASE_FIXES overlay; single code-point change (U+0AEB->U+0AE6).
 Full rebuild delta = exactly 1 Bible verse (OT/4/2/24); protected ૪૫,૬૫૦ (Gad) and
 26:18 ૪૦,૫૦૦ untouched; grouping intact; songbooks byte-identical. See
 BIBLE_AUDIT_PASS17_RESOLUTION.md.
+
+---
+
+## Fix: truncated oath Genesis 14:22 ક->કે — Bible Pass-19 (phrase)
+
+Source v22 ends in a lone raw byte f (=ક) with no matra (assets/0/1/14.html:
+'...÷eÄk Au f' then the v23 anchor); fu would be needed for કે. Decoder and
+extractor both faithful -> source truncation. Intended કે ("sworn THAT", v23
+continues the clause); છે કે occurs 982× and this is the ONLY verse ending in
+bare ક. One full-value PHRASE_FIXES overlay adds the ે matra; key uses the
+decode-stage “મં since PHRASE runs before the મં->મેં WORD_FIX. Full rebuild
+delta = exactly 1 Bible verse (OT/1/14/22); keys v22/v23 kept separate; songbooks
+byte-identical. See BIBLE_AUDIT_PASS19_RESOLUTION.md.

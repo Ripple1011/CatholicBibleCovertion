@@ -40,6 +40,17 @@ PHRASE_FIXES = {
     # all other numbers (incl. Gad ૪૫,૬૫૦ and the 26:18 ૪૦,૫૦૦) untouched.
     '“પશ્ચિમ બાજુએ એફ્રાઈમના વંશની સેનાના ધ્વજ હેઠળના લોકોએ નીચેના આગેવાનો હેઠળ ટુકડીવાર છાવણી નાખવી : એફ્રાઈમના વંશજેના આગેવાન એલિશામા બિન અમિહુદની આગેવાની હેઠળ ૪૫,૫૦૦ માણસો. એના પછી મનાશાના વંશજેના આગેવાન ગમલિયેલ બિન પદાહસોરની આગેવાની હેઠળ ૩૨,૨૦૦ માણસો. બિન્યામીનના વંશજેના આગેવાન અબિદાન બિન ગિદોનીની આગેવાની હેઠળ ૩૫,૪૦૦ માણસો. એફ્રાઈમના વંશજેની છાવણીના માણસોની કુલ સંખ્યા ૧,૦૮,૧૦૦ . કૂચ કરતી વખતે તેઓ ત્રીજે સ્થાને રહે.':
         '“પશ્ચિમ બાજુએ એફ્રાઈમના વંશની સેનાના ધ્વજ હેઠળના લોકોએ નીચેના આગેવાનો હેઠળ ટુકડીવાર છાવણી નાખવી : એફ્રાઈમના વંશજેના આગેવાન એલિશામા બિન અમિહુદની આગેવાની હેઠળ ૪૦,૫૦૦ માણસો. એના પછી મનાશાના વંશજેના આગેવાન ગમલિયેલ બિન પદાહસોરની આગેવાની હેઠળ ૩૨,૨૦૦ માણસો. બિન્યામીનના વંશજેના આગેવાન અબિદાન બિન ગિદોનીની આગેવાની હેઠળ ૩૫,૪૦૦ માણસો. એફ્રાઈમના વંશજેની છાવણીના માણસોની કુલ સંખ્યા ૧,૦૮,૧૦૦ . કૂચ કરતી વખતે તેઓ ત્રીજે સ્થાને રહે.',
+    # Bible Pass 19 — Genesis 14:22 (OT/1/chapters/14/22). SOURCE DEFECT:
+    # the verse ends in a lone raw byte f (=ક) with NO matra; the intended word
+    # is કે ("...has sworn THAT..." connecting to v23). Confirmed from the APK
+    # source (assets/0/1/14.html: '...MkkuøktË ÷eÄk Au f' then the v23 anchor),
+    # so decoder AND extraction are faithful — the source word is truncated. This
+    # is the ONLY verse in the Bible ending in a bare ક; the છે કે pattern occurs
+    # 982×. Add the missing ે matra only; keep the separate v22/v23 keys.
+    # NOTE: PHRASE_FIXES runs BEFORE the મં->મેં WORD_FIX, so this key must use the
+    # decode-stage form “મં (not the final “મેં).
+    'પણ અબ્રામે જવાબ આપ્યો, “મં પૃથ્વી અને આકાશના સર્જનહાર પ્રભુ પરમેશ્વર આગળ સોગંદ લીધા છે ક':
+        'પણ અબ્રામે જવાબ આપ્યો, “મં પૃથ્વી અને આકાશના સર્જનહાર પ્રભુ પરમેશ્વર આગળ સોગંદ લીધા છે કે',
     # Matthew 5:19: stray lone ે after કોઈ -> drop (verb is just કોઈ)
     'જે કોઈે આજ્ઞાઓનું': 'જે કોઈ આજ્ઞાઓનું',
     # Kirtansagar #103: જ્યાં િ છનવાયે -> જ્યાં નિજ છવાયે (confirmed)
