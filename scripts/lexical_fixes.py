@@ -22,6 +22,15 @@ import re
 # matras etc.). Applied as plain substring replacements (order before WORD_FIXES).
 # Each verified against the raw bytes + full-verse context.
 PHRASE_FIXES = {
+    # Bible Pass 15 — 2 Timothy 4:20 (NT/16/chapters/4/20). SOURCE-LEVEL
+    # person/place transposition: the source attaches the object marker ને to
+    # Miletus (a place) and the locative માં to Trophimus (a person). Both names
+    # decode correctly everywhere and are retained verbatim; only their
+    # grammatical slots are swapped. Same-edition controls: Acts 21:29 ત્રોફિમસને
+    # (Trophimus is a person), Acts 20:17 મિલેતસથી (Miletus is a place). Full,
+    # exact verse so NO name/suffix is replaced globally and it cannot half-apply.
+    'અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને મિલેતસને હું ત્રોફિમસમાં માંદો મૂકી આવ્યો હતો.':
+        'અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને ત્રોફિમસને હું મિલેતસમાં માંદો મૂકી આવ્યો હતો.',
     # Matthew 5:19: stray lone ે after કોઈ -> drop (verb is just કોઈ)
     'જે કોઈે આજ્ઞાઓનું': 'જે કોઈ આજ્ઞાઓનું',
     # Kirtansagar #103: જ્યાં િ છનવાયે -> જ્યાં નિજ છવાયે (confirmed)

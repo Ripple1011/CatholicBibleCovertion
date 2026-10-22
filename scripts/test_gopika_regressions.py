@@ -189,6 +189,17 @@ LEX_CASES = [
     ('કૃતઘ્ની', 'કૃતઘ્ની'),
     ('મધ્ય', 'મધ્ય'), ('ધ્યાન', 'ધ્યાન'), ('અધ્યક્ષ', 'અધ્યક્ષ'),  # no generic ધ replace
     ('કૃતધ્નીઓ', 'કૃતધ્નીઓ'),                      # Gujarati suffix -> NO whole-word match
+    # Bible Pass 15 — 2 Timothy 4:20 person/place transposition (full-verse phrase).
+    ('અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને મિલેતસને હું ત્રોફિમસમાં માંદો મૂકી આવ્યો હતો.',
+     'અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને ત્રોફિમસને હું મિલેતસમાં માંદો મૂકી આવ્યો હતો.'),
+    # idempotence: the corrected verse passes through unchanged
+    ('અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને ત્રોફિમસને હું મિલેતસમાં માંદો મૂકી આવ્યો હતો.',
+     'અરાસ્તસ કરિંથ રહી પડ્યો હતો, અને ત્રોફિમસને હું મિલેતસમાં માંદો મૂકી આવ્યો હતો.'),
+    # NEGATIVE: the two names appearing SEPARATELY must NOT be swapped (Acts controls)
+    ('એફેસસના ત્રોફિમસને પાઉલ', 'એફેસસના ત્રોફિમસને પાઉલ'),
+    ('મિલેતસથી તેણે એફેસસ', 'મિલેતસથી તેણે એફેસસ'),
+    ('મિલેતસને', 'મિલેતસને'),            # bare token, not the phrase -> unchanged
+    ('ત્રોફિમસમાં', 'ત્રોફિમસમાં'),        # bare token, not the phrase -> unchanged
 ]
 
 

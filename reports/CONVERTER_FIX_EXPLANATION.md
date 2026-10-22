@@ -382,3 +382,15 @@ Source wrote half-dha æ(e6, ધ્) where the ingratitude word family needs hal
 (Wisdom 14:26), કૃતધ્ની->કૃતઘ્ની (2 Timothy 3:2). Same-edition control કૃતઘ્નીઓ
 (Luke 6:35, source Î) decodes correctly, untouched. Full rebuild delta = exactly
 2 Bible verses; songbooks byte-identical. See BIBLE_AUDIT_PASS14_RESOLUTION.md.
+
+---
+
+## Fix: person/place transposition 2 Timothy 4:20 — Bible Pass-15 (phrase)
+
+Source put the two valid names in the wrong grammatical slots: object marker ને
+on Miletus (a place), locative માં on Trophimus (a person). Decoder is faithful
+to both; the fault is source wording, so a full-verse PHRASE_FIXES overlay swaps
+them back (ત્રોફિમસને હું મિલેતસમાં). Same-edition controls: Acts 21:29 ત્રોફિમસને,
+Acts 20:17 મિલેતસથી. Full rebuild delta = exactly 1 Bible verse (NT/16/4/20);
+songbooks byte-identical. B (પરાકાષ્ટા) review-only; C (વિષ્ટા ×4) preserved as an
+attested spelling. See BIBLE_AUDIT_PASS15_RESOLUTION.md.
