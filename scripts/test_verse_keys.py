@@ -38,6 +38,16 @@ def main():
     big = [k for k in luke6 if k.isdigit() and int(k) > 49]
     check(not big, f'no out-of-range Luke 6 keys ({big})')
 
+    # Pass 17: Numbers 2:24 Ephraim census corrected to ૪૦,૫૦૦ and reconciles
+    num224 = b['OT']['4']['chapters']['2']['24']
+    check('૪૦,૫૦૦' in num224, 'Numbers 2:24 Ephraim census is ૪૦,૫૦૦')
+    check('૪૫,૫૦૦' not in num224, 'Numbers 2:24 deficient ૪૫,૫૦૦ removed')
+    g2a = str.maketrans('૦૧૨૩૪૫૬૭૮૯', '0123456789')
+    import re as _re
+    grp = [int(x.translate(g2a).replace(',', '')) for x in _re.findall(r'[૦-૯,]+', num224) if ',' in x]
+    check(len(grp) >= 4 and sum(grp[:3]) == grp[3],
+          f'Numbers 2:24 camp subtotal reconciles ({grp[:3]} sum == {grp[3] if len(grp)>3 else "?"})')
+
     print(f"\n{'PASS' if not fails else 'FAIL'}: {len(keys)} Luke 6 verses, {fails} failures")
     return 1 if fails else 0
 

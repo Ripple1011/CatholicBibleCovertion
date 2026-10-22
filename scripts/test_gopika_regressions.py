@@ -200,6 +200,13 @@ LEX_CASES = [
     ('મિલેતસથી તેણે એફેસસ', 'મિલેતસથી તેણે એફેસસ'),
     ('મિલેતસને', 'મિલેતસને'),            # bare token, not the phrase -> unchanged
     ('ત્રોફિમસમાં', 'ત્રોફિમસમાં'),        # bare token, not the phrase -> unchanged
+    # Bible Pass 17 — Numbers 2:24 Ephraim census ૪૫,૫૦૦ -> ૪૦,૫૦૦ (full value).
+    # NEGATIVE: a bare ૪૫,૫૦૦ number alone must NOT be changed (no WORD_FIXES entry;
+    # only the exact full grouped value matches).
+    ('૪૫,૫૦૦', '૪૫,૫૦૦'),
+    # protected numbers that must never be touched
+    ('૪૫,૬૫૦', '૪૫,૬૫૦'),                  # Gad, Numbers 2 southern camp
+    ('૪૦,૫૦૦', '૪૦,૫૦૦'),                  # Gad, Numbers 26:18 (different census)
 ]
 
 

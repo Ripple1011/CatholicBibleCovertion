@@ -406,3 +406,15 @@ scoped 'relabel' mode in 20_build_json.py _VERSE_RECOVERY keyed on ('1',3,6,'63'
 -> 36, guarded against collision. One-key rename, zero text/count change. The
 file is the only one in the corpus missing v36 while having v63. See
 BIBLE_AUDIT_PASS16_RESOLUTION.md.
+
+---
+
+## Fix: Ephraim census ૪૫,૫૦૦->૪૦,૫૦૦ (Numbers 2:24) — Bible Pass-17 (lexical)
+
+Source digit typo: raw '45,500' faithfully decodes to ૪૫,૫૦૦ but must be ૪૦,૫૦૦.
+The value's own stated subtotal ૧,૦૮,૧૦૦ only reconciles with 40,500
+(40500+32200+35400=108100; 45500 gives 113100); Numbers 1:33 also reads ૪૦,૫૦૦.
+One full-value PHRASE_FIXES overlay; single code-point change (U+0AEB->U+0AE6).
+Full rebuild delta = exactly 1 Bible verse (OT/4/2/24); protected ૪૫,૬૫૦ (Gad) and
+26:18 ૪૦,૫૦૦ untouched; grouping intact; songbooks byte-identical. See
+BIBLE_AUDIT_PASS17_RESOLUTION.md.
