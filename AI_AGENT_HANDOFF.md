@@ -1,10 +1,39 @@
 # AI Agent Handoff — Gujarati Catholic Bible Spelling Audit (take-over context)
 
+> ## ⭐ CURRENT BASELINE — READ THIS FIRST (updated 2026-10-22)
+> This block supersedes any older "current state" / "produce Pass N" text below,
+> which is historical. Numbers here are authoritative.
+>
+> - **Pinned baseline commit:** `9fdd73e` (post-Pass-19). Re-pin to this and record
+>   its `output/bible.json` blob hash in your next handoff.
+> - **Next pass to produce: Bible Pass 20.** (Passes 1–19 are DONE — see
+>   `reports/BIBLE_AUDIT_PASS<N>_RESOLUTION.md`.)
+> - **Counts:** 34,891 verses · 236 `-` placeholders · 46 OT + 27 NT books.
+> - **Regression:** 150/150 (`scripts/test_gopika_regressions.py`, decoder+lexical)
+>   PLUS a separate build-level `scripts/test_verse_keys.py`.
+> - **Converter is stable:** Passes 13–19 were all source-defects fixed in the
+>   lexical/phrase/build layer with ZERO decoder changes. Classify carefully;
+>   don't propose decoder remaps unless raw bytes prove a decoding bug.
+> - **Open (do NOT re-flag as new):**
+>   - Hebrews 11:23 `ડયાં` vs `ડર્યાં` — review-only (Pass 18). Raw `zÞkO` has no
+>     `ર` in the source; changing it = inventing a byte (like protected `કયું`).
+>   - Global-U mapping + `સાંપ-`→`સોંપ-` (aa+U) — HELD pending maintainer decision;
+>     impact already measured (381 forms, would rewrite frozen `પહાંચ-`).
+>   - Full review queue: `reports/REVIEW_QUEUE.md`. `વિષ્ટા`/`વિષ્ટાની` is
+>     ATTESTED — keep it.
+> - **Method reminder:** for every candidate give exact raw/hex + live verse
+>   context, classify converter-bug vs source-defect vs review, and TRY to locate
+>   the matching `reports/raw_trace.jsonl` record. If you can't retrieve the raw
+>   record, say so and leave it review-only rather than guessing. Produce
+>   `BIBLE_AUDIT_PASS20_HANDOFF.md` and, if useful, a read-only verifier pinned to
+>   `9fdd73e`.
+
 You are taking over a long-running, multi-pass **spelling/conversion audit** of a
 Catholic Gujarati Bible + 3 songbooks. A previous agent ran several audit passes;
 a human maintainer (with a code-execution assistant) resolved each pass. Your job
-is to **produce the next audit pass** (Bible Pass 5), in the same style and with
-the same discipline as prior passes.
+is to **produce the next audit pass** (see the CURRENT BASELINE block above for
+the next pass number), in the same style and with the same discipline as prior
+passes.
 
 Read this entire file first. It gives you the full project, the method, what is
 already fixed, the guardrails, and exactly what to produce.
