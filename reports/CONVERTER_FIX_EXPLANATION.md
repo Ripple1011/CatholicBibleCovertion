@@ -394,3 +394,15 @@ them back (ત્રોફિમસને હું મિલેતસમાં)
 Acts 20:17 મિલેતસથી. Full rebuild delta = exactly 1 Bible verse (NT/16/4/20);
 songbooks byte-identical. B (પરાકાષ્ટા) review-only; C (વિષ્ટા ×4) preserved as an
 attested spelling. See BIBLE_AUDIT_PASS15_RESOLUTION.md.
+
+---
+
+## Fix: Luke 6:36 transposed source anchor (name="v63") — Bible Pass-16 (build)
+
+The source anchor assets/1/3/6.html reads <a id="v36" name="v63">36</a>: the id
+and visible numeral both say 36, only name has transposed digits. extract_verses
+captures from name, so the verse landed under key 63. Fixed with a location-
+scoped 'relabel' mode in 20_build_json.py _VERSE_RECOVERY keyed on ('1',3,6,'63')
+-> 36, guarded against collision. One-key rename, zero text/count change. The
+file is the only one in the corpus missing v36 while having v63. See
+BIBLE_AUDIT_PASS16_RESOLUTION.md.

@@ -82,6 +82,13 @@ _VERSE_RECOVERY = {
     ('0', 27, 27, '2'): ('drop_before', 2),   # Isaiah 27:2 duplicate of v1
     ('0', 31, 31, '5'): ('drop_before', 5),   # Ezekiel 31:5 v4 spillover
     ('0', 9, 29, '2'): ('recover_after', 3),  # 1 Samuel 29:2 -> recover v3
+    # Bible Pass 16 — Luke 6:36 (NT/3/6). SOURCE-ANCHOR DEFECT: the source markup
+    # is <a id="v36" name="v63">36</a> — the id AND the visible numeral both say
+    # 36; only the name attribute has transposed digits (v63), and extract_verses
+    # captures from name. Relabel 63->36 for THIS exact anchor only; no verse text
+    # changes, no count change. Source: assets/1/3/6.html
+    # (sha256 663fd364bbdad8d723aada345724a9e03b7aa65cadb0818c974892f7cb496f53).
+    ('1', 3, 6, '63'): ('relabel', 36),
 }
 _G2I = {ord(c): str(i) for i, c in enumerate('૦૧૨૩૪૫૬૭૮૯')}
 
@@ -101,6 +108,13 @@ def build_bible():
                 key = (coll, book, chap, vnum)
                 if key in _VERSE_RECOVERY:
                     mode, newv = _VERSE_RECOVERY[key]
+                    if mode == 'relabel':
+                        # pure key rename (transposed source anchor). Guard: the
+                        # target key must not already exist (never overwrite).
+                        assert str(newv) not in books[book][chap], \
+                            f"relabel target {newv} already present at {key}"
+                        books[book][chap][str(newv)] = text
+                        continue
                     # split at the inline OWN-number (gujarati digits == vnum)
                     mm = re.search(r'(?<=[.!?”’])\s*(' +
                                    ''.join('૦૧૨૩૪૫૬૭૮૯'[int(d)] for d in vnum) +
