@@ -122,6 +122,13 @@ WORD_FIXES = {
     # control મુહૂર્ત (Ecclesiasticus 14:12, raw {wnqíko) has the correct order.
     # Two code-point swaps only (U+0AC2<->U+0AC1); ×1 in corpus.
     'ખાતમૂહુર્ત': 'ખાતમુહૂર્ત',  # Job 38:7; ¾kík{qnwíko
+    # Bible Pass 22 — John 10:36 (NT/4/10/36). SOURCE DEFECT: the source uses
+    # half-ka õ(f5, ક્) where the verb needs full ka f(66, ક): {kuõÕÞku -> મોક્લ્યો.
+    # Decoder is faithful to both glyphs (õ->ક્, f->ક), so a global õ->f or ક્->ક
+    # remap would wreck genuine conjuncts -> lexical. Removes ONLY the first virama
+    # (after ક); the valid લ્ય conjunct is retained. Same-edition controls John
+    # 3:17 & 17:18 use મોકલ્યો (203× in corpus). ×1 deficient occurrence.
+    'મોક્લ્યો': 'મોકલ્યો',  # John 10:36; {kuõÕÞku
     # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
     # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
     # words, not an exception. They stay here only because the Pass-12 decoder

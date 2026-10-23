@@ -442,3 +442,15 @@ q/w remap. Same-edition control મુહૂર્ત (Ecclesiasticus 14:12, raw
 the correct order. One WORD_FIXES entry; full rebuild delta = exactly 1 Bible
 verse, two code-point swaps (U+0AC2<->U+0AC1), zero length change; control and
 songbooks unchanged. See BIBLE_AUDIT_PASS21_RESOLUTION.md.
+
+---
+
+## Fix: extra half-ka મોક્લ્યો->મોકલ્યો (John 10:36) — Bible Pass-22 (lexical)
+
+Source uses half-ka õ(f5, ક્) where the verb needs full ka f(66, ક): {kuõÕÞku ->
+મોક્લ્યો. Decoder faithful to both glyphs, so a global õ->f/ક્->ક remap would wreck
+real conjuncts -> lexical. Removes only the FIRST virama (after ક); the valid લ્ય
+conjunct stays. Same-edition controls John 3:17 & 17:18 use મોકલ્યો (203×). One
+WORD_FIXES entry; full rebuild delta = exactly 1 verse (NT/4/10/36), len 184->183;
+deficient form gone corpus-wide; controls/songbooks unchanged. See
+BIBLE_AUDIT_PASS22_RESOLUTION.md.

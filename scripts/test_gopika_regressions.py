@@ -154,6 +154,10 @@ CASES = [
     ('rÃkúÞ',        'પ્રિય',     'priya - half-form પ્ + ્ર'),
     ('økkrçkúÞu÷',   'ગાબ્રિયેલ', 'gabriel'),
     ('yrøkúÃÃkk',    'અગ્રિપ્પા', 'agrippa'),
+    # Pass 22: decoder must stay FAITHFUL to both half-ka and full-ka (the fix is
+    # lexical, NOT a decoder change). õ=ક્ half-form, f=ક full.
+    ('{kuõÕÞku',     'મોક્લ્યો',  'mok­lyo - source half-ka õ (lexically fixed later)'),
+    ('{kufÕÞku',     'મોકલ્યો',   'moklyo - correct full-ka f control'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the
@@ -221,6 +225,16 @@ LEX_CASES = [
     ('ખાતમુહૂર્ત', 'ખાતમુહૂર્ત'),       # already correct
     ('મુહૂર્ત', 'મુહૂર્ત'),             # Sirach 14:12 control root - unchanged
     ('મૂહુર્ત', 'મૂહુર્ત'),             # bare reversed root (not the compound) -> no match
+    # Bible Pass 22 — John 10:36 extra half-ka મોક્લ્યો -> મોકલ્યો (remove 1st virama).
+    ('મોક્લ્યો', 'મોકલ્યો'),
+    ('જગતમાં મોક્લ્યો છે', 'જગતમાં મોકલ્યો છે'),       # in situ
+    # NEGATIVE / idempotence / boundary (from the handoff's required fixtures)
+    ('મોકલ્યો', 'મોકલ્યો'),           # control form - unchanged
+    ('અમોક્લ્યો', 'અમોક્લ્યો'),        # Gujarati prefix -> no whole-word match
+    ('મોક્લ્યોમાં', 'મોક્લ્યોમાં'),    # Gujarati suffix -> no whole-word match
+    # preservation: related/legit forms must NOT change
+    ('મોકલ્યા', 'મોકલ્યા'), ('મોકલ્યું', 'મોકલ્યું'),
+    ('ક્લેશ', 'ક્લેશ'),               # genuine ક્લ conjunct stays
 ]
 
 
