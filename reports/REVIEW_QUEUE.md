@@ -22,6 +22,46 @@ rebuild showing exactly one affected verse.
 | 6 | પટી | spelling question | (as recorded) | — | Carried review; unresolved. |
 | 7 | અપ્યાં | spelling question | (as recorded) | — | Carried review; unresolved. |
 | 8 | ખંચાવું | nasal-only raw-t (NOT the Pass-12 ખેંચ- U family) | Sirach 7 / Isaiah 44 | `¾t[kðwt` | Raw has plain t, no U; no encoded e-matra to restore. Pass 12. |
+| 9 | છ શેર / ચાર શેર | ram & lamb grain-offering quantities (see detail below) | Numbers 28:12–13 | `A` / `[kh` | SOURCE itself is internally inconsistent with 3 parallel passages + USCCB. Content/editorial call. Pass 20. |
+
+## Detail for #9 — Numbers 28:12–13 grain-offering quantities (Pass 20)
+
+**This is a CONTENT/quantity question, not spelling — needs a publisher/native
+reader, and may be a genuine erratum in the printed edition worth reporting back
+to the publisher.**
+
+The monthly grain-offering portions in Numbers 28:12–13 disagree with the same
+edition's three parallel passages and with USCCB:
+
+| Animal | 28:12–13 (current) | 28:20–21 | 28:28–29 | USCCB (ephah) |
+|---|---|---|---|---|
+| calf/bull | છ (6) | છશેર (6) | છ શેર (6) | 3/10 |
+| ram (large sheep) | **છ (6)** ← odd | ચાર (4) | ચાર (4) | 2/10 |
+| lamb (small sheep) | **ચાર (4)** ← odd | બશેર (2) | બશેર (2) | 1/10 |
+
+So in 28:12–13 both the ram and lamb portions are one step too high; the expected
+descending 6/4/2 pattern is stated correctly three other times in the same chapter.
+
+**Source-evidence (APK inspected, `assets/0/4/28.html`,
+sha256 83a3a3d4e6fdc4aca2ee897576be43c43418b1647f283e97c04449732e44cc4f):**
+- 28:12 ram clause raw: `...{kuxk ½uxk ËeX íku÷u {kuÞu÷ku A þuh ÷kux` → `A`=છ(6)
+- 28:13 lamb clause raw: `...LkkLkk ½uxk {kxu íku÷u {kuÞu÷ku [kh þuh ÷kux` → `[kh`=ચાર(4)
+- control 28:20 ram: `[kh`=ચાર(4); control 28:29 lamb: `çkþuh`=બશેર(2)
+
+So the **decoder is FAITHFUL** — the printed source itself carries the inconsistent
+quantities. This is NOT a converter/extraction bug; it is an editorial/translation
+inconsistency in the source.
+
+**Why held (not auto-fixed):** unlike the Pass-17 census (provably wrong by the
+verse's own arithmetic) or the Pass-19 truncated oath (mechanically incomplete
+word), this source text is COMPLETE and well-formed; it merely disagrees with
+parallel passages. Correcting it would OVERRIDE what the printed Bible states,
+based on cross-referencing — a decision for the publisher / a native reader.
+
+**If a reviewer confirms the correction**, the minimal change is two verse-scoped
+phrase overlays: 28:12 ram `છ શેર`→`ચાર શેર`; 28:13 lamb `ચાર શેર`→`બશેર`. Do NOT
+touch the first calf `છ શેર` in 28:12, the animal counts in 28:11, the drink
+offering in 28:14, or any parallel/control verse. Never globally replace છ/ચાર.
 
 ## Separately: held pipeline DECISION (not a per-word review)
 
