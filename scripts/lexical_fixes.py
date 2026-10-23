@@ -129,6 +129,13 @@ WORD_FIXES = {
     # (after ક); the valid લ્ય conjunct is retained. Same-edition controls John
     # 3:17 & 17:18 use મોકલ્યો (203× in corpus). ×1 deficient occurrence.
     'મોક્લ્યો': 'મોકલ્યો',  # John 10:36; {kuõÕÞku
+    # Bible Pass 23 — Micah 4:13 (OT/38/4/13). SOURCE DEFECT: the raw token
+    # Mk{Ãkeooþ has TWO consecutive reph markers (o o = 6f 6f). The first makes the
+    # valid ર્પ cluster; the second adds an unwanted ર્ before final શ. Decoder is
+    # faithful (both o's are in the source), so this is lexical — remove only the
+    # second ર્. Related control: Ezekiel 36:26 અર્પીશ (single reph, raw yÃkeoþ).
+    # ×1 occurrence; expected સમર્પીશ is otherwise absent.
+    'સમર્પીર્શ': 'સમર્પીશ',  # Micah 4:13; Mk{Ãkeooþ
     # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
     # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
     # words, not an exception. They stay here only because the Pass-12 decoder

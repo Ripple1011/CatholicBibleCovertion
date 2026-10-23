@@ -158,6 +158,9 @@ CASES = [
     # lexical, NOT a decoder change). õ=ક્ half-form, f=ક full.
     ('{kuõÕÞku',     'મોક્લ્યો',  'mok­lyo - source half-ka õ (lexically fixed later)'),
     ('{kufÕÞku',     'મોકલ્યો',   'moklyo - correct full-ka f control'),
+    # Pass 23: decoder faithful to the SOURCE double-reph (fix is lexical).
+    ('Mk{Ãkeooþ',    'સમર્પીર્શ', 'samarpirsh - source has TWO o rephs (oo)'),
+    ('yÃkeoþ',       'અર્પીશ',    'arpish - single-reph control (Ezekiel 36:26)'),
 ]
 
 # Unicode-level fix_unicode() cases (post-decode normalization), from the
@@ -235,6 +238,15 @@ LEX_CASES = [
     # preservation: related/legit forms must NOT change
     ('મોકલ્યા', 'મોકલ્યા'), ('મોકલ્યું', 'મોકલ્યું'),
     ('ક્લેશ', 'ક્લેશ'),               # genuine ક્લ conjunct stays
+    # Bible Pass 23 — Micah 4:13 duplicated reph સમર્પીર્શ -> સમર્પીશ (drop 2nd ર્).
+    ('સમર્પીર્શ', 'સમર્પીશ'),
+    ('મને સમર્પીર્શ.', 'મને સમર્પીશ.'),             # in situ
+    # NEGATIVE / idempotence / boundary / preservation
+    ('સમર્પીશ', 'સમર્પીશ'),           # already correct
+    ('અસમર્પીર્શ', 'અસમર્પીર્શ'),       # Gujarati prefix -> no whole-word match
+    ('સમર્પીર્શનું', 'સમર્પીર્શનું'),   # Gujarati suffix -> no whole-word match
+    ('અર્પીશ', 'અર્પીશ'),             # Ezekiel control - unchanged
+    ('સમર્પિત', 'સમર્પિત'), ('સમર્પણ', 'સમર્પણ'),   # valid ર્પ words untouched
 ]
 
 

@@ -454,3 +454,15 @@ conjunct stays. Same-edition controls John 3:17 & 17:18 use મોકલ્ય�
 WORD_FIXES entry; full rebuild delta = exactly 1 verse (NT/4/10/36), len 184->183;
 deficient form gone corpus-wide; controls/songbooks unchanged. See
 BIBLE_AUDIT_PASS22_RESOLUTION.md.
+
+---
+
+## Fix: duplicated reph સમર્પીર્શ->સમર્પીશ (Micah 4:13) — Bible Pass-23 (lexical)
+
+Source token Mk{Ãkeooþ has TWO consecutive reph markers (oo = 6f 6f); the first
+makes the valid ર્પ, the second adds an unwanted ર્ before final શ. Decoder
+faithful (both o's in source, reorder makes two rephs), so a global oo->o rewrite
+would be wrong -> lexical: remove only the second ર્. Control Ezekiel 36:26 અર્પીશ
+(single reph, raw yÃkeoþ) unchanged. One WORD_FIXES entry; full rebuild delta =
+exactly 1 verse (OT/38/4/13), len 217->215; deficient gone corpus-wide; valid ર્પ
+words and songbooks unchanged. See BIBLE_AUDIT_PASS23_RESOLUTION.md.
