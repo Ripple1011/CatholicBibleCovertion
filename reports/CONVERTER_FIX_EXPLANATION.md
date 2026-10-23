@@ -431,3 +431,14 @@ bare ક. One full-value PHRASE_FIXES overlay adds the ે matra; key uses the
 decode-stage “મં since PHRASE runs before the મં->મેં WORD_FIX. Full rebuild
 delta = exactly 1 Bible verse (OT/1/14/22); keys v22/v23 kept separate; songbooks
 byte-identical. See BIBLE_AUDIT_PASS19_RESOLUTION.md.
+
+---
+
+## Fix: reversed u-vowel lengths ખાતમૂહુર્ત->ખાતમુહૂર્ત (Job 38:7) — Bible Pass-21 (lexical)
+
+Source reversed the two u-vowel LENGTHS: {q..nw gives મૂ+હુ (q=ૂ long, w=ુ short)
+where the word needs મુ+હૂ. Decoder faithful to both markers -> lexical, not a
+q/w remap. Same-edition control મુહૂર્ત (Ecclesiasticus 14:12, raw {wnqíko) has
+the correct order. One WORD_FIXES entry; full rebuild delta = exactly 1 Bible
+verse, two code-point swaps (U+0AC2<->U+0AC1), zero length change; control and
+songbooks unchanged. See BIBLE_AUDIT_PASS21_RESOLUTION.md.

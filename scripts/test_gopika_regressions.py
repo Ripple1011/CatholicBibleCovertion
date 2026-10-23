@@ -214,6 +214,13 @@ LEX_CASES = [
      'પણ અબ્રામે જવાબ આપ્યો, “મેં પૃથ્વી અને આકાશના સર્જનહાર પ્રભુ પરમેશ્વર આગળ સોગંદ લીધા છે કે'),
     # NEGATIVE: a bare ક in any other context must NOT be touched (full-value key).
     ('એક', 'એક'), ('ક ', 'ક '), ('તેઓ ક ખરા', 'તેઓ ક ખરા'),
+    # Bible Pass 21 — Job 38:7 reversed u-vowel lengths ખાતમૂહુર્ત -> ખાતમુહૂર્ત.
+    ('ખાતમૂહુર્ત', 'ખાતમુહૂર્ત'),
+    ('એનું ખાતમૂહુર્ત કોણે', 'એનું ખાતમુહૂર્ત કોણે'),   # in situ
+    # NEGATIVE / idempotence
+    ('ખાતમુહૂર્ત', 'ખાતમુહૂર્ત'),       # already correct
+    ('મુહૂર્ત', 'મુહૂર્ત'),             # Sirach 14:12 control root - unchanged
+    ('મૂહુર્ત', 'મૂહુર્ત'),             # bare reversed root (not the compound) -> no match
 ]
 
 

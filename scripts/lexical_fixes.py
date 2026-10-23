@@ -115,6 +115,13 @@ WORD_FIXES = {
     # decodes correctly. Each deficient form occurs once in the live Bible.
     'કૃતધ્નતા': 'કૃતઘ્નતા',  # Wisdom 14:26 (OT/25/14/26); f]íkæLkíkk
     'કૃતધ્ની': 'કૃતઘ્ની',    # 2 Timothy 3:2 (NT/16/3/2);  f]íkæLke
+    # Bible Pass 21 — Job 38:7 (OT/22/38/7). SOURCE DEFECT: the two u-vowel
+    # LENGTHS are reversed — source has મૂ+હુ (raw {q..nw: q=ૂ long, w=ુ short)
+    # where the word needs મુ+હૂ. Decoder is faithful to both markers (remapping
+    # q/w would corrupt every real u-vowel), so this is lexical. Same-edition
+    # control મુહૂર્ત (Ecclesiasticus 14:12, raw {wnqíko) has the correct order.
+    # Two code-point swaps only (U+0AC2<->U+0AC1); ×1 in corpus.
+    'ખાતમૂહુર્ત': 'ખાતમુહૂર્ત',  # Job 38:7; ¾kík{qnwíko
     # 1st/2nd person pronouns {U / íkU. NOTE (Pass 12): the GopikaTWO_N glyph
     # evidence shows raw U actually encodes ે+ં, so these ARE decoder-level ેં
     # words, not an exception. They stay here only because the Pass-12 decoder
