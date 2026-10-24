@@ -23,6 +23,30 @@ rebuild showing exactly one affected verse.
 | 7 | અપ્યાં | spelling question | (as recorded) | — | Carried review; unresolved. |
 | 8 | ખંચાવું | nasal-only raw-t (NOT the Pass-12 ખેંચ- U family) | Sirach 7 / Isaiah 44 | `¾t[kðwt` | Raw has plain t, no U; no encoded e-matra to restore. Pass 12. |
 | 9 | છ શેર / ચાર શેર | ram & lamb grain-offering quantities (see detail below) | Numbers 28:12–13 | `A` / `[kh` | SOURCE itself is internally inconsistent with 3 parallel passages + USCCB. Content/editorial call. Pass 20. |
+| 10 | ચેરનાર | valid word, or source typo? (cf. પડકારનાર in parallel Job 38:2) | Job 42:3 | `[uhLkkh` | Decoder faithful; source genuinely has this word. Obscure/edition verb vs error — native-reader call. Pass 24. |
+
+### Detail for #10 — Job 42:3 ચેરનાર (Pass 24)
+
+Verse: *"...મારી ધારણાને વિવેક વગર **ચેરનાર** એવો તું કોણ?..."* — "who is this that
+**[verb]s** my counsel without discernment?"
+
+**Source-evidence (APK inspected, `assets/0/22/42.html`,
+sha256 7014cca21aab12aa8b9cd787fc220675772b4ed7cfb047fa154d8b84a00d0d79):**
+the raw clause is `...ÄkhýkLku rððuf ðøkh [uhLkkh yuðku íkwt fkuý?` → the token is
+genuinely `[uhLkkh` = `ચેરનાર`. The decoder is FAITHFUL; nothing was dropped.
+
+**Context control:** the parallel rhetorical challenge at Job 38:2 uses the clear
+verb `પડકારનાર` ("challenger"), raw `ÃkzfkhLkkh`. So `ચેરનાร` is either an
+obscure/edition-specific verb or a source wording error.
+
+**Why held:** no reliable dictionary entry settles whether `ચેરનાર` is valid, and
+"not found" ≠ "invalid". A converter defect is ruled OUT (source is faithful).
+This is a native-reader / publisher lexical judgement. Do NOT copy `પડકારનાર` from
+Job 38:2 or guess a replacement. Leave the verse byte-for-byte unchanged.
+
+### Checked and PRESERVED at Pass 24 (not errors)
+- `સુઝાડતો` (Galatians 5:8, raw `MkwÍkzíkku`): attested causative of સૂઝવું with a
+  short initial u (GujaratiLexicon headword સુઝાડવું). Keep; no સુઝ→સૂઝ remap.
 
 ## Detail for #9 — Numbers 28:12–13 grain-offering quantities (Pass 20)
 
